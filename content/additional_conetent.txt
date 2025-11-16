@@ -1,0 +1,116 @@
+1-Initialize D_cm with an empty setPrepare a container for cross-modality preference pairs.
+2-foreach (x_v, x_t, y) ∈ D doFor each example in the dataset, we will run the model under different conditions and possibly create preference pairs.
+Why: We need to create many preference pairs covering different failure modes (ignoring image, over-relying on retrieval, etc.). This loop generates them.
+3-Generate retrieved contexts with an assigned domain label x_r ← R_{F(x_v)}(x_v)
+Run the domain classifier F(x_v) to get the domain tag (e.g., “radiology”) for this image.
+Use the domain-specific retriever R_domain to fetch similar reports or contexts for that domain using x_v as the query.
+x_r is the retrieved text/context (often top-k concatenated). 
+4-We pick a different but real image and then add controlled noise so the noisy image is plausible but not the original.
+This allows a stronger test: if the model outputs the same correct answer despite image being unrelated (and only retrieval is appropriate), it indicates it relies heavily on retrieval, not the image.
+5- if M(x_v, (x_t, x_r)) == y  and  M(x_v*, (x_t, x_r)) != y:
+    preferred = y
+    dispreferred = M(x_v*, (x_t, x_r))
+    add ((x_v, x_t), preferred, dispreferred) to D_cm
+6 - D_oa^1 = empty set (cases where retrieval helps),D_oa^2 = empty set (cases where retrieval hurts)
+Case1- if M(x_v, (x_t, x_r)) == y  and  M(x_v, x_t) != y:
+    preferred = y= M(x_v, (x_t, x_r)) 
+    dispreferred = M(x_v, x_t)
+    add ((x_v, x_t), preferred, dispreferred) to D_oa^1
+Case2- if M(x_v, x_t) == y  and  M(x_v, (x_t, x_r)) != y:
+    preferred = y= M(x_v, x_t)
+    dispreferred = M(x_v, (x_t, x_r))
+    add ((x_v, x_t), preferred, dispreferred) to D_oa^2
+7 -        D_pt = D_cm ∪ D_oa and D_oa = D_oa^1 ∪ D_oa^2All preference pairs are combined into a single set D_pt used for preference tuning.
+8 - foreach ((x_v, x_t), y_w,o, y_l,o) in D_pt:
+    compute loss L_pt according to equation 4
+    update π_ref
+9 - For each preference triple (input, preferred answer, dispreferred answer) compute a DPO-type preference loss and update the model weights
+DPO wants the model to assign higher probability to the preferred answer than to the dispreferred answer for the same input x.
+The model is updated to increase the likelihood of y_preferred relative to y_dispreferred.
+DPO directly increases log-likelihood of good answersand decreases that of bad answers, without any reward model or RL
+
+
+
+
+
+
+
+Cross-Modality Alignment -
+Large AI models sometimes ignore the image and just copy what sounds smart from the retrieved text.
+This training method forces the AI to pay attention to the image, not just guess from text.
+You're training a medical intern to answer questions about X-rays.
+You give them:
+A real chest X-ray of a patient
+                A question: "Is there fluid in the lungs?"
+ A few old medical reports from other patients that look similar (retrieved parts)
+Now, you run two tests:
+
+ Test 1 (Preferred Answer):
+You show the intern:
+The real image
+The question
+The retrieved example reports
+ The intern looks carefully at the real image and says:
+“No, I don’t see fluid in the lungs.”  (Correct)
+Test 2 (Bad Answer):
+Now you show the intern:
+A wrong image (maybe a blurry one or from a different patient)
+Same question
+Same retrieved reports
+ The intern guesses and says:
+“Yes, there is fluid.”  (Wrong — they didn’t look properly)
+What Are Cross-Modality Alignment Pairs?
+We take these two answers:
+ One from looking at the real image (correct)
+ One from the wrong image (wrong)
+And teach the model:
+“Prefer the correct answer that used the real image.
+
+
+
+
+
+
+
+Overall Alignment  -
+Case 1 — Retrieval Helps (Use It)
+The X-ray is hard to interpret, and the old reports are similar
+Case 2 — Retrieval Misleads (Ignore It)
+The image shows a broken rib, but the retrieved reports talk about pneumonia.Here, retrieval is wrong — unrelated.
+By showing both situations, the model learns balance:
+ Look at the image first
+ Use retrieval only when it helps
+ Ignore retrieval when it confuses you
+So overall alignment training helps the AI:
+Use RAG information intelligently
+Avoid blindly trusting retrieved text
+Stay factual and image-grounded
+
+
+
+
+
+
+Medical AI models (Med-LVLMs) often hallucinate, generating incorrect findings.
+Overcoming the Rigidity and Data Scarcity of Fine-Tuning
+Ensuring Versatility Across Heterogeneous Medical Domains
+
+
+
+
+
+
+Backbone model-LLaVA-Med-1.5 7B,LoRA fine-tuning,vision encoder is a ResNet-50 ,text encoder is a bio-BioClinicalBERT
+AdamW optimizer with a learning rate of 10−3,weight decay of 10−2,batch size of 32,model is trained for 360 epochs 
+The paper compares MMed-RAG with two main groups of hallucination reduction techniques used in Large Vision-Language Models (LVLMs):
+1) Decoding-Based Methods
+These methods do not change the model’s training, but instead control how the model chooses words during text generation.
+They try to adjust the token probabilities (logits) while generating the answer, so the model selects more factual and reliable words.
+Examples include:
+Greedy Decoding, Beam Search ,DoLa, OPERA ,VCD
+In short:They try to fix hallucination by changing how the model decodes its answer, without adding external knowledge or extra supervision.
+2) Multimodal RAG-Based Methods
+These methods retrieve real medical images, reports, or knowledge from external databases before generating the answer.They then use this retrieved evidence to guide the model to produce more factual outputs.
+Examples include:
+MedDr,FactMM-RAG
+In short:They try to fix hallucination by supplying supporting evidence (retrieved documents + images) to help the model answer correctly.
