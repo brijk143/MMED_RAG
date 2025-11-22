@@ -94,7 +94,9 @@ Stay factual and image-grounded
 Medical AI models (Med-LVLMs) often hallucinate, generating incorrect findings.
 Overcoming the Rigidity and Data Scarcity of Fine-Tuning
 Ensuring Versatility Across Heterogeneous Medical Domains
-
+hallucination is big problem right , so there is 2 way 
+1- fine tuning which has its own disadvantage
+2- RAG system 
 
 
 
@@ -114,3 +116,153 @@ These methods retrieve real medical images, reports, or knowledge from external 
 Examples include:
 MedDr,FactMM-RAG
 In short:They try to fix hallucination by supplying supporting evidence (retrieved documents + images) to help the model answer correctly.
+
+
+
+
+
+1. .jpg files (slo_fundus_XXXXX.jpg)
+* 		Purpose: Visual/image data
+* 		Content: SLO (Scanning Laser Ophthalmoscopy) fundus images of the eye
+* 		Use: The actual retinal images that would be used for visual analysis, deep learning models, or clinical review
+2. .npz files (data_XXXXX.npz)
+* 		Purpose: Structured numerical/metadata storage
+* 		Content: Likely contains:
+    * 		Image embeddings or processed numerical representations of the fundus images
+    * 		Clinical features extracted from the images
+    * 		Metadata about the image (patient info, image quality metrics)
+    * 		Pre-computed features for machine learning models
+    * 		Annotations or segmentation masks
+Why Both Formats?
+This dual-format approach is common in medical imaging datasets because:
+1. Efficiency: .npz files can store pre-processed data that's expensive to compute (embeddings, features)
+2. Machine Learning: Models may work directly with numerical features rather than raw images
+3. Reproducibility: Pre-computed features ensure consistent inputs across experiments
+4. Flexibility: Researchers can use either raw images or processed features depending on their needs
+
+
+
+
+
+MMed-RAG Repository Structure
+Config Files Found:
+cog.yaml - Cog deployment configuration (GPU, Python packages, predictor)
+pyproject.toml - Python project configuration
+scripts/*.sh - Shell scripts with training configurations
+train/dpo/scripts/zero*.json - DeepSpeed ZeRO optimization configs
+
+
+
+MMed-RAG/
+│
+├── :clipboard: Configuration & Documentation
+│  ├── README.md          # Main documentation
+│  ├── LICENSE           # License file
+│  ├── requirements.txt       # Python dependencies (205 packages)
+│  └── .gitignore
+│
+├── :art: Assets
+│  └── asset/            # Images, logos for documentation
+│
+├── :floppy_disk: DATA/ (Medical datasets)
+│  ├── training/
+│  │  ├── retriever/       # Data for training retriever
+│  │  │  ├── radiology/     # Radiology train/val JSON
+│  │  │  ├── pathology/     # Pathology train/val JSON
+│  │  │  └── ophthalmology/   # Harvard train/val JSON (7000/1000)
+│  │  │
+│  │  └── alignment/       # Data for Med-LVLM fine-tuning
+│  │    ├── radiology/     # Report + VQA JSON files
+│  │    ├── pathology/     # VQA JSON files
+│  │    └── ophthalmology/   # Harvard report + VQA JSON
+│  │
+│  └── test/
+│    ├── report/         # Report generation test data
+│    │  ├── harvard_test.json
+│    │  ├── iuxray_test.json
+│    │  ├── mimic_test.json
+│    │  ├── pmc-oa_test.json
+│    │  └── quilt-1m_test.json
+│    │
+│    └── vqa/          # VQA test data
+│      ├── harvard_test.jsonl
+│      ├── iuxray_test.jsonl
+│      ├── mimic_test.jsonl
+│      ├── pmc-oa_test.jsonl
+│      └── quilt-1m_test.jsonl
+│
+├── :rocket: SCRIPTS/ (Entry point scripts)
+│  ├── finetune_clip.sh      # Train CLIP retriever
+│  ├── retrieve_clip_report.sh   # Retrieve for report generation
+│  ├── retrieve_clip_VQA.sh    # Retrieve for VQA
+│  └── train_dpo_2stages.sh    # Train Med-LVLM with DPO
+│
+└── :weight_lifter: TRAIN/ (Training code)
+  │
+  ├── dpo/            # Direct Preference Optimization
+  │  ├── :gear: cog.yaml       # **CONFIG**: Cog deployment config
+  │  ├── :gear: pyproject.toml    # **CONFIG**: Python project setup
+  │  ├── train_dpo_2stages.py  # Main DPO training script
+  │  ├── dpo_trainer_2stages.py # DPO trainer implementation
+  │  ├── llava_trainer_2stages.py # LLaVA trainer
+  │  ├── predict.py       # Prediction/inference
+  │  ├── povid_infer.py     # POVID inference
+  │  │
+  │  ├── llava/         # LLaVA model implementation
+  │  │  ├── constants.py
+  │  │  ├── conversation.py   # Conversation templates
+  │  │  ├── mm_utils.py     # Multimodal utilities
+  │  │  ├── utils.py
+  │  │  │
+  │  │  ├── model/       # Model architecture
+  │  │  │  ├── builder.py   # Model builder
+  │  │  │  ├── llava_arch.py  # LLaVA architecture
+  │  │  │  ├── language_model/ # Language model components
+  │  │  │  ├── multimodal_encoder/ # Vision encoder
+  │  │  │  └── multimodal_projector/ # Vision-language projection
+  │  │  │
+  │  │  ├── train/       # Training utilities
+  │  │  ├── eval/        # Evaluation scripts
+  │  │  └── serve/       # Serving utilities
+  │  │
+  │  ├── scripts/        # Utility scripts
+  │  │  ├── :gear: zero2.json    # **CONFIG**: DeepSpeed ZeRO-2
+  │  │  ├── :gear: zero3.json    # **CONFIG**: DeepSpeed ZeRO-3
+  │  │  ├── :gear: zero3_offload.json # **CONFIG**: ZeRO-3 offload
+  │  │  ├── finetune*.sh    # Fine-tuning scripts
+  │  │  ├── pretrain*.sh    # Pretraining scripts
+  │  │  ├── convert_*.py    # Data conversion scripts
+  │  │  ├── merge_lora_weights.py
+  │  │  └── v1_5/        # Version 1.5 specific
+  │  │
+  │  └── tool/
+  │    ├── dpo_trainer.py   # DPO trainer (alternative)
+  │    └── dpo_trainer_inherent.py
+  │
+  └── open_clip/         # OpenCLIP for retrieval
+    ├── CITATION.cff
+    ├── LICENSE
+    ├── setup.py
+    │
+    └── src/
+      ├── retrieve_clip_report.py  # Retrieval for reports
+      ├── retrieve_clip_VQA.py    # Retrieval for VQA
+      │
+      ├── open_clip/     # OpenCLIP implementation
+      │  └── model_configs/ # 50+ model configs (JSON)
+      │    ├── ViT-*.json
+      │    ├── EVA*.json
+      │    └── ...
+      │
+      └── training/      # Training code
+        ├── :gear: main.py   # **MAIN TRAINING ENTRY**
+        ├── params.py    # **CONFIG**: Training parameters
+        ├── data.py     # Data loading
+        ├── train.py    # Training loop
+        ├── scheduler.py  # LR scheduler
+        ├── distributed.py # Multi-GPU
+        └── ...
+
+
+
+
