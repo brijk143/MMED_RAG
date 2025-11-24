@@ -143,6 +143,25 @@ This dual-format approach is common in medical imaging datasets because:
 
 
 
+1. Optimizer (how to walk)
+What it does:
+Updates the model’s weights using gradients to reduce loss.
+2. Scheduler (Learning Rate Scheduler) …..(when to slow down or speed up)
+What it does:
+Changes the learning rate over time during training
+
+Scheduler: Use for better training
+Use scheduler when:
+* 		Large dataset
+* 		Many epochs
+* 		You want smooth convergence
+* 		You want higher final accuracy
+* 		You want to escape plateaus
+CosineAnnealingLR?
+It is a learning rate scheduler that slowly decreases the learning rate following a cosine curve.
+
+
+
 
 MMed-RAG Repository Structure
 Config Files Found:
@@ -264,5 +283,421 @@ MMed-RAG/
         └── ...
 
 
+
+
+
+
+
+
+
+┌─────────────────────────────────────────────────────────────┐
+│                    STAGE 1: FINE-TUNING                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  [General CLIP Model]                                        │
+│         ↓                                                    │
+│  Load CC12M weights                                          │
+│         ↓                                                    │
+│  Train on Medical Images + Reports (360 epochs)              │
+│         ↓                                                    │
+│  [Medical CLIP Checkpoint] ← SAVE THIS                       │
+│         ↓                                                    │
+│  /checkpoints/epoch_360.pt                                   │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+                          ↓
+                          ↓ (Use checkpoint in Stage 2)
+                          ↓
+┌─────────────────────────────────────────────────────────────┐
+│                    STAGE 2: RETRIEVAL                        │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Create Model Architecture                                   │
+│         ↓                                                    │
+│  Load Medical CLIP Checkpoint (epoch_360.pt)                 │
+│         ↓                                                    │
+│  Encode Training Database (all reports)                      │
+│         │                                                    │
+│         ├─→ Report 1 → [embedding_1]                         │
+│         ├─→ Report 2 → [embedding_2]                         │
+│         └─→ Report N → [embedding_N]                         │
+│                                                              │
+│  For each test image:                                        │
+│         ↓                                                    │
+│  Encode Test Image → [query_embedding]                       │
+│         ↓                                                    │
+│  Compute Similarity: query @ [embedding_1...N]               │
+│         ↓                                                    │
+│  Retrieve Top-K most similar reports                         │
+│         ↓                                                    │
+│  Save to output.jsonl                                        │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+                          ↓
+                          ↓
+┌─────────────────────────────────────────────────────────────┐
+│                 STAGE 3: DPO TRAINING                        │
+│          (Uses retrieved reports for alignment)              │
+└─────────────────────────────────────────────────────────────┘
+
+
+
+
+
+
+
+
+
+D-
+
+
+User Query: "What does this chest X-ray show?"
+   ↓
+Domain Identification Model
+   ↓
+Identifies: "Radiology"
+   ↓
+Select Radiology Corpus:
+ - Load radiology image database
+ - Load radiology report database
+   ↓
+Same CLIP Model encodes query
+   ↓
+Compute similarity with radiology corpus only
+   ↓
+Return top-k radiology images/reports
+
+
+
+
+
+User Query: "What abnormalities are in this chest X-ray?"
+   ↓
+┌─────────────────────────────────────┐
+│ Model 1: Domain Classifier     │ (NOT in this code)
+│ Output: "Radiology"         │
+└─────────────────────────────────────┘
+   ↓
+Load Radiology-specific corpus
+(CT scans, X-rays, radiology reports database)
+   ↓
+┌─────────────────────────────────────┐
+│ Model 2: CLIP Retriever       │ (Trained in main.py)
+│ - Encode query with text encoder  │
+│ - Compare with image embeddings   │
+│ - Return top-k relevant images   │
+└─────────────────────────────────────┘
+   ↓
+Retrieved Context (relevant X-rays + reports)
+   ↓
+┌─────────────────────────────────────┐
+│ Model 3: Med-LVLM (LLaVA + DPO)   │ (Trained in train_dpo.py)
+│ Generate final medical report    │
+└─────────────────────────────────────┘
+
+
+
+Training Flow:
+1. Model Creation (Lines 247-261)
+2. Data Loading
+3. Optimizer Setup
+4. Loss Function
+5. Training Loop
+6. What the Model Learns:
+The CLIP model learns to:
+* 		Project images and texts into a shared embedding space
+* 		Pull together embeddings of matching (image, caption) pairs
+* 		Push apart embeddings of non-matching pairs
+7. Evaluation
+8. Checkpoint Saving
+
+
+
+
+
+
+1. SETUP (main.py)
+   ├─ Parse arguments (params.py)
+   ├─ Initialize distributed training (distributed.py)
+   ├─ Setup logging (logger.py)
+   └─ Load checkpoint or initialize model
+
+2. DATA LOADING (data.py)
+   ├─ Create dataset (MimicDataset, HarvardDataset, etc.)
+   ├─ Create dataloader with DistributedSampler
+   └─ Return DataInfo with metadata
+
+3. TRAINING LOOP (main.py + train.py)
+   FOR each epoch:
+      ├─ train_one_epoch()
+      │  ├─ Forward pass with mixed precision (precision.py)
+      │  ├─ Compute contrastive loss
+      │  ├─ Backward pass with gradient accumulation
+      │  ├─ Update learning rate (scheduler.py)
+      │  └─ Log metrics (WandB, TensorBoard)
+      │
+      ├─ evaluate()
+      │  ├─ Extract all features
+      │  ├─ Compute retrieval metrics
+      │  └─ Log validation results
+      │
+      └─ save_checkpoint()
+         ├─ Save to local disk
+         └─ Sync to S3 (file_utils.py)
+
+CLIP Fine-tuning (Training has been done ) - finetune_clip.sh
+Output:
+* Fine-tuned CLIP checkpoint saved at /path/to/checkpoints_saving/epoch_360.pt
+* This model is now specialized for medical images and reports
+* │  - ResNet layers: Learn medical image patterns             │
+* │  - Transformer layers: Learn medical language              │
+* │  - Projection layers: Align medical image-text space       │
+After saving checkpoint
+
+4. RETRIEVAL (train.py)
+1. Load Fine-tuned CLIP Model
+2. retriever extracts embeddings from all training images and reports
+3.Extract embeddings from the test/validation images you want to retrieve reports for
+4.Calculate cosine similarity between query images and all reference reports using get_logits:
+5.Use retrieve_topk_per_image to get the most similar reports:
+6.Write the retrieved reports to JSONL format:
+
+* Input to DPO: retrieval JSONL (output of open_clip stage) + base Med‑LVLM checkpoint + tokenizer/config.
+* What is trained: Med‑LVLM policy weights (updated via DPO preference loss).
+* What is not trained: CLIP — remains in eval mode and only supplies retrieved text/context.
+* Core files to inspect:
+    * Entrypoint: train_dpo_2stages.py (parses args, loads retrieval file, starts trainer)
+    * Trainer: dpo_trainer_2stages.py (builds D_pt, computes DPO loss, optimizer steps, checkpointing)
+    * Dataset/prompt builder: train/dpo/utils.py or dataset.py (constructs prompts using retrieved context)
+* Loss: DPO loss computed from log-probabilities of preferred vs dispreferred outputs; optional KL regularizer vs frozen reference policy.
+* Outputs: DPO checkpoints, training logs, eval metrics, optional exported model for inference.
+* How to verify CLIP is frozen:
+    * Check trainer code for no optimizer params referencing CLIP or ensure model.eval() is called for CLIP.
+    * At runtime, confirm CLIP parameters have requires_grad == False.
+* Typical run (example):
+    * python train_dpo_2stages.py --data /path/retrieved.jsonl --model /path/med-lvlm.ckpt --epochs 10 --batch-size 8
+* Recommendation: if retrieval quality must change, re-run Stage 1 (fine‑tune CLIP) and Stage 2 (re-index/retrieve), then re-run DPO.
+
+
+
+
+
+
+
+
+Command-line args (args)
+     ↓
+┌────────────────────────┐
+│ get_data() function  │
+└────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ get_dataset_fn() - Router    │
+│ Routes based on dataset_type  │
+└─────────────────────────────────┘
+     ↓
+┌──────────────────────────────────┐
+│ get_[Domain]Dataset() function  │
+│ (e.g., get_IUXrayDataset)    │
+└──────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Create Dataset instance     │
+│ dataset = IUXrayDataset(...)   │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Create DistributedSampler    │
+│ (if multi-GPU training)     │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Create DataLoader        │
+│ - Batching            │
+│ - Shuffling           │
+│ - Multi-worker loading      │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Wrap in DataInfo         │
+│ (stores metadata)        │
+└─────────────────────────────────┘
+     ↓
+  Return to training loop
+
+
+
+
+
+get_HarvardDataset() Called
+     ↓
+┌─────────────────────────────────┐
+│ Step 1: Get JSON file path   │
+│ json_filename = "train.json"  │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 2: Create HarvardDataset  │
+│ - Reads JSON          │
+│ - Creates (image, text) pairs  │
+│ - Stores transforms & tokenizer │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 3: Get dataset size    │
+│ num_samples = 50000       │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 4: Create DistributedSampler│
+│ (if multi-GPU training)     │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 5: Determine shuffling   │
+│ shuffle = True/False      │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 6: Create DataLoader    │
+│ - Batching: 32 samples     │
+│ - Parallel: 4 workers      │
+│ - Shuffling: Yes/No       │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 7: Add metadata      │
+│ - num_samples          │
+│ - num_batches          │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 8: Return DataInfo     │
+│ (dataloader + sampler wrapped) │
+└─────────────────────────────────┘
+
+A-Dataset class-
+A Dataset is like a smart container that:
+Stores information about where your data is
+Loads one sample at a time when asked
+Preprocesses that sample (image + text)
+Returns it in a format the model can use
+
+
+get_HarvardDataset() is a factory function that:
+Creates a HarvardDataset instance (pathology images)
+Wraps it with a DataLoader for efficient batch loading
+Configures distributed training support
+Returns everything packaged in a DataInfo object
+Think of it as a complete assembly line that prepares Harvard pathology data for model training.
+
+Before passing to data loader
+dataset = HarvardDataset(...)
+
+# This is what's in memory:
+dataset = {
+
+  # 1. Raw JSON data (7000 entries)
+  data: [
+    {
+      "id": "data_0",
+      "filename": "data_0.npz",
+      "image_path": "Left-Fundus/1.png",
+      "gpt4_summary": "The image shows a retinal fundus photograph of the left eye...",
+      "use": "training"
+    },
+
+    # ... 6998 more entries
+  ],
+
+
+  # 2. Processed image-report pairs (7000 tuples)
+  image_report_pairs: [
+    (
+      "/Users/bkishor/Desktop/dataset/Training/Left-Fundus/1.png",
+      "The image shows a retinal fundus photograph of the left eye..."
+    ),
+    # ... 6998 more tuples
+  ],
+
+
+  # 3. Image IDs (7000 strings)
+  image_ids: [
+    "data_0",
+    "data_1",
+    "data_2",
+    # ... 6997 more IDs
+  ],
+
+  # FUNCTIONS
+
+  # 4. Transform (function object)
+  # 5. Tokenizer (function)
+  # 6. Configuration flags
+  load_include_path: True,
+  load_include_k: False,
+  retrieve_k: None,
+
+  # METHODS
+
+  __len__: returns 7000,
+  __getitem__: loads and processes ONE sample when called
+}
+
+Images NOT loaded, text NOT tokenized  
+Small memory footprint (~15 MB)
+# This is a LAZY object!
+# - Images are NOT loaded yet
+# - Text is NOT tokenized yet
+# - Only metadata (paths, reports) is in memory
+# - Actual loading happens in __getitem__() when DataLoader requests it
+
+
+AFTER DataLoader (during iteration):
+The magic happens when DataLoader calls dataset.__getitem__() for each sample, triggering the loading and preprocessing!
+# Step 1: DataLoader receives dataset object
+dataloader = DataLoader(dataset, batch_size=4, ...)
+
+# Step 2: DataLoader inspects dataset
+print(len(dataset)) # Calls dataset.__len__() → 7000
+# Step 3: DataLoader calculates number of batches
+num_batches = 7000 / 4 = 1750 batches
+# Step 4: During iteration, DataLoader does:
+for batch in dataloader:
+  # Internally:
+  # 1. Picks 4 random indices: [234, 891, 45, 1023]
+  # 2. Calls dataset[234], dataset[891], dataset[45], dataset[1023]
+  # 3. Each call triggers dataset.__getitem__() which:
+  #  - Loads image from disk
+  #  - Applies transforms
+  #  - Tokenizes text
+  #  - Returns (img_tensor, text_tensor, path)
+  # 4. Collates 4 samples into batched tensors
+  # 5. Returns batched data
+
+  # Final batch format:
+  # batch[0]: images [4, 3, 224, 224]
+  # batch[1]: texts [4, 77]
+  # batch[2]: paths ["path1", "path2", "path3", "path4"]
+Batched into tensors ready for model
+# What you receive in training loop:
+for batch_idx, batch in enumerate(dataloader):
+  # batch is a tuple with 3 elements:
+  images = batch[0] # torch.Tensor [4, 3, 224, 224]
+  texts = batch[1]  # torch.Tensor [4, 77]
+  paths = batch[2]  # tuple of 4 strings
+  # Or unpack directly:
+  images, texts, paths = batch
+
+dataloader = DataLoader(
+  dataset,         # The dataset instance
+  batch_size=32,      # Load 32 samples at once
+  shuffle=True,       # Randomize order (training only)
+  num_workers=4,      # 4 parallel processes to load data
+  pin_memory=True,     # Speed up GPU transfer
+  sampler=sampler,     # For distributed training (None otherwise)
+  drop_last=True,      # Drop incomplete last batch (training only)
+)
+Pick samples, group them into batches, shuffles them , serves them efficiently using multiple workers
 
 
