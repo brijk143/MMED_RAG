@@ -40,31 +40,19 @@ Large AI models sometimes ignore the image and just copy what sounds smart from 
 This training method forces the AI to pay attention to the image, not just guess from text.
 You're training a medical intern to answer questions about X-rays.
 You give them:
-A real chest X-ray of a patient
-                A question: "Is there fluid in the lungs?"
- A few old medical reports from other patients that look similar (retrieved parts)
+A real chest X-ray of a patient , question: "Is there fluid in the lungs?" ,A few old medical reports from other patients that look similar (retrieved parts)
 Now, you run two tests:
-
- Test 1 (Preferred Answer):
-You show the intern:
-The real image
-The question
-The retrieved example reports
+Test 1 (Preferred Answer):You show the intern:
+The real image ,The question ,the retrieved example reports
  The intern looks carefully at the real image and says:
 “No, I don’t see fluid in the lungs.”  (Correct)
-Test 2 (Bad Answer):
-Now you show the intern:
-A wrong image (maybe a blurry one or from a different patient)
-Same question
-Same retrieved reports
- The intern guesses and says:
-“Yes, there is fluid.”  (Wrong — they didn’t look properly)
+Test 2 (DispreferredAnswer):Now you show the intern:
+A wrong image (maybe a blurry one or from a different patient) ,Same question ,Same retrieved reports
+The intern guesses and says:“Yes, there is fluid.”  (Wrong — they didn’t look properly)
 What Are Cross-Modality Alignment Pairs?
 We take these two answers:
- One from looking at the real image (correct)
- One from the wrong image (wrong)
-And teach the model:
-“Prefer the correct answer that used the real image.
+One from looking at the real image (correct), One from the wrong image (wrong)
+teaching the model: “Prefer the correct answer that used the real image.
 
 
 
@@ -398,7 +386,7 @@ Retrieved Context (relevant X-rays + reports)
 
 
 Training Flow:
-1. Model Creation (Lines 247-261)
+1. Model Creation
 2. Data Loading
 3. Optimizer Setup
 4. Loss Function
