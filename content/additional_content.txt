@@ -79,6 +79,26 @@ Stay factual and image-grounded
 
 
 
+* Input to DPO: retrieval JSONL (output of open_clip stage) + base Med‑LVLM checkpoint + tokenizer/config.
+* What is trained: Med‑LVLM policy weights (updated via DPO preference loss).
+* What is not trained: CLIP — remains in eval mode and only supplies retrieved text/context.
+* Core files to inspect:
+    * Entrypoint: train_dpo_2stages.py (parses args, loads retrieval file, starts trainer)
+    * Trainer: dpo_trainer_2stages.py (builds D_pt, computes DPO loss, optimizer steps, checkpointing)
+    * Dataset/prompt builder: train/dpo/utils.py or dataset.py (constructs prompts using retrieved context)
+* Loss: DPO loss computed from log-probabilities of preferred vs dispreferred outputs; optional KL regularizer vs frozen reference policy.
+* Outputs: DPO checkpoints, training logs, eval metrics, optional exported model for inference.
+* How to verify CLIP is frozen:
+    * Check trainer code for no optimizer params referencing CLIP or ensure model.eval() is called for CLIP.
+    * At runtime, confirm CLIP parameters have requires_grad == False.
+* Typical run (example):
+    * python train_dpo_2stages.py --data /path/retrieved.jsonl --model /path/med-lvlm.ckpt --epochs 10 --batch-size 8
+* Recommendation: if retrieval quality must change, re-run Stage 1 (fine‑tune CLIP) and Stage 2 (re-index/retrieve), then re-run DPO.
+
+
+
+
+
 Medical AI models (Med-LVLMs) often hallucinate, generating incorrect findings.
 Overcoming the Rigidity and Data Scarcity of Fine-Tuning
 Ensuring Versatility Across Heterogeneous Medical Domains
