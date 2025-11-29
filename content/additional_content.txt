@@ -1,588 +1,3 @@
-1-Initialize D_cm with an empty setPrepare a container for cross-modality preference pairs.
-2-foreach (x_v, x_t, y) ∈ D doFor each example in the dataset, we will run the model under different conditions and possibly create preference pairs.
-Why: We need to create many preference pairs covering different failure modes (ignoring image, over-relying on retrieval, etc.). This loop generates them.
-3-Generate retrieved contexts with an assigned domain label x_r ← R_{F(x_v)}(x_v)
-Run the domain classifier F(x_v) to get the domain tag (e.g., “radiology”) for this image.
-Use the domain-specific retriever R_domain to fetch similar reports or contexts for that domain using x_v as the query.
-x_r is the retrieved text/context (often top-k concatenated). 
-4-We pick a different but real image and then add controlled noise so the noisy image is plausible but not the original.
-This allows a stronger test: if the model outputs the same correct answer despite image being unrelated (and only retrieval is appropriate), it indicates it relies heavily on retrieval, not the image.
-5- if M(x_v, (x_t, x_r)) == y  and  M(x_v*, (x_t, x_r)) != y:
-    preferred = y
-    dispreferred = M(x_v*, (x_t, x_r))
-    add ((x_v, x_t), preferred, dispreferred) to D_cm
-6 - D_oa^1 = empty set (cases where retrieval helps),D_oa^2 = empty set (cases where retrieval hurts)
-Case1- if M(x_v, (x_t, x_r)) == y  and  M(x_v, x_t) != y:
-    preferred = y= M(x_v, (x_t, x_r)) 
-    dispreferred = M(x_v, x_t)
-    add ((x_v, x_t), preferred, dispreferred) to D_oa^1
-Case2- if M(x_v, x_t) == y  and  M(x_v, (x_t, x_r)) != y:
-    preferred = y= M(x_v, x_t)
-    dispreferred = M(x_v, (x_t, x_r))
-    add ((x_v, x_t), preferred, dispreferred) to D_oa^2
-7 -        D_pt = D_cm ∪ D_oa and D_oa = D_oa^1 ∪ D_oa^2All preference pairs are combined into a single set D_pt used for preference tuning.
-8 - foreach ((x_v, x_t), y_w,o, y_l,o) in D_pt:
-    compute loss L_pt according to equation 4
-    update π_ref
-9 - For each preference triple (input, preferred answer, dispreferred answer) compute a DPO-type preference loss and update the model weights
-DPO wants the model to assign higher probability to the preferred answer than to the dispreferred answer for the same input x.
-The model is updated to increase the likelihood of y_preferred relative to y_dispreferred.
-DPO directly increases log-likelihood of good answersand decreases that of bad answers, without any reward model or RL
-
-
-
-
-
-
-
-Cross-Modality Alignment -
-Large AI models sometimes ignore the image and just copy what sounds smart from the retrieved text.
-This training method forces the AI to pay attention to the image, not just guess from text.
-You're training a medical intern to answer questions about X-rays.
-You give them:
-A real chest X-ray of a patient , question: "Is there fluid in the lungs?" ,A few old medical reports from other patients that look similar (retrieved parts)
-Now, you run two tests:
-Test 1 (Preferred Answer):You show the intern:
-The real image ,The question ,the retrieved example reports
- The intern looks carefully at the real image and says:
-“No, I don’t see fluid in the lungs.”  (Correct)
-Test 2 (DispreferredAnswer):Now you show the intern:
-A wrong image (maybe a blurry one or from a different patient) ,Same question ,Same retrieved reports
-The intern guesses and says:“Yes, there is fluid.”  (Wrong — they didn’t look properly)
-What Are Cross-Modality Alignment Pairs?
-We take these two answers:
-One from looking at the real image (correct), One from the wrong image (wrong)
-teaching the model: “Prefer the correct answer that used the real image.
-
-
-
-
-
-
-
-Overall Alignment  -
-Case 1 — Retrieval Helps (Use It)
-The X-ray is hard to interpret, and the old reports are similar
-Case 2 — Retrieval Misleads (Ignore It)
-The image shows a broken rib, but the retrieved reports talk about pneumonia.Here, retrieval is wrong — unrelated.
-By showing both situations, the model learns balance:
- Look at the image first
- Use retrieval only when it helps
- Ignore retrieval when it confuses you
-So overall alignment training helps the AI:
-Use RAG information intelligently
-Avoid blindly trusting retrieved text
-Stay factual and image-grounded
-
-
-
-
-
-
-* Input to DPO: retrieval JSONL (output of open_clip stage) + base Med‑LVLM checkpoint + tokenizer/config.
-* What is trained: Med‑LVLM policy weights (updated via DPO preference loss).
-* What is not trained: CLIP — remains in eval mode and only supplies retrieved text/context.
-* Core files to inspect:
-    * Entrypoint: train_dpo_2stages.py (parses args, loads retrieval file, starts trainer)
-    * Trainer: dpo_trainer_2stages.py (builds D_pt, computes DPO loss, optimizer steps, checkpointing)
-    * Dataset/prompt builder: train/dpo/utils.py or dataset.py (constructs prompts using retrieved context)
-* Loss: DPO loss computed from log-probabilities of preferred vs dispreferred outputs; optional KL regularizer vs frozen reference policy.
-* Outputs: DPO checkpoints, training logs, eval metrics, optional exported model for inference.
-* How to verify CLIP is frozen:
-    * Check trainer code for no optimizer params referencing CLIP or ensure model.eval() is called for CLIP.
-    * At runtime, confirm CLIP parameters have requires_grad == False.
-* Typical run (example):
-    * python train_dpo_2stages.py --data /path/retrieved.jsonl --model /path/med-lvlm.ckpt --epochs 10 --batch-size 8
-* Recommendation: if retrieval quality must change, re-run Stage 1 (fine‑tune CLIP) and Stage 2 (re-index/retrieve), then re-run DPO.
-
-
-
-
-
-Medical AI models (Med-LVLMs) often hallucinate, generating incorrect findings.
-Overcoming the Rigidity and Data Scarcity of Fine-Tuning
-Ensuring Versatility Across Heterogeneous Medical Domains
-hallucination is big problem right , so there is 2 way 
-1- fine tuning which has its own disadvantage
-2- RAG system 
-
-
-
-
-
-Backbone model-LLaVA-Med-1.5 7B,LoRA fine-tuning,vision encoder is a ResNet-50 ,text encoder is a bio-BioClinicalBERT
-AdamW optimizer with a learning rate of 10−3,weight decay of 10−2,batch size of 32,model is trained for 360 epochs 
-The paper compares MMed-RAG with two main groups of hallucination reduction techniques used in Large Vision-Language Models (LVLMs):
-1) Decoding-Based Methods
-These methods do not change the model’s training, but instead control how the model chooses words during text generation.
-They try to adjust the token probabilities (logits) while generating the answer, so the model selects more factual and reliable words.
-Examples include:
-Greedy Decoding, Beam Search ,DoLa, OPERA ,VCD
-In short:They try to fix hallucination by changing how the model decodes its answer, without adding external knowledge or extra supervision.
-2) Multimodal RAG-Based Methods
-These methods retrieve real medical images, reports, or knowledge from external databases before generating the answer.They then use this retrieved evidence to guide the model to produce more factual outputs.
-Examples include:
-MedDr,FactMM-RAG
-In short:They try to fix hallucination by supplying supporting evidence (retrieved documents + images) to help the model answer correctly.
-
-
-
-
-
-1. .jpg files (slo_fundus_XXXXX.jpg)
-* 		Purpose: Visual/image data
-* 		Content: SLO (Scanning Laser Ophthalmoscopy) fundus images of the eye
-* 		Use: The actual retinal images that would be used for visual analysis, deep learning models, or clinical review
-2. .npz files (data_XXXXX.npz)
-* 		Purpose: Structured numerical/metadata storage
-* 		Content: Likely contains:
-    * 		Image embeddings or processed numerical representations of the fundus images
-    * 		Clinical features extracted from the images
-    * 		Metadata about the image (patient info, image quality metrics)
-    * 		Pre-computed features for machine learning models
-    * 		Annotations or segmentation masks
-Why Both Formats?
-This dual-format approach is common in medical imaging datasets because:
-1. Efficiency: .npz files can store pre-processed data that's expensive to compute (embeddings, features)
-2. Machine Learning: Models may work directly with numerical features rather than raw images
-3. Reproducibility: Pre-computed features ensure consistent inputs across experiments
-4. Flexibility: Researchers can use either raw images or processed features depending on their needs
-
-
-
-
-1. Optimizer (how to walk)
-What it does:
-Updates the model’s weights using gradients to reduce loss.
-2. Scheduler (Learning Rate Scheduler) …..(when to slow down or speed up)
-What it does:
-Changes the learning rate over time during training
-
-Scheduler: Use for better training
-Use scheduler when:
-* 		Large dataset
-* 		Many epochs
-* 		You want smooth convergence
-* 		You want higher final accuracy
-* 		You want to escape plateaus
-CosineAnnealingLR?
-It is a learning rate scheduler that slowly decreases the learning rate following a cosine curve.
-
-
-
-
-MMed-RAG Repository Structure
-Config Files Found:
-cog.yaml - Cog deployment configuration (GPU, Python packages, predictor)
-pyproject.toml - Python project configuration
-scripts/*.sh - Shell scripts with training configurations
-train/dpo/scripts/zero*.json - DeepSpeed ZeRO optimization configs
-
-
-
-MMed-RAG/
-│
-├── :clipboard: Configuration & Documentation
-│  ├── README.md          # Main documentation
-│  ├── LICENSE           # License file
-│  ├── requirements.txt       # Python dependencies (205 packages)
-│  └── .gitignore
-│
-├── :art: Assets
-│  └── asset/            # Images, logos for documentation
-│
-├── :floppy_disk: DATA/ (Medical datasets)
-│  ├── training/
-│  │  ├── retriever/       # Data for training retriever
-│  │  │  ├── radiology/     # Radiology train/val JSON
-│  │  │  ├── pathology/     # Pathology train/val JSON
-│  │  │  └── ophthalmology/   # Harvard train/val JSON (7000/1000)
-│  │  │
-│  │  └── alignment/       # Data for Med-LVLM fine-tuning
-│  │    ├── radiology/     # Report + VQA JSON files
-│  │    ├── pathology/     # VQA JSON files
-│  │    └── ophthalmology/   # Harvard report + VQA JSON
-│  │
-│  └── test/
-│    ├── report/         # Report generation test data
-│    │  ├── harvard_test.json
-│    │  ├── iuxray_test.json
-│    │  ├── mimic_test.json
-│    │  ├── pmc-oa_test.json
-│    │  └── quilt-1m_test.json
-│    │
-│    └── vqa/          # VQA test data
-│      ├── harvard_test.jsonl
-│      ├── iuxray_test.jsonl
-│      ├── mimic_test.jsonl
-│      ├── pmc-oa_test.jsonl
-│      └── quilt-1m_test.jsonl
-│
-├── :rocket: SCRIPTS/ (Entry point scripts)
-│  ├── finetune_clip.sh      # Train CLIP retriever
-│  ├── retrieve_clip_report.sh   # Retrieve for report generation
-│  ├── retrieve_clip_VQA.sh    # Retrieve for VQA
-│  └── train_dpo_2stages.sh    # Train Med-LVLM with DPO
-│
-└── :weight_lifter: TRAIN/ (Training code)
-  │
-  ├── dpo/            # Direct Preference Optimization
-  │  ├── :gear: cog.yaml       # **CONFIG**: Cog deployment config
-  │  ├── :gear: pyproject.toml    # **CONFIG**: Python project setup
-  │  ├── train_dpo_2stages.py  # Main DPO training script
-  │  ├── dpo_trainer_2stages.py # DPO trainer implementation
-  │  ├── llava_trainer_2stages.py # LLaVA trainer
-  │  ├── predict.py       # Prediction/inference
-  │  ├── povid_infer.py     # POVID inference
-  │  │
-  │  ├── llava/         # LLaVA model implementation
-  │  │  ├── constants.py
-  │  │  ├── conversation.py   # Conversation templates
-  │  │  ├── mm_utils.py     # Multimodal utilities
-  │  │  ├── utils.py
-  │  │  │
-  │  │  ├── model/       # Model architecture
-  │  │  │  ├── builder.py   # Model builder
-  │  │  │  ├── llava_arch.py  # LLaVA architecture
-  │  │  │  ├── language_model/ # Language model components
-  │  │  │  ├── multimodal_encoder/ # Vision encoder
-  │  │  │  └── multimodal_projector/ # Vision-language projection
-  │  │  │
-  │  │  ├── train/       # Training utilities
-  │  │  ├── eval/        # Evaluation scripts
-  │  │  └── serve/       # Serving utilities
-  │  │
-  │  ├── scripts/        # Utility scripts
-  │  │  ├── :gear: zero2.json    # **CONFIG**: DeepSpeed ZeRO-2
-  │  │  ├── :gear: zero3.json    # **CONFIG**: DeepSpeed ZeRO-3
-  │  │  ├── :gear: zero3_offload.json # **CONFIG**: ZeRO-3 offload
-  │  │  ├── finetune*.sh    # Fine-tuning scripts
-  │  │  ├── pretrain*.sh    # Pretraining scripts
-  │  │  ├── convert_*.py    # Data conversion scripts
-  │  │  ├── merge_lora_weights.py
-  │  │  └── v1_5/        # Version 1.5 specific
-  │  │
-  │  └── tool/
-  │    ├── dpo_trainer.py   # DPO trainer (alternative)
-  │    └── dpo_trainer_inherent.py
-  │
-  └── open_clip/         # OpenCLIP for retrieval
-    ├── CITATION.cff
-    ├── LICENSE
-    ├── setup.py
-    │
-    └── src/
-      ├── retrieve_clip_report.py  # Retrieval for reports
-      ├── retrieve_clip_VQA.py    # Retrieval for VQA
-      │
-      ├── open_clip/     # OpenCLIP implementation
-      │  └── model_configs/ # 50+ model configs (JSON)
-      │    ├── ViT-*.json
-      │    ├── EVA*.json
-      │    └── ...
-      │
-      └── training/      # Training code
-        ├── :gear: main.py   # **MAIN TRAINING ENTRY**
-        ├── params.py    # **CONFIG**: Training parameters
-        ├── data.py     # Data loading
-        ├── train.py    # Training loop
-        ├── scheduler.py  # LR scheduler
-        ├── distributed.py # Multi-GPU
-        └── ...
-
-
-
-
-
-
-
-
-
-┌─────────────────────────────────────────────────────────────┐
-│                    STAGE 1: FINE-TUNING                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  [General CLIP Model]                                        │
-│         ↓                                                    │
-│  Load CC12M weights                                          │
-│         ↓                                                    │
-│  Train on Medical Images + Reports (360 epochs)              │
-│         ↓                                                    │
-│  [Medical CLIP Checkpoint] ← SAVE THIS                       │
-│         ↓                                                    │
-│  /checkpoints/epoch_360.pt                                   │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-                          ↓
-                          ↓ (Use checkpoint in Stage 2)
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│                    STAGE 2: RETRIEVAL                        │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Create Model Architecture                                   │
-│         ↓                                                    │
-│  Load Medical CLIP Checkpoint (epoch_360.pt)                 │
-│         ↓                                                    │
-│  Encode Training Database (all reports)                      │
-│         │                                                    │
-│         ├─→ Report 1 → [embedding_1]                         │
-│         ├─→ Report 2 → [embedding_2]                         │
-│         └─→ Report N → [embedding_N]                         │
-│                                                              │
-│  For each test image:                                        │
-│         ↓                                                    │
-│  Encode Test Image → [query_embedding]                       │
-│         ↓                                                    │
-│  Compute Similarity: query @ [embedding_1...N]               │
-│         ↓                                                    │
-│  Retrieve Top-K most similar reports                         │
-│         ↓                                                    │
-│  Save to output.jsonl                                        │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-                          ↓
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│                 STAGE 3: DPO TRAINING                        │
-│          (Uses retrieved reports for alignment)              │
-└─────────────────────────────────────────────────────────────┘
-
-
-
-
-
-
-
-
-
-D-
-
-
-User Query: "What does this chest X-ray show?"
-   ↓
-Domain Identification Model
-   ↓
-Identifies: "Radiology"
-   ↓
-Select Radiology Corpus:
- - Load radiology image database
- - Load radiology report database
-   ↓
-Same CLIP Model encodes query
-   ↓
-Compute similarity with radiology corpus only
-   ↓
-Return top-k radiology images/reports
-
-
-
-
-
-User Query: "What abnormalities are in this chest X-ray?"
-   ↓
-┌─────────────────────────────────────┐
-│ Model 1: Domain Classifier     │ (NOT in this code)
-│ Output: "Radiology"         │
-└─────────────────────────────────────┘
-   ↓
-Load Radiology-specific corpus
-(CT scans, X-rays, radiology reports database)
-   ↓
-┌─────────────────────────────────────┐
-│ Model 2: CLIP Retriever       │ (Trained in main.py)
-│ - Encode query with text encoder  │
-│ - Compare with image embeddings   │
-│ - Return top-k relevant images   │
-└─────────────────────────────────────┘
-   ↓
-Retrieved Context (relevant X-rays + reports)
-   ↓
-┌─────────────────────────────────────┐
-│ Model 3: Med-LVLM (LLaVA + DPO)   │ (Trained in train_dpo.py)
-│ Generate final medical report    │
-└─────────────────────────────────────┘
-
-
-
-Training Flow:
-1. Model Creation
-2. Data Loading
-3. Optimizer Setup
-4. Loss Function
-5. Training Loop
-6. What the Model Learns:
-The CLIP model learns to:
-* 		Project images and texts into a shared embedding space
-* 		Pull together embeddings of matching (image, caption) pairs
-* 		Push apart embeddings of non-matching pairs
-7. Evaluation
-8. Checkpoint Saving
-
-
-
-
-
-
-1. SETUP (main.py)
-   ├─ Parse arguments (params.py)
-   ├─ Initialize distributed training (distributed.py)
-   ├─ Setup logging (logger.py)
-   └─ Load checkpoint or initialize model
-
-2. DATA LOADING (data.py)
-   ├─ Create dataset (MimicDataset, HarvardDataset, etc.)
-   ├─ Create dataloader with DistributedSampler
-   └─ Return DataInfo with metadata
-
-3. TRAINING LOOP (main.py + train.py)
-   FOR each epoch:
-      ├─ train_one_epoch()
-      │  ├─ Forward pass with mixed precision (precision.py)
-      │  ├─ Compute contrastive loss
-      │  ├─ Backward pass with gradient accumulation
-      │  ├─ Update learning rate (scheduler.py)
-      │  └─ Log metrics (WandB, TensorBoard)
-      │
-      ├─ evaluate()
-      │  ├─ Extract all features
-      │  ├─ Compute retrieval metrics
-      │  └─ Log validation results
-      │
-      └─ save_checkpoint()
-         ├─ Save to local disk
-         └─ Sync to S3 (file_utils.py)
-
-CLIP Fine-tuning (Training has been done ) - finetune_clip.sh
-Output:
-* Fine-tuned CLIP checkpoint saved at /path/to/checkpoints_saving/epoch_360.pt
-* This model is now specialized for medical images and reports
-* │  - ResNet layers: Learn medical image patterns             │
-* │  - Transformer layers: Learn medical language              │
-* │  - Projection layers: Align medical image-text space       │
-After saving checkpoint
-
-4. RETRIEVAL (train.py)
-1. Load Fine-tuned CLIP Model
-2. retriever extracts embeddings from all training images and reports
-3.Extract embeddings from the test/validation images you want to retrieve reports for
-4.Calculate cosine similarity between query images and all reference reports using get_logits:
-5.Use retrieve_topk_per_image to get the most similar reports:
-6.Write the retrieved reports to JSONL format:
-
-* Input to DPO: retrieval JSONL (output of open_clip stage) + base Med‑LVLM checkpoint + tokenizer/config.
-* What is trained: Med‑LVLM policy weights (updated via DPO preference loss).
-* What is not trained: CLIP — remains in eval mode and only supplies retrieved text/context.
-* Core files to inspect:
-    * Entrypoint: train_dpo_2stages.py (parses args, loads retrieval file, starts trainer)
-    * Trainer: dpo_trainer_2stages.py (builds D_pt, computes DPO loss, optimizer steps, checkpointing)
-    * Dataset/prompt builder: train/dpo/utils.py or dataset.py (constructs prompts using retrieved context)
-* Loss: DPO loss computed from log-probabilities of preferred vs dispreferred outputs; optional KL regularizer vs frozen reference policy.
-* Outputs: DPO checkpoints, training logs, eval metrics, optional exported model for inference.
-* How to verify CLIP is frozen:
-    * Check trainer code for no optimizer params referencing CLIP or ensure model.eval() is called for CLIP.
-    * At runtime, confirm CLIP parameters have requires_grad == False.
-* Typical run (example):
-    * python train_dpo_2stages.py --data /path/retrieved.jsonl --model /path/med-lvlm.ckpt --epochs 10 --batch-size 8
-* Recommendation: if retrieval quality must change, re-run Stage 1 (fine‑tune CLIP) and Stage 2 (re-index/retrieve), then re-run DPO.
-
-
-
-
-
-
-
-
-Command-line args (args)
-     ↓
-┌────────────────────────┐
-│ get_data() function  │
-└────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ get_dataset_fn() - Router    │
-│ Routes based on dataset_type  │
-└─────────────────────────────────┘
-     ↓
-┌──────────────────────────────────┐
-│ get_[Domain]Dataset() function  │
-│ (e.g., get_IUXrayDataset)    │
-└──────────────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ Create Dataset instance     │
-│ dataset = IUXrayDataset(...)   │
-└─────────────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ Create DistributedSampler    │
-│ (if multi-GPU training)     │
-└─────────────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ Create DataLoader        │
-│ - Batching            │
-│ - Shuffling           │
-│ - Multi-worker loading      │
-└─────────────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ Wrap in DataInfo         │
-│ (stores metadata)        │
-└─────────────────────────────────┘
-     ↓
-  Return to training loop
-
-
-
-
-
-get_HarvardDataset() Called
-     ↓
-┌─────────────────────────────────┐
-│ Step 1: Get JSON file path   │
-│ json_filename = "train.json"  │
-└─────────────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ Step 2: Create HarvardDataset  │
-│ - Reads JSON          │
-│ - Creates (image, text) pairs  │
-│ - Stores transforms & tokenizer │
-└─────────────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ Step 3: Get dataset size    │
-│ num_samples = 50000       │
-└─────────────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ Step 4: Create DistributedSampler│
-│ (if multi-GPU training)     │
-└─────────────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ Step 5: Determine shuffling   │
-│ shuffle = True/False      │
-└─────────────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ Step 6: Create DataLoader    │
-│ - Batching: 32 samples     │
-│ - Parallel: 4 workers      │
-│ - Shuffling: Yes/No       │
-└─────────────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ Step 7: Add metadata      │
-│ - num_samples          │
-│ - num_batches          │
-└─────────────────────────────────┘
-     ↓
-┌─────────────────────────────────┐
-│ Step 8: Return DataInfo     │
-│ (dataloader + sampler wrapped) │
-└─────────────────────────────────┘
 
 A-Dataset class-
 A Dataset is like a smart container that:
@@ -709,3 +124,589 @@ dataloader = DataLoader(
 Pick samples, group them into batches, shuffles them , serves them efficiently using multiple workers
 
 
+
+
+
+
+Training Flow:
+1. Model Creation
+2. Data Loading
+3. Optimizer Setup
+4. Loss Function
+5. Training Loop
+6. What the Model Learns:
+The CLIP model learns to:
+* 		Project images and texts into a shared embedding space
+* 		Pull together embeddings of matching (image, caption) pairs
+* 		Push apart embeddings of non-matching pairs
+7. Evaluation
+8. Checkpoint Saving
+
+
+
+1. SETUP (main.py)
+   ├─ Parse arguments (params.py)
+   ├─ Initialize distributed training (distributed.py)
+   ├─ Setup logging (logger.py)
+   └─ Load checkpoint or initialize model
+
+2. DATA LOADING (data.py)
+   ├─ Create dataset (MimicDataset, HarvardDataset, etc.)
+   ├─ Create dataloader with DistributedSampler
+   └─ Return DataInfo with metadata
+
+3. TRAINING LOOP (main.py + train.py)
+   FOR each epoch:
+      ├─ train_one_epoch()
+      │  ├─ Forward pass with mixed precision (precision.py)
+      │  ├─ Compute contrastive loss
+      │  ├─ Backward pass with gradient accumulation
+      │  ├─ Update learning rate (scheduler.py)
+      │  └─ Log metrics (WandB, TensorBoard)
+      │
+      ├─ evaluate()
+      │  ├─ Extract all features
+      │  ├─ Compute retrieval metrics
+      │  └─ Log validation results
+      │
+      └─ save_checkpoint()
+         ├─ Save to local disk
+         └─ Sync to S3 (file_utils.py)
+
+CLIP Fine-tuning (Training has been done ) - finetune_clip.sh
+Output:
+* Fine-tuned CLIP checkpoint saved at /path/to/checkpoints_saving/epoch_360.pt
+* This model is now specialized for medical images and reports
+* │  - ResNet layers: Learn medical image patterns             │
+* │  - Transformer layers: Learn medical language              │
+* │  - Projection layers: Align medical image-text space       │
+After saving checkpoint
+
+4. RETRIEVAL (train.py)
+1. Load Fine-tuned CLIP Model
+2. retriever extracts embeddings from all training images and reports
+3.Extract embeddings from the test/validation images you want to retrieve reports for
+4.Calculate cosine similarity between query images and all reference reports using get_logits:
+5.Use retrieve_topk_per_image to get the most similar reports:
+6.Write the retrieved reports to JSONL format:
+
+EXAMPLE:-
+Training Database (Ground Truth):
+// args.train_json
+[
+  {"image": "train_001.jpg", "report": "Normal cardiac silhouette, clear lungs"},      // Index 0
+  {"image": "train_002.jpg", "report": "Cardiomegaly with pulmonary edema"},         // Index 1  
+  {"image": "train_003.jpg", "report": "Right lower lobe pneumonia present"},        // Index 2
+  // ... thousands more
+]
+query
+// args.eval_jsonl  
+{"image": "query_001.jpg", "question": "What do you see?"}
+
+Retrieval Process:
+Encode query: query_001.jpg → query_embedding
+Compute similarities: query_embedding @ all_training_embeddings.T
+Results: [0.85, 0.23, 0.91, ...] (similarity scores)
+Top-K indices: [2, 0, 1] (training samples 2, 0, 1 are most similar)
+Retrieve reports:
+image_report_pairs[2][1] = "Right lower lobe pneumonia present"
+image_report_pairs[0][1] = "Normal cardiac silhouette, clear lungs"
+image_report_pairs[1][1] = "Cardiomegaly with pulmonary edema"
+
+{
+  "image": "query_001.jpg",
+  "question": "What do you see?", 
+  "reference_reports": [
+    "Right lower lobe pneumonia present",
+    "Normal cardiac silhouette, clear lungs",
+    "Cardiomegaly with pulmonary edema"
+  ],
+  "retrieve_k": 3
+}
+
+
+validation(evaluate):- 
+Ground Truth: Each validation image has one correct associated report (diagonal matching).
+Evaluation Method: Compute similarity between all images and all texts; check if correct text is ranked highly.
+Metrics: R@1, R@5, R@10, mean/median rank, and cross-entropy loss.
+Similarity Matrix:
+                 Text_0  Text_1  Text_2  Text_3
+Image_0 (normal)  [ 8.5,   2.1,   1.8,   2.0 ]  ← Highest: Text_0 ✓
+Image_1 (pneum.)  [ 2.3,   9.2,   1.9,   2.4 ]  ← Highest: Text_1 ✓  
+Image_2 (fract.)  [ 1.7,   2.0,   8.8,   2.1 ]  ← Highest: Text_2 ✓
+Image_3 (effus.)  [ 2.2,   2.5,   1.9,   9.0 ]  ← Highest: Text_3 ✓
+
+Good Performance: R@1 > 70%, R@5 > 90%, mean rank ≈ 1-2, low loss.
+Purpose: Verify that CLIP learned to correctly align medical images with their reports.
+No External Data: Validation uses only the predefined validation split; no retrieval from external sources during this stage
+
+
+
+
+
+
+
+┌─────────────────────────────────────────────────────────────┐
+│                    STAGE 1: FINE-TUNING                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  [General CLIP Model]                                        │
+│         ↓                                                    │
+│  Load CC12M weights                                          │
+│         ↓                                                    │
+│  Train on Medical Images + Reports (360 epochs)              │
+│         ↓                                                    │
+│  [Medical CLIP Checkpoint] ← SAVE THIS                       │
+│         ↓                                                    │
+│  /checkpoints/epoch_360.pt                                   │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+                          ↓
+                          ↓ (Use checkpoint in Stage 2)
+                          ↓
+┌─────────────────────────────────────────────────────────────┐
+│                    STAGE 2: RETRIEVAL                        │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Create Model Architecture                                   │
+│         ↓                                                    │
+│  Load Medical CLIP Checkpoint (epoch_360.pt)                 │
+│         ↓                                                    │
+│  Encode Training Database (all reports)                      │
+│         │                                                    │
+│         ├─→ Report 1 → [embedding_1]                         │
+│         ├─→ Report 2 → [embedding_2]                         │
+│         └─→ Report N → [embedding_N]                         │
+│                                                              │
+│  For each test image:                                        │
+│         ↓                                                    │
+│  Encode Test Image → [query_embedding]                       │
+│         ↓                                                    │
+│  Compute Similarity: query @ [embedding_1...N]               │
+│         ↓                                                    │
+│  Retrieve Top-K most similar reports                         │
+│         ↓                                                    │
+│  Save to output.jsonl                                        │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+                          ↓
+                          ↓
+┌─────────────────────────────────────────────────────────────┐
+│                 STAGE 3: DPO TRAINING                        │
+│          (Uses retrieved reports for alignment)              │
+└─────────────────────────────────────────────────────────────┘
+
+
+
+
+
+
+
+* Input to DPO: retrieval JSONL (output of open_clip stage) + base Med‑LVLM checkpoint + tokenizer/config.
+* What is trained: Med‑LVLM policy weights (updated via DPO preference loss).
+* What is not trained: CLIP — remains in eval mode and only supplies retrieved text/context.
+* Core files to inspect:
+    * Entrypoint: train_dpo_2stages.py (parses args, loads retrieval file, starts trainer)
+    * Trainer: dpo_trainer_2stages.py (builds D_pt, computes DPO loss, optimizer steps, checkpointing)
+    * Dataset/prompt builder: train/dpo/utils.py or dataset.py (constructs prompts using retrieved context)
+* Loss: DPO loss computed from log-probabilities of preferred vs dispreferred outputs; optional KL regularizer vs frozen reference policy.
+* Outputs: DPO checkpoints, training logs, eval metrics, optional exported model for inference.
+* How to verify CLIP is frozen:
+    * Check trainer code for no optimizer params referencing CLIP or ensure model.eval() is called for CLIP.
+    * At runtime, confirm CLIP parameters have requires_grad == False.
+* Typical run (example):
+    * python train_dpo_2stages.py --data /path/retrieved.jsonl --model /path/med-lvlm.ckpt --epochs 10 --batch-size 8
+* Recommendation: if retrieval quality must change, re-run Stage 1 (fine‑tune CLIP) and Stage 2 (re-index/retrieve), then re-run DPO.
+
+
+
+1-Initialize D_cm with an empty setPrepare a container for cross-modality preference pairs.
+2-foreach (x_v, x_t, y) ∈ D doFor each example in the dataset, we will run the model under different conditions and possibly create preference pairs.
+Why: We need to create many preference pairs covering different failure modes (ignoring image, over-relying on retrieval, etc.). This loop generates them.
+3-Generate retrieved contexts with an assigned domain label x_r ← R_{F(x_v)}(x_v)
+Run the domain classifier F(x_v) to get the domain tag (e.g., “radiology”) for this image.
+Use the domain-specific retriever R_domain to fetch similar reports or contexts for that domain using x_v as the query.
+x_r is the retrieved text/context (often top-k concatenated). 
+4-We pick a different but real image and then add controlled noise so the noisy image is plausible but not the original.
+This allows a stronger test: if the model outputs the same correct answer despite image being unrelated (and only retrieval is appropriate), it indicates it relies heavily on retrieval, not the image.
+5- if M(x_v, (x_t, x_r)) == y  and  M(x_v*, (x_t, x_r)) != y:
+    preferred = y
+    dispreferred = M(x_v*, (x_t, x_r))
+    add ((x_v, x_t), preferred, dispreferred) to D_cm
+6 - D_oa^1 = empty set (cases where retrieval helps),D_oa^2 = empty set (cases where retrieval hurts)
+Case1- if M(x_v, (x_t, x_r)) == y  and  M(x_v, x_t) != y:
+    preferred = y= M(x_v, (x_t, x_r)) 
+    dispreferred = M(x_v, x_t)
+    add ((x_v, x_t), preferred, dispreferred) to D_oa^1
+Case2- if M(x_v, x_t) == y  and  M(x_v, (x_t, x_r)) != y:
+    preferred = y= M(x_v, x_t)
+    dispreferred = M(x_v, (x_t, x_r))
+    add ((x_v, x_t), preferred, dispreferred) to D_oa^2
+7 -        D_pt = D_cm ∪ D_oa and D_oa = D_oa^1 ∪ D_oa^2All preference pairs are combined into a single set D_pt used for preference tuning.
+8 - foreach ((x_v, x_t), y_w,o, y_l,o) in D_pt:
+    compute loss L_pt according to equation 4
+    update π_ref
+9 - For each preference triple (input, preferred answer, dispreferred answer) compute a DPO-type preference loss and update the model weights
+DPO wants the model to assign higher probability to the preferred answer than to the dispreferred answer for the same input x.
+The model is updated to increase the likelihood of y_preferred relative to y_dispreferred.
+DPO directly increases log-likelihood of good answersand decreases that of bad answers, without any reward model or RL
+
+
+
+
+
+
+
+Cross-Modality Alignment -
+Large AI models sometimes ignore the image and just copy what sounds smart from the retrieved text.
+This training method forces the AI to pay attention to the image, not just guess from text.
+You're training a medical intern to answer questions about X-rays.
+You give them:
+A real chest X-ray of a patient , question: "Is there fluid in the lungs?" ,A few old medical reports from other patients that look similar (retrieved parts)
+Now, you run two tests:
+Test 1 (Preferred Answer):You show the intern:
+The real image ,The question ,the retrieved example reports
+ The intern looks carefully at the real image and says:
+“No, I don’t see fluid in the lungs.”  (Correct)
+Test 2 (DispreferredAnswer):Now you show the intern:
+A wrong image (maybe a blurry one or from a different patient) ,Same question ,Same retrieved reports
+The intern guesses and says:“Yes, there is fluid.”  (Wrong — they didn’t look properly)
+What Are Cross-Modality Alignment Pairs?
+We take these two answers:
+One from looking at the real image (correct), One from the wrong image (wrong)
+teaching the model: “Prefer the correct answer that used the real image.
+
+
+
+
+
+
+
+Overall Alignment  -
+Case 1 — Retrieval Helps (Use It)
+The X-ray is hard to interpret, and the old reports are similar
+Case 2 — Retrieval Misleads (Ignore It)
+The image shows a broken rib, but the retrieved reports talk about pneumonia.Here, retrieval is wrong — unrelated.
+By showing both situations, the model learns balance:
+ Look at the image first
+ Use retrieval only when it helps
+ Ignore retrieval when it confuses you
+So overall alignment training helps the AI:
+Use RAG information intelligently
+Avoid blindly trusting retrieved text
+Stay factual and image-grounded
+
+
+
+
+
+
+Medical AI models (Med-LVLMs) often hallucinate, generating incorrect findings.
+Overcoming the Rigidity and Data Scarcity of Fine-Tuning
+Ensuring Versatility Across Heterogeneous Medical Domains
+hallucination is big problem right , so there is 2 way 
+1- fine tuning which has its own disadvantage
+2- RAG system 
+
+
+
+
+
+Backbone model-LLaVA-Med-1.5 7B,LoRA fine-tuning,vision encoder is a ResNet-50 ,text encoder is a bio-BioClinicalBERT
+AdamW optimizer with a learning rate of 10−3,weight decay of 10−2,batch size of 32,model is trained for 360 epochs 
+The paper compares MMed-RAG with two main groups of hallucination reduction techniques used in Large Vision-Language Models (LVLMs):
+1) Decoding-Based Methods
+These methods do not change the model’s training, but instead control how the model chooses words during text generation.
+They try to adjust the token probabilities (logits) while generating the answer, so the model selects more factual and reliable words.
+Examples include:
+Greedy Decoding, Beam Search ,DoLa, OPERA ,VCD
+In short:They try to fix hallucination by changing how the model decodes its answer, without adding external knowledge or extra supervision.
+2) Multimodal RAG-Based Methods
+These methods retrieve real medical images, reports, or knowledge from external databases before generating the answer.They then use this retrieved evidence to guide the model to produce more factual outputs.
+Examples include:
+MedDr,FactMM-RAG
+In short:They try to fix hallucination by supplying supporting evidence (retrieved documents + images) to help the model answer correctly.
+
+
+
+
+
+1. .jpg files (slo_fundus_XXXXX.jpg)
+* 		Purpose: Visual/image data
+* 		Content: SLO (Scanning Laser Ophthalmoscopy) fundus images of the eye
+* 		Use: The actual retinal images that would be used for visual analysis, deep learning models, or clinical review
+2. .npz files (data_XXXXX.npz)
+* 		Purpose: Structured numerical/metadata storage
+* 		Content: Likely contains:
+    * 		Image embeddings or processed numerical representations of the fundus images
+    * 		Clinical features extracted from the images
+    * 		Metadata about the image (patient info, image quality metrics)
+    * 		Pre-computed features for machine learning models
+    * 		Annotations or segmentation masks
+Why Both Formats?
+This dual-format approach is common in medical imaging datasets because:
+1. Efficiency: .npz files can store pre-processed data that's expensive to compute (embeddings, features)
+2. Machine Learning: Models may work directly with numerical features rather than raw images
+3. Reproducibility: Pre-computed features ensure consistent inputs across experiments
+4. Flexibility: Researchers can use either raw images or processed features depending on their needs
+
+
+
+
+1. Optimizer (how to walk)
+What it does:
+Updates the model’s weights using gradients to reduce loss.
+2. Scheduler (Learning Rate Scheduler) …..(when to slow down or speed up)
+What it does:
+Changes the learning rate over time during training
+
+Scheduler: Use for better training
+Use scheduler when:
+* 		Large dataset
+* 		Many epochs
+* 		You want smooth convergence
+* 		You want higher final accuracy
+* 		You want to escape plateaus
+CosineAnnealingLR?
+It is a learning rate scheduler that slowly decreases the learning rate following a cosine curve.
+
+
+
+
+MMed-RAG/
+│
+├── :clipboard: Configuration & Documentation
+│  ├── README.md          # Main documentation
+│  ├── LICENSE           # License file
+│  ├── requirements.txt       # Python dependencies (205 packages)
+│  └── .gitignore
+│
+├── :art: Assets
+│  └── asset/            # Images, logos for documentation
+│
+├── :floppy_disk: DATA/ (Medical datasets)
+│  ├── training/
+│  │  ├── retriever/       # Data for training retriever
+│  │  │  ├── radiology/     # Radiology train/val JSON
+│  │  │  ├── pathology/     # Pathology train/val JSON
+│  │  │  └── ophthalmology/   # Harvard train/val JSON (7000/1000)
+│  │  │
+│  │  └── alignment/       # Data for Med-LVLM fine-tuning
+│  │    ├── radiology/     # Report + VQA JSON files
+│  │    ├── pathology/     # VQA JSON files
+│  │    └── ophthalmology/   # Harvard report + VQA JSON
+│  │
+│  └── test/
+│    ├── report/         # Report generation test data
+│    │  ├── harvard_test.json
+│    │  ├── iuxray_test.json
+│    │  ├── mimic_test.json
+│    │  ├── pmc-oa_test.json
+│    │  └── quilt-1m_test.json
+│    │
+│    └── vqa/          # VQA test data
+│      ├── harvard_test.jsonl
+│      ├── iuxray_test.jsonl
+│      ├── mimic_test.jsonl
+│      ├── pmc-oa_test.jsonl
+│      └── quilt-1m_test.jsonl
+│
+├── :rocket: SCRIPTS/ (Entry point scripts)
+│  ├── finetune_clip.sh      # Train CLIP retriever
+│  ├── retrieve_clip_report.sh   # Retrieve for report generation
+│  ├── retrieve_clip_VQA.sh    # Retrieve for VQA
+│  └── train_dpo_2stages.sh    # Train Med-LVLM with DPO
+│
+└── :weight_lifter: TRAIN/ (Training code)
+  │
+  ├── dpo/            # Direct Preference Optimization
+  │  ├── :gear: cog.yaml       # **CONFIG**: Cog deployment config
+  │  ├── :gear: pyproject.toml    # **CONFIG**: Python project setup
+  │  ├── train_dpo_2stages.py  # Main DPO training script
+  │  ├── dpo_trainer_2stages.py # DPO trainer implementation
+  │  ├── llava_trainer_2stages.py # LLaVA trainer
+  │  ├── predict.py       # Prediction/inference
+  │  ├── povid_infer.py     # POVID inference
+  │  │
+  │  ├── llava/         # LLaVA model implementation
+  │  │  ├── constants.py
+  │  │  ├── conversation.py   # Conversation templates
+  │  │  ├── mm_utils.py     # Multimodal utilities
+  │  │  ├── utils.py
+  │  │  │
+  │  │  ├── model/       # Model architecture
+  │  │  │  ├── builder.py   # Model builder
+  │  │  │  ├── llava_arch.py  # LLaVA architecture
+  │  │  │  ├── language_model/ # Language model components
+  │  │  │  ├── multimodal_encoder/ # Vision encoder
+  │  │  │  └── multimodal_projector/ # Vision-language projection
+  │  │  │
+  │  │  ├── train/       # Training utilities
+  │  │  ├── eval/        # Evaluation scripts
+  │  │  └── serve/       # Serving utilities
+  │  │
+  │  ├── scripts/        # Utility scripts
+  │  │  ├── :gear: zero2.json    # **CONFIG**: DeepSpeed ZeRO-2
+  │  │  ├── :gear: zero3.json    # **CONFIG**: DeepSpeed ZeRO-3
+  │  │  ├── :gear: zero3_offload.json # **CONFIG**: ZeRO-3 offload
+  │  │  ├── finetune*.sh    # Fine-tuning scripts
+  │  │  ├── pretrain*.sh    # Pretraining scripts
+  │  │  ├── convert_*.py    # Data conversion scripts
+  │  │  ├── merge_lora_weights.py
+  │  │  └── v1_5/        # Version 1.5 specific
+  │  │
+  │  └── tool/
+  │    ├── dpo_trainer.py   # DPO trainer (alternative)
+  │    └── dpo_trainer_inherent.py
+  │
+  └── open_clip/         # OpenCLIP for retrieval
+    ├── CITATION.cff
+    ├── LICENSE
+    ├── setup.py
+    │
+    └── src/
+      ├── retrieve_clip_report.py  # Retrieval for reports
+      ├── retrieve_clip_VQA.py    # Retrieval for VQA
+      │
+      ├── open_clip/     # OpenCLIP implementation
+      │  └── model_configs/ # 50+ model configs (JSON)
+      │    ├── ViT-*.json
+      │    ├── EVA*.json
+      │    └── ...
+      │
+      └── training/      # Training code
+        ├── :gear: main.py   # **MAIN TRAINING ENTRY**
+        ├── params.py    # **CONFIG**: Training parameters
+        ├── data.py     # Data loading
+        ├── train.py    # Training loop
+        ├── scheduler.py  # LR scheduler
+        ├── distributed.py # Multi-GPU
+        └── ...
+
+
+
+
+
+
+
+User Query: "What abnormalities are in this chest X-ray?"
+   ↓
+┌─────────────────────────────────────┐
+│ Model 1: Domain Classifier     │ (NOT in this code)
+│ Output: "Radiology"         │
+└─────────────────────────────────────┘
+   ↓
+(Load Radiology-specific images , load radiology specific reports)
+(CT scans, X-rays, radiology reports database)
+   ↓
+┌─────────────────────────────────────┐
+│ Model 2: CLIP Retriever       │ (Trained in main.py)
+│ - Encode query with text encoder using same clip model   │
+│ - Compare with image embeddings   │
+│ - Return top-k relevant images   │
+└─────────────────────────────────────┘
+   ↓
+Retrieved Context (relevant X-rays + reports)
+   ↓
+┌─────────────────────────────────────┐
+│ Model 3: Med-LVLM (LLaVA + DPO)   │ (Trained in train_dpo.py)
+│ Generate final medical report    │
+└─────────────────────────────────────┘
+
+
+
+
+
+
+
+
+Command-line args (args)
+     ↓
+┌────────────────────────┐
+│ get_data() function  │
+└────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ get_dataset_fn() - Router    │
+│ Routes based on dataset_type  │
+└─────────────────────────────────┘
+     ↓
+┌──────────────────────────────────┐
+│ get_[Domain]Dataset() function  │
+│ (e.g., get_IUXrayDataset)    │
+└──────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Create Dataset instance     │
+│ dataset = IUXrayDataset(...)   │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Create DistributedSampler    │
+│ (if multi-GPU training)     │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Create DataLoader        │
+│ - Batching            │
+│ - Shuffling           │
+│ - Multi-worker loading      │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Wrap in DataInfo         │
+│ (stores metadata)        │
+└─────────────────────────────────┘
+     ↓
+  Return to training loop
+
+
+
+
+
+get_HarvardDataset() Called
+     ↓
+┌─────────────────────────────────┐
+│ Step 1: Get JSON file path   │
+│ json_filename = "train.json"  │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 2: Create HarvardDataset  │
+│ - Reads JSON          │
+│ - Creates (image, text) pairs  │
+│ - Stores transforms & tokenizer │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 3: Get dataset size    │
+│ num_samples = 50000       │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 4: Create DistributedSampler│
+│ (if multi-GPU training)     │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 5: Determine shuffling   │
+│ shuffle = True/False      │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 6: Create DataLoader    │
+│ - Batching: 32 samples     │
+│ - Parallel: 4 workers      │
+│ - Shuffling: Yes/No       │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 7: Add metadata      │
+│ - num_samples          │
+│ - num_batches          │
+└─────────────────────────────────┘
+     ↓
+┌─────────────────────────────────┐
+│ Step 8: Return DataInfo     │
+│ (dataloader + sampler wrapped) │
+└─────────────────────────────────┘
