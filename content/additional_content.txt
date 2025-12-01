@@ -401,6 +401,26 @@ Stay factual and image-grounded
 
 
 
+The LLaVA integration transforms the DPO training from a general-purpose text alignment system into a specialized medical multimodal alignment platform. This is essential because
+
+* Medical AI is inherently multimodal (images + text)
+* Clinical safety requires visual understanding
+* Medical expertise needs domain-specific training
+* Healthcare applications demand specialized architectures
+Without LLaVA integration, you'd have a powerful text-based medical AI but miss the critical visual component that's essential for most clinical applications
+
+2-stage Direct Preference Optimization (DPO)-
+1. Stage 1: Supervised fine-tuning on preferred responses
+2. Stage 2: DPO training using preference pairs
+
+Why We Need Quantization
+to reduce memory usage and computational cost while maintaining model performance.
+
+LORA-
+Fine tune= pre trained + deltaW
+deltaW= A*B
+
+
 Medical AI models (Med-LVLMs) often hallucinate, generating incorrect findings.
 Overcoming the Rigidity and Data Scarcity of Fine-Tuning
 Ensuring Versatility Across Heterogeneous Medical Domains
