@@ -1,1 +1,421 @@
 
+The LLaVA integration transforms the DPO training from a general-purpose text alignment system into a specialized medical multimodal alignment platform. This is essential because
+
+* Medical AI is inherently multimodal (images + text)
+* Clinical safety requires visual understanding
+* Medical expertise needs domain-specific training
+* Healthcare applications demand specialized architectures
+Without LLaVA integration, you'd have a powerful text-based medical AI but miss the critical visual component that's essential for most clinical applications
+
+
+
+2-stage Direct Preference Optimization (DPO)- 
+Stage 1: Supervised fine-tuning on preferred responses
+* What happens:
+* Train on CLEAN image-text pairs
+* Both chosen and rejected responses use the SAME clean image
+* Only the text responses differ (good vs bad answers)
+ {
+  "image": "xray.jpg",  ← Clean, clear medical image
+  "conversations": [
+    {"from": "human", "value": "Diagnosis?"},
+    {"from": "gpt", "value": "Pneumonia"}  ← CHOSEN (correct)
+  ],
+  "rejected_conversations": [
+    {"from": "human", "value": "Diagnosis?"},
+    {"from": "gpt", "value": "Normal"}  ← REJECTED (wrong)
+  ],
+  "rejected_noised": 0  ← NO NOISE!
+}
+Result: Model learns medical knowledge 
+
+
+Stage 2: Noisy/Adversarial Training (Robustness)
+What happens:
+* Train on NOISY or ADVERSARIAL examples
+* Rejected responses use degraded/noisy images
+* Makes the model more robust to poor image quality
+{
+  "image": "xray.jpg",  ← Clean image
+  "conversations": [
+    {"from": "human", "value": "Diagnosis?"},
+    {"from": "gpt", "value": "Pneumonia"}  ← CHOSEN with clean image
+  ],
+  "rejected_conversations": [
+    {"from": "human", "value": "Diagnosis?"},
+    {"from": "gpt", "value": "Pneumonia"}  ← REJECTED with noisy image
+  ],
+  "rejected_noised": 1  ← ADD GAUSSIAN NOISE!
+}
+ Result: Model learns to handle poor image quality  
+
+LORA-
+Fine tune= pre trained + deltaW
+deltaW= A*B
+
+A PEFT (Parameter-Efficient Fine-Tuning) model uses techniques to adapt large pre-trained models (LLMs) for specific tasks by training only a tiny fraction of extra parameters, freezing most of the original model
+
+LLaVA (Large Language and Vision Assistant) is a multimodal foundation model that combines vision and language understanding
+
+1. Core Training Files
+Main Training Scripts:
+* dpo_trainer_2stages.py: Core DPO trainer implementation for 2-stage training
+* train_dpo_2stages.py: Main training script that orchestrates the 2-stage DPO process
+Training Variants:
+* llava/train/train_dpo.py: Standard DPO training for LLaVA models
+* llava/train/train_dpo_inherent.py: DPO training with inherent preference mechanisms
+
+
+
+
+Key Features & Innovations
+1. Multimodal DPO Training:
+* Extends DPO to vision-language models
+* Handles image-text preference pairs
+* Supports various conversation formats
+2. Noise-Based Preference Learning:
+* Uses image noise to create preference pairs
+* Teaches model to prefer clean over noisy images
+* Improves robustness to image quality variations
+3. Efficient Training:
+* LoRA for parameter-efficient fine-tuning
+* Quantization support (4-bit, 8-bit)
+* Gradient checkpointing for memory efficiency
+4. Medical Domain Focus:
+* Optimized for medical vision-language tasks
+* Supports medical conversation formats
+* Handles medical imaging data
+
+
+
+
+
+Stage 1- 
+Supervised fine tuning
+Step1-data loading
+Input-
+[
+    {
+        "id": "CXR841_IM-2365",
+        "image": "CXR841_IM-2365/0.png",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nYou are a professional radiologist..."
+            },
+            {
+                "from": "gpt",
+                "value": "The heart is normal in size. The mediastinum is unremarkable. Left upper extremity PIC catheter tip overlies the distal aspect of the left clavicle XXXX within the subclavian vein. There is no pneumothorax. The lungs are mildly hyperinflated but clear. Deformity of the lateral left 6th rib, XXXX old injury"
+            }
+        ],
+        "rejected_conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nYou are a professional radiologist..."
+            },
+            {
+                "from": "gpt",
+                "value": "The chest X-ray shows clear lungs, a normal heart size, and no pneumothorax. Additionally, there is a calcified left hilar node."
+            }
+        ],
+        "rejected_noised": 0,
+        "image_root": "/home/wenhao/Datasets/med/rad/iu_xray/images"
+    },
+    ...
+]
+1. Opens JSON file from disk
+2. Loads entire JSON into Python list (but NOT images/processing)
+3. Stores references to tokenizer and data_args
+4. Does NOT process any data yet (lazy loading)
+
+
+Output of LazySupervisedDataset-
+{
+    # Chosen response (preferred)
+    "chosen_input_ids": Tensor[seq_len],      # Tokenized conversation
+    "chosen_labels": Tensor[seq_len],         # Labels with masking
+    "prompt_input_ids": Tensor[prompt_len],   # Just the question
+    "prompt": str,                             # Raw prompt text
+    
+    # Rejected response (less preferred)
+    "rejected_input_ids": Tensor[seq_len],
+    "rejected_labels": Tensor[seq_len],
+    
+    # Visual data
+    "images": Tensor[3, H, W],                # Chosen image
+    "rejected_images": Tensor[3, H, W],       # Rejected image (often same)
+}
+
+Step2-
+IMAGE PROCESSING 
+Triggered During Iteration
+Image Transformation Pipeline
+Optional noise addition for DPO negative examples  Padding and preprocessing
+Output: PyTorch tensor with shape [3, H, W] (typically [3, 224, 224] or [3, 336, 336])
+
+
+Step3-
+ TEXT PROCESSING 
+Input-
+sources = [[
+    {
+        "from": "human",
+        "value": "What do you see in this <image> image?"
+    },
+    {
+        "from": "gpt",
+        "value": "This is a chest X-ray showing bilateral infiltrates."
+    }
+]]
+
+Output-
+sources = [[
+    {
+        "from": "human",
+        "value": "<image>\nWhat do you see in this  image?"  
+    },
+    {
+        "from": "gpt",
+        "value": "This is a chest X-ray showing bilateral infiltrates."
+    }
+]]
+Simple token repositioning to match model's expected input format
+
+Step4
+Target masking-We only want the model to learn to generate the assistant’s response. User prompts, BOS/EOS, image placeholder tokens and padding should not contribute to the loss because they are inputs (already known) or non-text modalities. Masking labels makes the loss ignore those tokens so gradients come only from assistant tokens
+
+Tokens	Masked?	Reason
+BOS	Yes	Special token, shouldn't learn it
+User prompts	 Yes	Already known input
+Assistant responses	 No	This is what we want to learn
+Image tokens	 Yes	Not text, handled separately by vision encoder
+
+Step5
+Batch creation
+Turn a list of single-example dicts from LazySupervisedDataset.__getitem__ into a single, padded batch ready for the model/trainer.
+Models require tensors of fixed shape per batch (same seq length, same image tensor shape). The collator pads/truncates sequences to the same length.
+
+
+Step6. Model Forward:
+   batch → LlavaLlamaForCausalLM → multimodal_forward() → logits
+
+step7. Loss Computation:
+   logits + masked_labels → CrossEntropyLoss → supervised_loss
+
+Step 8. Backpropagation:
+   supervised_loss.backward() → optimizer.step() → model_update
+
+Step 9. Repeat:
+   for all batches in dataset
+
+
+data_dict = {
+    # Chosen (preferred) response
+    "chosen_input_ids": torch.Tensor([482]),
+    "chosen_labels": torch.Tensor([482]),
+    "prompt_input_ids": torch.Tensor([215]),
+    "prompt": "USER: <image>\n...",
+    
+    # Rejected (less preferred) response
+    "rejected_input_ids": torch.Tensor([398]),
+    "rejected_labels": torch.Tensor([398]),
+    
+    # Images
+    "images": torch.Tensor([3, 336, 336]),           # Chosen image
+    "rejected_images": torch.Tensor([3, 336, 336])   # Rejected image (noisy)
+}
+
+
+
+
+
+
+Stage 2-
+
+ DPO Training Steps
+ 1. Initialization & Setup
+ 2. Load Pre-trained Model and quantization setup- Quantized LLaVA model ready for efficient training
+To reduce memory usage and computational cost while maintaining model performance.
+# Original weight value
+weight = 0.12345678  # 32 bits = 4 bytes
+# Memory for 1 billion parameters:
+1B parameters × 4 bytes = 4 GB
+Q
+
+# Quantized weight value
+weight = 0.125  # 4 bits = 0.5 bytes
+# Memory for 1 billion parameters:
+1B parameters × 0.5 bytes = 0.5 GB (8x reduction!)
+
+3. Setup LoRA Configuration
+# Find all linear layers to apply LoRA
+target_modules = find_all_linear_names(model)
+lora_config = LoraConfig(
+    r=64,
+    lora_alpha=16,
+    target_modules=target_modules,
+    lora_dropout=0.05,
+    task_type="CAUSAL_LM"
+)
+model = get_peft_model(model, lora_config)
+
+ 4. Create frozen reference model 
+model_ref = LlavaLlamaForCausalLM.from_pretrained(checkpoint)
+for param in model_ref.parameters():
+    param.requires_grad = False  # 
+
+# During training:
+with torch.no_grad():  # ← No gradients computed
+    ref_output = model_ref(input)  # ← Just forward pass, no updates 
+
+ 5. Setup vision tower and multimodal projector
+
+┌─────────────────────────────────────────────────────────┐
+│           Step 5: Vision Setup Complete Flow            │
+└─────────────────────────────────────────────────────────┘
+
+Medical Image (chest_xray.jpg, 512×512)
+         ↓
+    [Preprocess]
+         ↓
+Tensor (3×336×336, bfloat16)
+         ↓
+┌────────────────────────────┐
+│   Vision Tower (CLIP)      │  ← 304M params, bfloat16, FROZEN
+│   - Patch Embedding        │
+│   - 24 Transformer Layers  │
+│   - Select Layer -2        │
+└────────────────────────────┘
+         ↓
+Vision Features (576×1024, bfloat16)
+         ↓
+┌────────────────────────────┐
+│   MM Projector (MLP)       │  ← 21M params, bfloat16, FROZEN
+│   - Linear(1024 → 4096)    │
+│   - GELU()                 │
+│   - Linear(4096 → 4096)    │
+└────────────────────────────┘
+         ↓
+LLM Embeddings (576×4096, bfloat16)
+         ↓
+┌────────────────────────────┐
+│   LLM Backbone (LLaMA)     │  ← 7B params, NF4 4-bit
+│   + LoRA Adapters          │  ← 67M params, TRAINABLE
+└───────────────────────────┘
+         ↓
+Text Generation
+
+
+6 Create DPO dataset with chosen/rejected pairs
+
+7. Training Loop (Main DPO Process)
+    7.1 Batch Processing
+    7.2 Generate noise for inherent preferences
+    7.3 Process conversations and create labels
+    7.4 Forward Pass - Policy Model
+    7.5 Forward Pass - Reference Model
+    7.6 DPO Loss Calculation
+    7.7 Backward Pass & Optimization
+
+
+
+
+
+
+
+
+Big picture training
+1. Load Data (images + conversations)
+2. Create TWO versions: 
+   - "Chosen" (good answer)
+   - "Rejected" (bad answer)
+3. Pass both through TWO models:
+   - Policy Model (the one we're training)
+   - Reference Model (frozen, for comparison)
+4. Calculate how much better the chosen response is
+5. Update only the policy model to prefer chosen over rejected
+
+
+┌─────────────────────────────────────────────────┐
+│ STEP 1: Retrieval (OpenCLIP)                   │
+├─────────────────────────────────────────────────┤
+│ Input: Medical image                            │
+│ Model: OpenCLIP (ResNet-50)                     │
+│ Output: Top-K similar reports from database     │
+│ Example: "pneumonia", "infiltrate", "edema"     │
+└─────────────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────────────┐
+│ STEP 2: Generation (LLaVA)                     │
+├─────────────────────────────────────────────────┤
+│ Input: Image + Retrieved reports (context)      │
+│ Model: LLaVA (LLaMA + CLIP ViT)                │
+│ Output: Detailed medical report/answer          │
+│ Example: "This chest X-ray shows bilateral...  │
+└─────────────────────────────────────────────────┘
+
+
+
+
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ INPUT: Medical X-ray Image [3, 336, 336]                    │
+└─────────────────────────────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│ CLIP ViT (Vision Encoder)                                   │
+│ - Splits image into 24×24 patches                           │
+│ - Each patch → 1024-dim embedding                           │
+│ Output: [576, 1024] visual features                         │
+└─────────────────────────────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│ MM Projector (mlp2x_gelu)                                   │
+│ - Linear layer 1: [1024 → 4096]                            │
+│ - GELU activation                                           │
+│ - Linear layer 2: [4096 → 4096]                            │
+│ Output: [576, 4096] language-aligned features               │
+└─────────────────────────────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│ LLaMA (Language Model)                                      │
+│ Input: [<image>, "What is the diagnosis?"]                 │
+│ - Replaces <image> token with 576 visual embeddings        │
+│ - Processes: [576 visual + text tokens]                    │
+│ Output: "Pneumonia with bilateral infiltrates..."          │
+└─────────────────────────────────────────────────────────────┘
+
+
+
+
+
+
+
+Dot product between query image embedding and report(text) embedding, create matrix and pic top k 
+
+{"id": "CXR841_IM-2365", "report": "The heart is normal in size. The mediastinum is unremarkable. Left upper extremity PIC catheter tip overlies the distal aspect of the left clavicle within the subclavian vein. There is no pneumothorax. The lungs are mildly hyperinflated but clear.", "reference_reports": ["The lungs are clear. Heart size is normal. No pneumothorax. Calcified left hilar node.", "No acute cardiopulmonary process. The heart size is normal.", "Clear lungs. Normal cardiac silhouette. No pneumothorax."], "retrieve_k": 3, "image": "CXR841_IM-2365/0.png"}
+{"id": "CXR1567_IM-0370", "report": "Frontal chest radiograph demonstrates normal heart size and mediastinal contours. The lungs are clear bilaterally without focal consolidation.", "reference_reports": ["Normal heart size and normal mediastinal silhouette. Clear lungs.", "Cardiopulmonary examination is unremarkable.", "No acute findings on frontal and lateral chest radiographs."], "retrieve_k": 3, "image": "CXR1567_IM-0370/0.png"}
+{"id": "data_08003", "report": "86-year-old white, non-hispanic female diagnosed with glaucoma.", "reference_reports": ["Patient with glaucoma showing optic disc cupping and rim thinning.", "Elevated intraocular pressure noted. Optic nerve head shows signs of glaucomatous changes."], "retrieve_k": 2, "image": "slo_fundus_08003.jpg"}
+
+
+
+
+
+
+
+
+
+{
+  "id": "CXR841_IM-2365",
+  "image": "CXR841_IM-2365/0.png",
+  "conversations": [
+    {"from": "human", "value": "<image>\nReport analysis task."},
+    {"from": "gpt", "value": "The heart is normal in size. The mediastinum is unremarkable. Left upper extremity PIC catheter tip overlies the distal aspect of the left clavicle within the subclavian vein. There is no pneumothorax. The lungs are mildly hyperinflated but clear."}
+  ],
+  "rejected_conversations": [
+    {"from": "human", "value": "<image>\nReport analysis task."},
+    {"from": "gpt", "value": "The lungs are clear. Heart size is normal. No pneumothorax. Calcified left hilar node."}
+  ],
+  "rejected_noised": 1
+}
