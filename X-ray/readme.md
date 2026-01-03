@@ -68,21 +68,20 @@ Class-wise Percentage Distribution:-
 </p>
 
 
-X-axis → Disease classes
-Y-axis → Percentage of samples
-Normal class dominates (~47%)
-Clear long-tail distribution
+X-axis → Disease classes ,
+Y-axis → Percentage of samples ,
+Clear long-tail distribution ,
 Many rare classes have <1% representation
 
 
 **In this dataset Each row represents one patient study and contains:**
 
-uid → Unique identifier for each report
-image → Type of imaging study (e.g., Chest X-ray PA/Lateral)
-indication → Clinical reason for the scan
-comparison → Reference to prior scans (if available)
-findings → Detailed radiologist observations
-impression → Final diagnostic summary
-MeSH → Structured medical terms (disease, location, severity)
-label → Final disease class used for model training
+uid → Unique identifier for each report ,
+image → Type of imaging study (e.g., Chest X-ray PA/Lateral) ,
+indication → Clinical reason for the scan ,
+comparison → Reference to prior scans (if available) ,
+findings → Detailed radiologist observations ,
+impression → Final diagnostic summary ,
+MeSH → Structured medical terms (disease, location, severity) ,
+label → Final disease class used for model training 
 
