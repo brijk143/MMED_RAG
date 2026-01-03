@@ -1,55 +1,31 @@
 **About Dataset**
-
+This is a clinical chest X-ray report dataset designed for medical text classification and radiology understanding tasks.
 Label column represents the final disease class assigned to each chest X-ray report.
 
-Complete List of 24 Classes :-
-
+**Complete List of 24 Classes :-**
 1-normal
-
 2-Hyperinflation
-
 3-Calcified Granuloma
-
 4-Cardiomegaly
-
 5-Consolidation
-
 6-Aortic Aneurysm
-
 7-Scoliosis
-
 8-Atherosclerosis
-
 9-Mass
-
 10-Fibrosis / Pulmonary Fibrosis
-
 11-Nodule
-
 12-Pleural Effusion
-
 13-Rib Fracture / Fractures
-
 14-Hernia
-
 15-Emphysema
-
 16-Pleural Thickening
-
 17-Pneumothorax
-
 18-Edema
-
 19-Pneumonia
-
 20-Bullous Disease
-
 21-Tuberculosis
-
 22-Subcutaneous Emphysema
-
 23-Bronchiectasis
-
 24-Bronchiolitis
 
 
@@ -87,19 +63,26 @@ Class-wise Percentage Distribution:-
 
 
 
-
 <p align="center">
   <img src="class.png" width="500"/>
 </p>
 
 
 X-axis → Disease classes
-
 Y-axis → Percentage of samples
-
 Normal class dominates (~47%)
-
 Clear long-tail distribution
-
 Many rare classes have <1% representation
+
+
+**In this dataset Each row represents one patient study and contains:**
+
+uid → Unique identifier for each report
+image → Type of imaging study (e.g., Chest X-ray PA/Lateral)
+indication → Clinical reason for the scan
+comparison → Reference to prior scans (if available)
+findings → Detailed radiologist observations
+impression → Final diagnostic summary
+MeSH → Structured medical terms (disease, location, severity)
+label → Final disease class used for model training
 
