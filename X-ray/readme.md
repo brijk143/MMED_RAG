@@ -1,7 +1,6 @@
 **About Dataset**
 
-label column represents the final disease class assigned to each chest X-ray report.
-
+Label column represents the final disease class assigned to each chest X-ray report.
 
 Complete List of 24 Classes :-
 
@@ -90,7 +89,7 @@ Class-wise Percentage Distribution:-
 
 
 <p align="center">
-  <img src="/Users/bkishor/Desktop/class.png" width="500"/>
+  <img src="X-ray/class.png" width="500"/>
 </p>
 
 
