@@ -89,7 +89,7 @@ Class-wise Percentage Distribution:-
 
 
 <p align="center">
-  <img src="/MMED_RAG/X-ray/class.png" width="500"/>
+  <img src="X-ray/class.png" width="500"/>
 </p>
 
 
