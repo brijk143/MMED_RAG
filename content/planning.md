@@ -31,12 +31,13 @@ This principle ensures:
 
 ## 🏗️ System Overview
 
+```mermaid
 graph LR
     A[📷 Chest X-ray] --> B[🔬 BioMedClip]
     B --> C[📋 Predicted Findings]
     C --> D[🧠 Knowledge Graph]
-    D --> E[🏆 Ranked Diagnoses]
-
+    D --> E[🏆 Extracted Medical Relationships]
+```
 
 
 ---
