@@ -1,4 +1,4 @@
-# Clinical Chest X-ray Report Dataset
+# Clinical Chest X-ray Report
 
 ## Overview
 
@@ -193,11 +193,11 @@ High accuracy values are expected due to the dominance of negative labels per im
 
 ## Training
 
-### Two-Phase Pipeline
-
 <p align="center">
   <img src="epoch_search_plot.png" width="800"/>
 </p>
+
+### Two-Phase Pipeline
 
 **Phase 1: Epoch Search**
 - Tests [30, 50, 75, 90, 100] epochs
