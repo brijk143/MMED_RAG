@@ -108,9 +108,6 @@ The dataset shows a **class imbalance**, with a small number of frequent classes
 | Subcutaneous Emphysema        |    6 | 0.08% |
 | Bronchiolitis                 |    2 | 0.03% |
 
-<p align="center">
-  <img src="class.png" width="800"/>
-</p>
 
 ---
 
@@ -140,6 +137,10 @@ Each row represents **one patient study** and contains the following fields:
 
 ## Model Performance
 
+<p align="center">
+  <img src="evaluation_plot.png" width="800"/>
+</p>
+
 ### Overall Test Performance
 
 | Metric | Value |
@@ -159,6 +160,11 @@ Each row represents **one patient study** and contains the following fields:
 ---
 
 ### Interpretation of Metrics
+
+<p align="center">
+  <img src="confusion_matrices.png" width="800"/>
+</p>
+
 
 - **Label-wise Accuracy:** Proportion of correctly predicted binary label assignments across all samples and classes.
 - **AUC:** Measures ranking quality independent of threshold; preferred metric for imbalanced datasets.
@@ -194,6 +200,10 @@ High accuracy values are expected due to the dominance of negative labels per im
 ## Training
 
 ### Two-Phase Pipeline
+
+<p align="center">
+  <img src="epoch_search_plot.png" width="800"/>
+</p>
 
 **Phase 1: Epoch Search**
 - Tests [30, 50, 75, 90, 100] epochs
