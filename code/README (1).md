@@ -9,9 +9,6 @@ The `label` column represents **one or more thoracic disease categories** associ
 
 This repository includes a **deep learning system for automated chest X-ray analysis using BiomedCLIP**, capable of detecting **35 thoracic pathologies**, achieving **95.10% label-wise accuracy** and **73.18% mean AUC** on a held-out test set.
 
-> ⚠️ **Important Note:**  
-> The reported accuracy is **label-wise (per-class) accuracy**, which measures correctness over all binary label decisions.  
-> Due to extreme class imbalance, this metric is dominated by true negatives and should be interpreted alongside **AUC, F1-score, and mAP**.
 
 ---
 
@@ -67,6 +64,79 @@ This repository includes a **deep learning system for automated chest X-ray anal
 35. Bronchiolitis
 
 ---
+---
+
+## Class-wise Distribution
+
+The dataset shows a **class imbalance**, with a small number of frequent classes and many rare disease categories.
+
+| Class                         | Count | Percentage |
+| ----------------------------- | ----: | ---------: |
+| Normal                        | 3162 | **42.35%** |
+| Degenerative Change           | 1360 | 18.22% |
+| Lesion                        | 1338 | 17.92% |
+| Hyperinflation                | 1076 | 14.41% |
+| Calcified Granuloma           |  798 | 10.69% |
+| Cardiomegaly                  |  662 | 8.87% |
+| Volume Loss                   |  634 | 8.49% |
+| Calcinosis                    |  558 | 7.47% |
+| Airspace Disease              |  372 | 4.98% |
+| Fibrosis                      |  368 | 4.93% |
+| Increased Lung Markings       |  305 | 4.09% |
+| Pleural Effusion              |  292 | 3.91% |
+| Emphysema                     |  286 | 3.83% |
+| Nodule                        |  211 | 2.83% |
+| Edema                         |  184 | 2.47% |
+| Scoliosis                     |  177 | 2.37% |
+| Fractures                     |  168 | 2.25% |
+| Hernia                        |  155 | 2.08% |
+| Pleural Thickening            |  151 | 2.02% |
+| Osteophyte                    |  137 | 1.84% |
+| Interstitial Lung Disease     |  123 | 1.65% |
+| Consolidation                 |  114 | 1.53% |
+| Cardiac Shadow (abnormal)     |  105 | 1.41% |
+| Thickening                    |  100 | 1.34% |
+| Kyphosis                      |   58 | 0.78% |
+| Pneumothorax                  |   54 | 0.72% |
+| Mass                          |   41 | 0.55% |
+| Pulmonary Artery Enlargement  |   36 | 0.48% |
+| Pulmonary Fibrosis            |   34 | 0.46% |
+| Effusion                      |   26 | 0.35% |
+| Bronchiectasis                |   13 | 0.17% |
+| Bullous Disease               |    9 | 0.12% |
+| Rib Fracture                  |    8 | 0.11% |
+| Subcutaneous Emphysema        |    6 | 0.08% |
+| Bronchiolitis                 |    2 | 0.03% |
+
+<p align="center">
+  <img src="class.png" width="800"/>
+</p>
+
+---
+
+---
+
+## Data Schema
+
+Each row represents **one patient study** and contains the following fields:
+
+| Column | Description |
+|------|-------------|
+| `uid` | Unique identifier for each radiology report |
+| `image` | Type of imaging study (e.g., Chest X-ray PA / Lateral) |
+| `indication` | Clinical reason for the scan |
+| `comparison` | Reference to prior imaging studies (if available) |
+| `findings` | Detailed radiologist observations |
+| `impression` | Final diagnostic summary |
+| `MeSH` | Structured medical terms (disease, location, severity) |
+| `label` | Final disease class used for model training |
+
+---
+ 
+**Observations:**
+- Clear **long-tail distribution**
+- Several clinically significant conditions have **<1% representation**
+- Suitable for research on **imbalanced learning**, **few-shot learning**, and **robust medical NLP models**
 
 ## Model Performance
 
@@ -120,7 +190,67 @@ High accuracy values are expected due to the dominance of negative labels per im
 
 ---
 
+
+## Training
+
+### Two-Phase Pipeline
+
+**Phase 1: Epoch Search**
+- Tests [30, 50, 75, 90, 100] epochs
+- 5-fold cross-validation per configuration
+- Selects optimal: **100 epochs** (0.7329 AUC ± 0.012)
+
+**Phase 2: Final Evaluation**
+- Best checkpoint: Fold 1, 100 epochs
+- Held-out test set: 1,494 images
+- Comprehensive metrics + visualizations
+
+**Hyperparameters:**
+- Optimizer: AdamW (lr=2e-5, weight_decay=1e-4)
+- Scheduler: ReduceLROnPlateau (factor=0.5, patience=3)
+- Loss: Focal Loss (α=0.25, γ=2.0)
+- Early stopping: patience=5
+- Gradient clipping: max_norm=1.0
+
+**Training Time (on GPU):**
+- Single epoch: ~40 seconds
+- Full epoch search: ~8-10 hours
+- Inference: ~50-100ms per image
+
+**Data Augmentation:**
+- Resize to 224×224
+- Random horizontal flip (training)
+- Normalization (ImageNet stats)
+
+
+## Dependencies
+
+```
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+pandas>=2.0.0
+Pillow>=9.5.0
+scikit-learn>=1.3.0
+tqdm>=4.65.0
+transformers>=4.30.0
+open-clip-torch>=2.20.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+```
+
+---
+
+## References
+
+- **BiomedCLIP:** [microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224](https://huggingface.co/microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224)
+- **Focal Loss:** [Lin et al., 2017](https://arxiv.org/abs/1708.02002)
+- **Dataset:** Indiana University Chest X-Ray Collection
+
+---
+
 ## Ethical Considerations
 
-This dataset and model are intended **strictly for research and educational purposes**.  
-They must **not** be used for clinical diagnosis, triage, or treatment decisions without rigorous external validation and regulatory approval.
+This dataset is intended **strictly for research and educational purposes**.  
+It must **not** be used for clinical decision-making or diagnostic deployment without appropriate validation and regulatory approval.
+
