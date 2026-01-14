@@ -3,11 +3,7 @@
 ## Overview
 
 This dataset is a **clinical chest X-ray radiology report corpus** designed for **medical image–text understanding**, **radiology report analysis**, and **clinical AI research**.  
-Each entry corresponds to a **single patient study**, containing both structured and unstructured clinical information derived from chest X-ray reports.
-
 The `label` column represents **one or more thoracic disease categories** associated with each study and serves as the ground-truth target for **multi-label supervised learning**.
-
-This repository includes a **deep learning system for automated chest X-ray analysis using BiomedCLIP**, capable of detecting **35 thoracic pathologies**, achieving **95.10% label-wise accuracy** and **73.18% mean AUC** on a held-out test set.
 
 
 ---
@@ -18,10 +14,8 @@ This repository includes a **deep learning system for automated chest X-ray anal
 - **Data Type:** Clinical radiology reports + corresponding images
 - **Task Type:** **Multi-label classification**
 - **Total Classes:** 35
-- **Domain:** Radiology, pulmonary and cardiovascular diseases
 - **Total Images:** 7,466 validated X-ray images (~14 GB)
 - **Total Reports:** 3,852 radiology reports
-- **Class Imbalance Ratio:** **1,581:1 (long-tailed distribution)**
 
 ---
 
