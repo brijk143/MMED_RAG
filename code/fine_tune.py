@@ -1255,34 +1255,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-"""
-===============================================================================
-USAGE EXAMPLES:
-===============================================================================
-
-1. RECOMMENDED: Partial Unfreezing (last 2 blocks)
-   python train_with_unfreezing.py --mode both --unfreeze_layers 2
-
-2. More aggressive: Unfreeze last 4 blocks
-   python train_with_unfreezing.py --mode both --unfreeze_layers 4
-
-3. Keep all frozen (same as original)
-   python train_with_unfreezing.py --mode both --unfreeze_layers 0
-
-4. Full unfreezing
-   python train_with_unfreezing.py --mode both --freeze_backbone False
-
-
-===============================================================================
-EXPECTED RESULTS:
-===============================================================================
-
-Unfreezing 0 blocks (current):  AUC ~0.71
-Unfreezing 2 blocks (recommended): AUC ~0.74-0.76  (+3-5%)
-Unfreezing 4 blocks:  AUC ~0.75-0.77  (+4-6%)
-Full unfreezing:  AUC ~0.76-0.78  (+5-7%)
-
-===============================================================================
-"""
