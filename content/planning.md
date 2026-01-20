@@ -266,3 +266,37 @@ Relationships are stored as **directed edges**.
   }
 }
 ```
+
+## 📚 Medical Educational & Reference Texts (Human-Readable)
+
+The following authoritative medical sources are used to extract
+**finding-centric clinical knowledge** (finding → disease relationships,
+diagnostic cues, and reasoning patterns) for Knowledge Graph construction.
+
+---
+
+### Radiopaedia – Chest Radiograph Articles
+Radiology education resource with detailed explanations of chest X-ray findings
+and differential diagnoses. Suitable for extracting `suggests`,
+`strongly_suggests`, and `contradicts` relations.  
+🔗 https://radiopaedia.org/articles/chest-radiograph
+
+---
+
+### Radiology Assistant – Chest X-ray Interpretation
+Structured, pattern-based chest X-ray interpretation closely aligned with
+clinical reasoning. Useful for finding → disease association extraction.  
+🔗 https://radiologyassistant.nl/chest/chest-x-ray/basic-interpretation
+
+---
+
+### NCBI Bookshelf – Systematic Approach to Chest Radiographs
+Peer-reviewed clinical reference providing systematic descriptions of chest
+radiographic findings and disease patterns. Suitable for extracting rule-based
+relations such as `requires` and `absence_weakens`.  
+🔗 https://www.ncbi.nlm.nih.gov/books/NBK553874/
+
+---
+
+**Note:** These sources are used only for knowledge extraction, not for direct
+disease prediction.
