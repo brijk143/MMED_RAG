@@ -138,7 +138,7 @@ Each row represents **one patient study** and contains the following fields:
 </p>
 
 
-### Overall Test Performance (20% Holdout)
+---
 
 **Primary Metrics:**
 
@@ -159,7 +159,7 @@ Each row represents **one patient study** and contains the following fields:
 </p>
 
 
-### Detailed Performance Breakdown
+#### Overall Test Performance (20% Holdout)
 
 **Comparison Across Sets:**
 
