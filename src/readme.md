@@ -155,6 +155,12 @@ Each row represents **one patient study** and contains the following fields:
 
 ---
 
+## Model Performance
+
+<p align="center">
+  <img src="evaluation_plot.png" width="800"/>
+</p>
+
 **Primary Metrics:**
 
 | Metric | Value | Interpretation |
@@ -167,14 +173,8 @@ Each row represents **one patient study** and contains the following fields:
 | **mAP** | 14.13% - 14.72% | Mean average precision |
 
 ---
-## Model Performance
 
-<p align="center">
-  <img src="evaluation_plot.png" width="800"/>
-</p>
-
-
-#### Overall Test Performance (20% Holdout)
+#### Overall Test Performance
 
 **Comparison Across Sets:**
 
