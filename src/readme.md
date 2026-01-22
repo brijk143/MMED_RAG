@@ -136,21 +136,12 @@ Each row represents **one patient study** and contains the following fields:
   <img src="evaluation_plot.png" width="800"/>
 </p>
 
+## Training
 
-### Training Progression (Best Fold - Fold 2)
+<p align="center">
+  <img src="epoch_search_plot.png" width="800"/>
+</p>
 
-| Epoch | Train Jaccard_Acc | Train AUC | Learning Phase |
-|-------|-------------------|-----------|----------------|
-| 10 | 27.72% | 54.53% | Early learning |
-| 20 | 32.91% | 62.41% | Rapid improvement |
-| 30 | 35.31% | 66.56% | Steady progress |
-| 40 | 37.27% | 70.59% | Consolidation |
-| 50 | 38.43% | 71.63% | Fine-tuning begins |
-| 60 | 39.56% | 73.21% | Convergence |
-| 70 | 40.11% | 74.77% | Plateau |
-| 80 | 40.92% | 76.51% | Refinement |
-| 90 | 41.35% | 76.28% | Final adjustments |
-| **100** | **41.59%** | **77.06%** | ✓ **Converged** |
 
 ### Overall Test Performance (20% Holdout)
 
@@ -275,23 +266,6 @@ High accuracy values are expected due to the dominance of negative labels per im
 ---
 
 
-## Training
-
-<p align="center">
-  <img src="epoch_search_plot.png" width="800"/>
-</p>
-
-### Two-Phase Pipeline
-
-**Phase 1: Epoch Search**
-- Tests [30, 50, 75, 90, 100] epochs
-- 5-fold cross-validation per configuration
-- Selects optimal: **100 epochs** (0.7329 AUC ± 0.012)
-
-**Phase 2: Final Evaluation**
-- Best checkpoint: Fold 1, 100 epochs
-- Held-out test set: 1,494 images
-- Comprehensive metrics + visualizations
 
 **Hyperparameters:**
 - Optimizer: AdamW (lr=2e-5, weight_decay=1e-4)
