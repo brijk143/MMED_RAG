@@ -137,6 +137,21 @@ Each row represents **one patient study** and contains the following fields:
   <img src="epoch_search_plot.png" width="800"/>
 </p>
 
+---
+### Training Progression on 100 epochs
+
+| Epoch | Train Jaccard_Acc | Train AUC | Learning Phase |
+|-------|-------------------|-----------|----------------|
+| 10 | 27.72% | 54.53% | Early learning |
+| 20 | 32.91% | 62.41% | Rapid improvement |
+| 30 | 35.31% | 66.56% | Steady progress |
+| 40 | 37.27% | 70.59% | Consolidation |
+| 50 | 38.43% | 71.63% | Fine-tuning begins |
+| 60 | 39.56% | 73.21% | Convergence |
+| 70 | 40.11% | 74.77% | Plateau |
+| 80 | 40.92% | 76.51% | Refinement |
+| 90 | 41.35% | 76.28% | Final adjustments |
+| **100** | **41.59%** | **77.06%** | ✓ **Converged** |
 
 ---
 
