@@ -130,11 +130,6 @@ Each row represents **one patient study** and contains the following fields:
 - Several clinically significant conditions have **<1% representation**
 - Suitable for research on **imbalanced learning**, **few-shot learning**, and **robust medical NLP models**
 
-## Model Performance
-
-<p align="center">
-  <img src="evaluation_plot.png" width="800"/>
-</p>
 
 ## Training
 
@@ -157,6 +152,12 @@ Each row represents **one patient study** and contains the following fields:
 | **mAP** | 14.13% - 14.72% | Mean average precision |
 
 ---
+## Model Performance
+
+<p align="center">
+  <img src="evaluation_plot.png" width="800"/>
+</p>
+
 
 ### Detailed Performance Breakdown
 
