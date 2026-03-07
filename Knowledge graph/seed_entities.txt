@@ -863,8 +863,6 @@ Edema
 Lines 
 Pneumonia 
 
-fixed spelling error: disease
-
 Chest radiograph
 Clear lung fields
 Lung fields
