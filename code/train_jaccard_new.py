@@ -626,19 +626,19 @@ def final_evaluation(best_checkpoint_path, config):
 
     
     # Comprehensive per-class evaluation
-    logger.info("\n📋 Generating per-class evaluation...")
+    logger.info("\n Generating per-class evaluation...")
     comprehensive_evaluation(
     test_preds, test_labels, label_columns, per_class_thresholds
 )
 
     
-    logger.info("\n" + "="*80)
-    logger.info("✅ EVALUATION COMPLETE")
+
+    logger.info(" EVALUATION COMPLETE")
     logger.info("="*80)
-    logger.info(f"\n📊 Summary:")
+    logger.info(f"\n Summary:")
     logger.info(f"   Training Jaccard Accuracy: {train_metrics['accuracy']:.4f} | Jaccard_c: {train_metrics['jaccard_per_class']:.4f} | AUC: {train_metrics['auc']:.4f}")
     logger.info(f"   Testing Jaccard Accuracy:  {test_metrics['accuracy']:.4f} | Jaccard_c: {test_metrics['jaccard_per_class']:.4f} | AUC: {test_metrics['auc']:.4f}")
-    logger.info(f"\n📁 Generated Files:")
+    logger.info(f"\n Generated Files:")
     logger.info(f"   - epoch_search_results.csv")
     logger.info(f"   - epoch_search_plot.png")
     logger.info(f"   - final_metrics_summary.csv")
