@@ -722,9 +722,7 @@ def comprehensive_evaluation(predictions, labels, label_names, per_class_thresho
     
     # Create visualization
     plot_evaluation(df_results, save_dir)
-    
-    # Print summary
-    logger.info("\n" + "="*80)
+   
     logger.info("EVALUATION SUMMARY (JACCARD METRICS)")
     logger.info("="*80)
     logger.info(f"Mean Jaccard_c (per-class): {jaccard_metrics['jaccard_per_class']:.4f}")
@@ -1350,7 +1348,6 @@ def main():
         'patience': 5,
     }
     
-    logger.info("="*80)
     logger.info("MULTI-LABEL CLASSIFICATION FOR CHEST X-RAY ANALYSIS")
     logger.info("="*80)
     logger.info(f"Mode: {args.mode}")
@@ -1358,25 +1355,24 @@ def main():
     logger.info(f"Batch size: {config['batch_size']}")
     logger.info(f"Learning rate: {config['lr']}")
     logger.info(f"Unfreezing strategy: Last {config['unfreeze_layers']} transformer blocks")
-    logger.info("="*80)
     
     if args.mode == 'train':
         # Train for 100 epochs and get best checkpoint
-        logger.info("\n📍 Training for 100 epochs with 5-fold CV...\n")
+        logger.info("\n Training for 100 epochs with 5-fold CV...\n")
         best_epochs, best_checkpoint_path, label_columns = search_best_epochs(config, epochs_list=[100])
         
         # Final comprehensive evaluation
-        logger.info(f"\n📍 Final Evaluation (using best checkpoint)...\n")
+        logger.info(f"\n Final Evaluation (using best checkpoint)...\n")
         final_evaluation(best_checkpoint_path, config)
     elif args.mode == 'evaluate':
         evaluate_pipeline(config)
     else:
         # Train for 100 epochs and get best checkpoint
-        logger.info("\n📍 Training for 100 epochs with 5-fold CV...\n")
+        logger.info("\n Training for 100 epochs with 5-fold CV...\n")
         best_epochs, best_checkpoint_path, label_columns = search_best_epochs(config, epochs_list=[100])
         
         # Final comprehensive evaluation
-        logger.info(f"\n📍 Final Evaluation (using best checkpoint)...\n")
+        logger.info(f"\n Final Evaluation (using best checkpoint)...\n")
         final_evaluation(best_checkpoint_path, config)
 
 if __name__ == "__main__":
