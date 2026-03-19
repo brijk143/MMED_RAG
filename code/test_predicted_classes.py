@@ -1,4 +1,5 @@
 """
+will take inout image and predict class using epoch_search_e100_fold2_new.pth
 step_A_classifier.py  (DUAL-VIEW REVISION)
 ===========================================
 Stage 1: Load test images + CSV metadata, run BiomedCLIP multi-label
