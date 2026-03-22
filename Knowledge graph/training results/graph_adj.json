@@ -1,0 +1,8498 @@
+{
+  "airspace disease": [
+    [
+      "has_finding",
+      "consolidation"
+    ],
+    [
+      "has_finding",
+      "ground-glass opacity"
+    ],
+    [
+      "suggests",
+      "infectious pneumonia"
+    ],
+    [
+      "suggests",
+      "pulmonary edema"
+    ],
+    [
+      "suggests",
+      "pulmonary hemorrhage"
+    ],
+    [
+      "suggests",
+      "aspiration"
+    ],
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "suggests",
+      "acute respiratory distress syndrome"
+    ],
+    [
+      "suggests",
+      "aggressive infection"
+    ],
+    [
+      "suggests",
+      "noncardiogenic pulmonary edema"
+    ],
+    [
+      "has_symptom",
+      "infectious pneumonia"
+    ],
+    [
+      "has_symptom",
+      "aspiration"
+    ],
+    [
+      "has_symptom",
+      "pulmonary hemorrhage"
+    ],
+    [
+      "has_symptom",
+      "acute respiratory distress syndrome"
+    ]
+  ],
+  "bronchiectasis": [
+    [
+      "has_finding",
+      "tram-track sign"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_finding",
+      "thickened bronchial walls"
+    ],
+    [
+      "has_symptom",
+      "chronic productive cough"
+    ],
+    [
+      "has_symptom",
+      "recurrent respiratory infections"
+    ],
+    [
+      "has_symptom",
+      "hemoptysis"
+    ],
+    [
+      "suggests",
+      "post-infectious bronchiectasis"
+    ],
+    [
+      "suggests",
+      "cystic fibrosis"
+    ],
+    [
+      "located_in",
+      "lower lobes"
+    ],
+    [
+      "has_symptom",
+      "chronic_productive_cough"
+    ],
+    [
+      "has_symptom",
+      "recurrent_respiratory_infections"
+    ],
+    [
+      "has_symptom",
+      "bronchial wall thickening"
+    ],
+    [
+      "has_symptom",
+      "mucoid impaction"
+    ],
+    [
+      "has_symptom",
+      "airway inflammation"
+    ]
+  ],
+  "bronchiolitis": [
+    [
+      "has_finding",
+      "centrilobular nodules"
+    ],
+    [
+      "has_finding",
+      "tree-in-bud pattern"
+    ],
+    [
+      "has_finding",
+      "peribronchial thickening"
+    ],
+    [
+      "has_finding",
+      "hyperinflation"
+    ],
+    [
+      "suggests",
+      "infectious bronchiolitis"
+    ],
+    [
+      "suggests",
+      "respiratory syncytial virus"
+    ],
+    [
+      "located_in",
+      "both lung fields"
+    ]
+  ],
+  "bullous disease": [
+    [
+      "has_finding",
+      "bullae"
+    ],
+    [
+      "has_finding",
+      "avascular lucent areas"
+    ],
+    [
+      "has_finding",
+      "imperceptible walls"
+    ],
+    [
+      "located_in",
+      "upper lobes"
+    ],
+    [
+      "suggests",
+      "emphysema"
+    ],
+    [
+      "suggests",
+      "spontaneous pneumothorax"
+    ],
+    [
+      "strongly_suggests",
+      "spontaneous secondary pneumothorax"
+    ],
+    [
+      "has_symptom",
+      "chronic productive cough"
+    ],
+    [
+      "has_symptom",
+      "recurrent respiratory infections"
+    ],
+    [
+      "has_symptom",
+      "hemoptysis"
+    ],
+    [
+      "suggests",
+      "severe emphysema"
+    ],
+    [
+      "contradicts",
+      "normal lung parenchyma"
+    ],
+    [
+      "requires",
+      "alveolar wall destruction"
+    ],
+    [
+      "absence_weakens",
+      "normal lung function"
+    ],
+    [
+      "confirmed_by",
+      "chest radiograph"
+    ],
+    [
+      "strongly_suggests",
+      "severe emphysema"
+    ],
+    [
+      "strongly_suggests",
+      "progressive alveolar wall destruction"
+    ]
+  ],
+  "calcified granuloma": [
+    [
+      "has_finding",
+      "calcified nodule"
+    ],
+    [
+      "has_finding",
+      "target calcification pattern"
+    ],
+    [
+      "suggests",
+      "prior tuberculosis"
+    ],
+    [
+      "suggests",
+      "histoplasmosis"
+    ],
+    [
+      "suggests",
+      "healed granulomatous infection"
+    ],
+    [
+      "located_in",
+      "upper lobe"
+    ],
+    [
+      "located_in",
+      "hilar lymph nodes"
+    ]
+  ],
+  "cardiomegaly": [
+    [
+      "has_finding",
+      "cardiothoracic ratio exceeding 0.5"
+    ],
+    [
+      "has_finding",
+      "enlarged cardiac silhouette"
+    ],
+    [
+      "suggests",
+      "congestive heart failure"
+    ],
+    [
+      "requires",
+      "echocardiography"
+    ],
+    [
+      "located_in",
+      "cardiac silhouette"
+    ],
+    [
+      "has_symptom",
+      "vascular congestion"
+    ],
+    [
+      "has_symptom",
+      "airway inflammation"
+    ],
+    [
+      "strongly_suggests",
+      "congestive heart failure"
+    ],
+    [
+      "has_symptom",
+      "peribronchial thickening"
+    ],
+    [
+      "requires",
+      "investigation for parapneumonic process"
+    ],
+    [
+      "requires",
+      "investigation for malignancy"
+    ],
+    [
+      "requires",
+      "investigation for pulmonary embolism"
+    ],
+    [
+      "requires",
+      "investigation for infarction"
+    ],
+    [
+      "has_finding",
+      "pulmonary vascular redistribution"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_finding",
+      "pulmonary edema"
+    ],
+    [
+      "has_finding",
+      "cardiac apex extends beyond the left mid-clavicular line"
+    ],
+    [
+      "located_in",
+      "chest radiograph"
+    ],
+    [
+      "has_symptom",
+      "diffusely increased bronchovascular markings"
+    ],
+    [
+      "has_symptom",
+      "increased bronchovascular markings"
+    ],
+    [
+      "has_finding",
+      "left ventricular enlargement"
+    ],
+    [
+      "has_finding",
+      "right atrial enlargement"
+    ],
+    [
+      "strongly_suggests",
+      "pulmonary vascular redistribution"
+    ],
+    [
+      "suggests",
+      "cardiac etiology"
+    ],
+    [
+      "has_symptom",
+      "pulmonary vascular redistribution"
+    ],
+    [
+      "has_symptom",
+      "pleural effusion"
+    ],
+    [
+      "has_symptom",
+      "pulmonary edema"
+    ],
+    [
+      "located_in",
+      "cardiothoracic ratio"
+    ],
+    [
+      "located_in",
+      "left ventricle"
+    ],
+    [
+      "located_in",
+      "right atrium"
+    ],
+    [
+      "located_in",
+      "enlarged cardiac silhouette"
+    ],
+    [
+      "requires",
+      "investigation"
+    ],
+    [
+      "has_finding",
+      "vascular congestion"
+    ],
+    [
+      "has_finding",
+      "airway inflammation"
+    ],
+    [
+      "strongly_suggests",
+      "pleural effusion"
+    ],
+    [
+      "located_in",
+      "left mid-clavicular line"
+    ],
+    [
+      "confirmed_by",
+      "pulmonary vascular redistribution"
+    ],
+    [
+      "confirmed_by",
+      "pleural effusion"
+    ],
+    [
+      "confirmed_by",
+      "pulmonary edema"
+    ],
+    [
+      "suggests",
+      "pulmonary vascular redistribution"
+    ],
+    [
+      "suggests",
+      "pleural effusion"
+    ],
+    [
+      "requires",
+      "occupational history"
+    ],
+    [
+      "located_in",
+      "heart"
+    ],
+    [
+      "located_in",
+      "posteroanterior view"
+    ],
+    [
+      "suggests",
+      "pulmonary edema"
+    ],
+    [
+      "has_symptom",
+      "increased markings"
+    ],
+    [
+      "located_in",
+      "cardiac apex"
+    ],
+    [
+      "located_in",
+      "right heart border"
+    ],
+    [
+      "has_finding",
+      "perihilar infiltrates"
+    ],
+    [
+      "located_in",
+      "left ventricular enlargement"
+    ],
+    [
+      "located_in",
+      "right atrial enlargement"
+    ],
+    [
+      "requires",
+      "investigation for pulmonary embolism with infarction"
+    ],
+    [
+      "strongly_suggests",
+      "pulmonary edema"
+    ]
+  ],
+  "consolidation": [
+    [
+      "has_finding",
+      "homogeneous opacification"
+    ],
+    [
+      "has_finding",
+      "air bronchograms"
+    ],
+    [
+      "has_finding",
+      "increased radiodensity"
+    ],
+    [
+      "has_symptom",
+      "fever"
+    ],
+    [
+      "has_symptom",
+      "productive cough"
+    ],
+    [
+      "suggests",
+      "infectious pneumonia"
+    ],
+    [
+      "suggests",
+      "aspiration"
+    ],
+    [
+      "suggests",
+      "pulmonary hemorrhage"
+    ],
+    [
+      "suggests",
+      "organizing pneumonia"
+    ],
+    [
+      "located_in",
+      "lower lobes"
+    ],
+    [
+      "located_in",
+      "right lower lobe"
+    ],
+    [
+      "suggests",
+      "pneumonia"
+    ],
+    [
+      "located_in",
+      "left lower lobe"
+    ],
+    [
+      "located_in",
+      "left upper lobe"
+    ],
+    [
+      "located_in",
+      "right upper lobe"
+    ],
+    [
+      "suggests",
+      "bronchopneumonia pattern"
+    ],
+    [
+      "suggests",
+      "airspace disease"
+    ],
+    [
+      "suggests",
+      "alveolar filling process"
+    ],
+    [
+      "suggests",
+      "acute respiratory distress syndrome"
+    ],
+    [
+      "located_in",
+      "lateral hemithorax"
+    ],
+    [
+      "located_in",
+      "predominantly the right lower lobe"
+    ],
+    [
+      "located_in",
+      "lower lobe"
+    ]
+  ],
+  "edema": [
+    [
+      "has_finding",
+      "bilateral perihilar infiltrates"
+    ],
+    [
+      "has_finding",
+      "Kerley B lines"
+    ],
+    [
+      "has_finding",
+      "peribronchial cuffing"
+    ],
+    [
+      "has_finding",
+      "vascular cephalization"
+    ],
+    [
+      "suggests",
+      "congestive heart failure"
+    ],
+    [
+      "suggests",
+      "fluid overload"
+    ],
+    [
+      "suggests",
+      "renal failure"
+    ],
+    [
+      "located_in",
+      "lung bases"
+    ]
+  ],
+  "emphysema": [
+    [
+      "has_finding",
+      "hyperinflation"
+    ],
+    [
+      "has_finding",
+      "flattened hemidiaphragms"
+    ],
+    [
+      "has_finding",
+      "increased retrosternal airspace"
+    ],
+    [
+      "has_finding",
+      "hyperlucent lung fields"
+    ],
+    [
+      "has_finding",
+      "diminished peripheral vascular markings"
+    ],
+    [
+      "has_finding",
+      "bullae"
+    ],
+    [
+      "located_in",
+      "upper lobes"
+    ],
+    [
+      "suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "suggests",
+      "alpha-1 antitrypsin deficiency"
+    ],
+    [
+      "requires",
+      "bronchodilator therapy"
+    ],
+    [
+      "contradicts",
+      "idiopathic pulmonary fibrosis"
+    ],
+    [
+      "contradicts",
+      "connective tissue disease"
+    ],
+    [
+      "contradicts",
+      "chronic hypersensitivity pneumonitis"
+    ],
+    [
+      "strongly_suggests",
+      "chronic obstructive pulmonary disease"
+    ]
+  ],
+  "mass": [
+    [
+      "has_finding",
+      "soft tissue density opacity"
+    ],
+    [
+      "has_finding",
+      "irregular contours"
+    ],
+    [
+      "has_finding",
+      "spiculated margins"
+    ],
+    [
+      "suggests",
+      "primary lung cancer"
+    ],
+    [
+      "suggests",
+      "lymphoma"
+    ],
+    [
+      "suggests",
+      "metastasis"
+    ],
+    [
+      "requires",
+      "biopsy"
+    ],
+    [
+      "requires",
+      "CT imaging for confirmation"
+    ],
+    [
+      "located_in",
+      "lung fields"
+    ]
+  ],
+  "pleural effusion": [
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "blunting of costophrenic angle"
+    ],
+    [
+      "has_finding",
+      "fluid layering on decubitus view"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ],
+    [
+      "suggests",
+      "congestive heart failure"
+    ],
+    [
+      "suggests",
+      "malignancy"
+    ],
+    [
+      "suggests",
+      "parapneumonic process"
+    ],
+    [
+      "requires",
+      "investigation for underlying cause"
+    ],
+    [
+      "located_in",
+      "dependent portion of pleural space"
+    ],
+    [
+      "has_symptom",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "pleural space"
+    ],
+    [
+      "requires",
+      "investigation for parapneumonic process"
+    ],
+    [
+      "requires",
+      "investigation for malignancy"
+    ],
+    [
+      "requires",
+      "investigation for pulmonary embolism with infarction"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_symptom",
+      "sharp borders"
+    ],
+    [
+      "located_in",
+      "lateral hemithorax"
+    ],
+    [
+      "located_in",
+      "right hemithorax"
+    ],
+    [
+      "suggests",
+      "pulmonary embolism"
+    ],
+    [
+      "located_in",
+      "lateral chest wall"
+    ],
+    [
+      "strongly_suggests",
+      "congestive heart failure"
+    ],
+    [
+      "located_in",
+      "lower lobes"
+    ],
+    [
+      "located_in",
+      "right lower lobe"
+    ],
+    [
+      "has_finding",
+      "consolidation"
+    ],
+    [
+      "has_symptom",
+      "fever"
+    ],
+    [
+      "has_symptom",
+      "productive cough"
+    ],
+    [
+      "contradicts",
+      "acute cardiopulmonary disease"
+    ],
+    [
+      "contradicts",
+      "pneumonia"
+    ],
+    [
+      "contradicts",
+      "pneumothorax"
+    ],
+    [
+      "confirmed_by",
+      "chest radiograph"
+    ],
+    [
+      "located_in",
+      "chest wall"
+    ],
+    [
+      "located_in",
+      "decubitus view"
+    ],
+    [
+      "located_in",
+      "anteroposterior diameter"
+    ],
+    [
+      "located_in",
+      "lateral view"
+    ],
+    [
+      "has_finding",
+      "blunting of the costophrenic angle"
+    ],
+    [
+      "has_finding",
+      "concave upper border of fluid"
+    ],
+    [
+      "has_finding",
+      "free-flowing pleural effusion"
+    ],
+    [
+      "has_finding",
+      "fluid following the chest wall curvature"
+    ],
+    [
+      "has_finding",
+      "moderate to large effusions"
+    ],
+    [
+      "has_finding",
+      "obscures the hemidiaphragm and lower lung fields"
+    ],
+    [
+      "has_finding",
+      "bilateral"
+    ],
+    [
+      "has_finding",
+      "59% of dataset cases"
+    ],
+    [
+      "has_finding",
+      "pericardial space"
+    ],
+    [
+      "has_symptom",
+      "layers along dependent portion of pleural space"
+    ],
+    [
+      "requires",
+      "investigation for pulmonary embolism"
+    ],
+    [
+      "has_finding",
+      "dependent portion of pleural space"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_finding",
+      "lateral view"
+    ],
+    [
+      "has_finding",
+      "hemithorax opacification"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "affected side"
+    ],
+    [
+      "has_finding",
+      "chest radiograph"
+    ],
+    [
+      "requires",
+      "investigation"
+    ],
+    [
+      "has_symptom",
+      "blunting of the costophrenic angle"
+    ],
+    [
+      "located_in",
+      "left lower lobe"
+    ],
+    [
+      "located_in",
+      "left upper lobe"
+    ],
+    [
+      "located_in",
+      "right upper lobe"
+    ],
+    [
+      "requires",
+      "parapneumonic process"
+    ],
+    [
+      "requires",
+      "malignancy"
+    ],
+    [
+      "requires",
+      "pulmonary embolism"
+    ],
+    [
+      "located_in",
+      "costophrenic angle"
+    ],
+    [
+      "has_symptom",
+      "fluid in pleural space"
+    ],
+    [
+      "has_symptom",
+      "fluid in pericardial space"
+    ],
+    [
+      "has_finding",
+      "fluid in pleural space"
+    ],
+    [
+      "has_finding",
+      "fluid in pericardial space"
+    ],
+    [
+      "has_symptom",
+      "pericardial space"
+    ],
+    [
+      "has_symptom",
+      "dependent portion of pleural space"
+    ],
+    [
+      "has_symptom",
+      "blunting"
+    ],
+    [
+      "has_symptom",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_symptom",
+      "fluid in pleural space or pericardial space"
+    ],
+    [
+      "confirmed_by",
+      "layering of fluid"
+    ],
+    [
+      "located_in",
+      "chest radiograph"
+    ],
+    [
+      "suggests",
+      "free-flowing pleural effusion"
+    ]
+  ],
+  "pneumothorax": [
+    [
+      "has_finding",
+      "visceral pleural line"
+    ],
+    [
+      "has_finding",
+      "absence of lung markings"
+    ],
+    [
+      "has_finding",
+      "collapsed lung"
+    ],
+    [
+      "suggests",
+      "tension pneumothorax"
+    ],
+    [
+      "suggests",
+      "spontaneous pneumothorax"
+    ],
+    [
+      "suggests",
+      "traumatic pneumothorax"
+    ],
+    [
+      "located_in",
+      "lateral hemithorax"
+    ],
+    [
+      "requires",
+      "emergency decompression"
+    ],
+    [
+      "located_in",
+      "right hemithorax"
+    ],
+    [
+      "suggests",
+      "emphysema"
+    ],
+    [
+      "suggests",
+      "anterior pneumothorax"
+    ],
+    [
+      "located_in",
+      "right side"
+    ],
+    [
+      "located_in",
+      "anterior chest wall"
+    ],
+    [
+      "contradicts",
+      "Increased Lung Markings"
+    ],
+    [
+      "has_symptom",
+      "tracheal deviation"
+    ],
+    [
+      "located_in",
+      "lateral chest wall"
+    ]
+  ],
+  "clear lung fields": [
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "has_finding",
+      "well-defined pulmonary vasculature"
+    ],
+    [
+      "has_finding",
+      "cardiothoracic ratio"
+    ],
+    [
+      "has_finding",
+      "hemidiaphragms"
+    ],
+    [
+      "has_finding",
+      "trachea"
+    ],
+    [
+      "has_finding",
+      "osseous structures"
+    ],
+    [
+      "has_finding",
+      "mediastinal contours"
+    ],
+    [
+      "contradicts",
+      "acute cardiopulmonary disease"
+    ],
+    [
+      "contradicts",
+      "pneumonia"
+    ],
+    [
+      "contradicts",
+      "congestive heart failure"
+    ],
+    [
+      "contradicts",
+      "pneumothorax"
+    ],
+    [
+      "absence_weakens",
+      "congestive heart failure"
+    ]
+  ],
+  "focal consolidation": [
+    [
+      "located_in",
+      "lower lobes"
+    ],
+    [
+      "located_in",
+      "right lower lobe"
+    ],
+    [
+      "suggests",
+      "infectious pneumonia"
+    ],
+    [
+      "suggests",
+      "aspiration"
+    ],
+    [
+      "suggests",
+      "pulmonary hemorrhage"
+    ],
+    [
+      "suggests",
+      "organizing pneumonia"
+    ],
+    [
+      "has_symptom",
+      "homogeneous opacification"
+    ],
+    [
+      "has_symptom",
+      "increased radiodensity"
+    ],
+    [
+      "has_symptom",
+      "obscures normal vascular markings"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_symptom",
+      "fever"
+    ],
+    [
+      "has_symptom",
+      "productive cough"
+    ]
+  ],
+  "blunting of the costophrenic angle": [
+    [
+      "located_in",
+      "chest wall"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_symptom",
+      "meniscus sign"
+    ],
+    [
+      "has_symptom",
+      "pathognomonic for free-flowing pleural effusion"
+    ],
+    [
+      "located_in",
+      "costophrenic angle"
+    ]
+  ],
+  "arthropathy": [
+    [
+      "has_finding",
+      "joint space narrowing"
+    ],
+    [
+      "has_finding",
+      "subchondral sclerosis"
+    ],
+    [
+      "has_symptom",
+      "elderly patients"
+    ]
+  ],
+  "diffusely increased bronchovascular markings": [
+    [
+      "suggests",
+      "vascular congestion"
+    ],
+    [
+      "has_finding",
+      "vascular congestion"
+    ],
+    [
+      "has_finding",
+      "peribronchial thickening"
+    ],
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "located_in",
+      "peripheral lung zones"
+    ],
+    [
+      "has_symptom",
+      "vascular congestion"
+    ],
+    [
+      "has_symptom",
+      "peribronchial thickening"
+    ],
+    [
+      "located_in",
+      "both lung fields"
+    ],
+    [
+      "has_finding",
+      "both lung fields"
+    ],
+    [
+      "has_finding",
+      "peripheral lung zones"
+    ],
+    [
+      "has_finding",
+      "airway inflammation"
+    ],
+    [
+      "has_finding",
+      "lung fields"
+    ],
+    [
+      "located_in",
+      "lung"
+    ],
+    [
+      "suggests",
+      "airway inflammation"
+    ]
+  ],
+  "chronic congestive heart failure": [
+    [
+      "suggests",
+      "cardiomegaly"
+    ],
+    [
+      "has_symptom",
+      "peribronchial thickening"
+    ],
+    [
+      "has_symptom",
+      "diffusely increased bronchovascular markings"
+    ],
+    [
+      "has_symptom",
+      "increased bronchovascular markings"
+    ],
+    [
+      "has_finding",
+      "vascular congestion"
+    ],
+    [
+      "has_symptom",
+      "vascular congestion"
+    ],
+    [
+      "has_symptom",
+      "cardiomegaly"
+    ],
+    [
+      "has_symptom",
+      "interstitial edema"
+    ]
+  ],
+  "interstitial edema": [
+    [
+      "suggests",
+      "cardiomegaly"
+    ],
+    [
+      "has_symptom",
+      "increased bronchovascular markings"
+    ],
+    [
+      "has_symptom",
+      "peribronchial thickening"
+    ],
+    [
+      "has_symptom",
+      "vascular congestion"
+    ]
+  ],
+  "asymmetric distribution": [
+    [
+      "suggests",
+      "chronic infection"
+    ],
+    [
+      "suggests",
+      "bronchiectasis"
+    ],
+    [
+      "has_symptom",
+      "chronic infection"
+    ]
+  ],
+  "patchy bilateral airspace opacities": [
+    [
+      "suggests",
+      "alveolar filling process"
+    ],
+    [
+      "has_finding",
+      "alveolar filling process"
+    ],
+    [
+      "has_symptom",
+      "alveolar filling process"
+    ],
+    [
+      "has_finding",
+      "ill-defined borders"
+    ],
+    [
+      "has_finding",
+      "patent airways"
+    ]
+  ],
+  "chronic obstructive pulmonary disease": [
+    [
+      "has_finding",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "has_symptom",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "has_finding",
+      "fluid collection in thoracic cavity"
+    ],
+    [
+      "has_symptom",
+      "chronic productive cough"
+    ],
+    [
+      "has_symptom",
+      "recurrent respiratory infections"
+    ],
+    [
+      "has_symptom",
+      "hemoptysis"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_finding",
+      "cystic bronchiectasis"
+    ],
+    [
+      "has_finding",
+      "bullae"
+    ],
+    [
+      "has_finding",
+      "subcutaneous air"
+    ],
+    [
+      "has_finding",
+      "diffuse bilateral peribronchiolar nodular opacities"
+    ],
+    [
+      "has_finding",
+      "centrilobular nodules"
+    ],
+    [
+      "has_finding",
+      "hyperinflation"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ]
+  ],
+  "right ventricular enlargement": [
+    [
+      "located_in",
+      "right ventricle"
+    ],
+    [
+      "located_in",
+      "cardiac apex"
+    ],
+    [
+      "has_symptom",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "located_in",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "requires",
+      "cardiac apex displacement"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "right lobe"
+    ],
+    [
+      "suggests",
+      "pulmonary hypertension"
+    ],
+    [
+      "has_finding",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "located_in",
+      "right heart border"
+    ],
+    [
+      "suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "suggests",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "has_symptom",
+      "pulmonary hypertension"
+    ],
+    [
+      "has_symptom",
+      "severe pulmonary hypertension"
+    ],
+    [
+      "has_finding",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "cardiac silhouette"
+    ],
+    [
+      "has_symptom",
+      "cardiac silhouette enlargement"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_symptom",
+      "sharp borders"
+    ],
+    [
+      "requires",
+      "pulmonary hypertension"
+    ],
+    [
+      "located_in",
+      "chest radiograph"
+    ],
+    [
+      "has_finding",
+      "cardiac apex displacement"
+    ],
+    [
+      "strongly_suggests",
+      "pulmonary hypertension"
+    ],
+    [
+      "located_in",
+      "heart"
+    ],
+    [
+      "suggests",
+      "cardiac apex displacement"
+    ]
+  ],
+  "fluid collection": [
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "has_symptom",
+      "homogeneous opacity"
+    ],
+    [
+      "has_symptom",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "concave upper border"
+    ]
+  ],
+  "pericardial effusion": [
+    [
+      "located_in",
+      "pericardial space"
+    ],
+    [
+      "has_symptom",
+      "cardiac silhouette enlargement"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_symptom",
+      "sharp borders"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ],
+    [
+      "has_symptom",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_symptom",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_symptom",
+      "mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_symptom",
+      "enlarges cardiac silhouette"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_finding",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift"
+    ],
+    [
+      "has_symptom",
+      "enlargement of cardiac silhouette"
+    ],
+    [
+      "has_finding",
+      "pericardial space"
+    ],
+    [
+      "located_in",
+      "chest radiograph"
+    ],
+    [
+      "has_finding",
+      "posterior costophrenic angles"
+    ],
+    [
+      "has_finding",
+      "hemithorax opacification"
+    ],
+    [
+      "has_finding",
+      "enlarged cardiac silhouette"
+    ],
+    [
+      "has_symptom",
+      "mediastinal shift away from affected side"
+    ],
+    [
+      "has_symptom",
+      "fluid in pleural space or pericardial space"
+    ],
+    [
+      "has_symptom",
+      "enlargement of cardiac silhouette with globular configuration and sharp borders"
+    ],
+    [
+      "has_symptom",
+      "fluid in pericardial space"
+    ],
+    [
+      "located_in",
+      "pleural space or pericardial space"
+    ]
+  ],
+  "small effusions": [
+    [
+      "has_symptom",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "located_in",
+      "lateral view"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_finding",
+      "lateral view"
+    ]
+  ],
+  "large effusions": [
+    [
+      "has_symptom",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_symptom",
+      "mediastinal shift"
+    ],
+    [
+      "has_symptom",
+      "mediastinal shift away from affected side"
+    ],
+    [
+      "has_finding",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift"
+    ],
+    [
+      "has_symptom",
+      "hemithorax opacification"
+    ]
+  ],
+  "pulmonary vasculature": [
+    [
+      "located_in",
+      "lung periphery"
+    ],
+    [
+      "located_in",
+      "hila"
+    ]
+  ],
+  "age-related wear and tear": [
+    [
+      "has_symptom",
+      "arthropathy"
+    ],
+    [
+      "has_symptom",
+      "joint space narrowing"
+    ],
+    [
+      "has_symptom",
+      "subchondral sclerosis"
+    ],
+    [
+      "has_symptom",
+      "elderly patients"
+    ],
+    [
+      "has_finding",
+      "joint space narrowing"
+    ],
+    [
+      "has_finding",
+      "subchondral sclerosis"
+    ],
+    [
+      "located_in",
+      "elderly patients"
+    ],
+    [
+      "located_in",
+      "joint"
+    ]
+  ],
+  "severe degenerative disease": [
+    [
+      "has_finding",
+      "foraminal stenosis"
+    ],
+    [
+      "has_finding",
+      "nerve root compression"
+    ],
+    [
+      "has_symptom",
+      "foraminal stenosis"
+    ],
+    [
+      "has_symptom",
+      "nerve root compression"
+    ],
+    [
+      "strongly_suggests",
+      "foraminal stenosis"
+    ],
+    [
+      "strongly_suggests",
+      "nerve root compression"
+    ],
+    [
+      "strongly_suggests",
+      "foraminal stenosis with nerve root compression"
+    ],
+    [
+      "has_finding",
+      "calcification of costal cartilages"
+    ],
+    [
+      "has_finding",
+      "aortic atherosclerosis"
+    ]
+  ],
+  "calcification of costal cartilages": [
+    [
+      "has_finding",
+      "generalized degenerative processes"
+    ],
+    [
+      "has_finding",
+      "aortic atherosclerosis"
+    ],
+    [
+      "has_symptom",
+      "generalized degenerative processes"
+    ],
+    [
+      "has_symptom",
+      "aortic atherosclerosis"
+    ],
+    [
+      "located_in",
+      "generalized degenerative processes"
+    ],
+    [
+      "has_finding",
+      "costal cartilage calcification"
+    ],
+    [
+      "located_in",
+      "costal cartilages"
+    ],
+    [
+      "has_symptom",
+      "arthropathy"
+    ],
+    [
+      "suggests",
+      "generalized degenerative processes"
+    ]
+  ],
+  "degenerative changes": [
+    [
+      "has_symptom",
+      "stability over time"
+    ],
+    [
+      "contradicts",
+      "acute fractures"
+    ],
+    [
+      "contradicts",
+      "infectious spondylitis"
+    ],
+    [
+      "has_symptom",
+      "acute fractures"
+    ],
+    [
+      "has_symptom",
+      "infectious spondylitis"
+    ],
+    [
+      "has_symptom",
+      "stable over time"
+    ],
+    [
+      "has_finding",
+      "acute fractures"
+    ],
+    [
+      "has_finding",
+      "infectious spondylitis"
+    ],
+    [
+      "has_symptom",
+      "age-related wear and tear"
+    ],
+    [
+      "has_symptom",
+      "degenerative disease"
+    ],
+    [
+      "has_symptom",
+      "severe degenerative disease"
+    ],
+    [
+      "located_in",
+      "spine"
+    ],
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "has_finding",
+      "anterior osteophyte formation"
+    ],
+    [
+      "has_finding",
+      "disc space narrowing"
+    ],
+    [
+      "has_finding",
+      "vertebral endplate sclerosis"
+    ],
+    [
+      "has_finding",
+      "facet joint"
+    ],
+    [
+      "strongly_suggests",
+      "foraminal stenosis"
+    ],
+    [
+      "has_finding",
+      "calcification of costal cartilages"
+    ],
+    [
+      "has_finding",
+      "aortic atherosclerosis"
+    ],
+    [
+      "has_finding",
+      "foraminal stenosis"
+    ],
+    [
+      "has_symptom",
+      "nerve root compression"
+    ],
+    [
+      "located_in",
+      "elderly patients"
+    ],
+    [
+      "located_in",
+      "age-related wear and tear"
+    ],
+    [
+      "located_in",
+      "costal cartilages"
+    ],
+    [
+      "located_in",
+      "aortic atherosclerosis"
+    ],
+    [
+      "located_in",
+      "foraminal stenosis"
+    ],
+    [
+      "located_in",
+      "nerve root compression"
+    ],
+    [
+      "requires",
+      "bronchoscopy"
+    ],
+    [
+      "confirmed_by",
+      "chest radiograph"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "has_finding",
+      "joint space narrowing"
+    ],
+    [
+      "has_finding",
+      "subchondral sclerosis"
+    ],
+    [
+      "suggests",
+      "vascular congestion"
+    ],
+    [
+      "suggests",
+      "airway inflammation"
+    ]
+  ],
+  "peribronchial thickening": [
+    [
+      "has_symptom",
+      "airway inflammation"
+    ],
+    [
+      "has_symptom",
+      "increased markings"
+    ],
+    [
+      "has_finding",
+      "airway inflammation"
+    ],
+    [
+      "has_finding",
+      "increased markings"
+    ],
+    [
+      "located_in",
+      "bronchi"
+    ],
+    [
+      "has_symptom",
+      "increased bronchovascular markings"
+    ],
+    [
+      "located_in",
+      "bronchovascular markings"
+    ]
+  ],
+  "cardiac silhouette": [
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_symptom",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_symptom",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_symptom",
+      "mediastinal shift away from affected side"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "globular configuration and sharp borders"
+    ],
+    [
+      "has_finding",
+      "abnormal cardiac silhouette"
+    ]
+  ],
+  "cardiothoracic ratio": [
+    [
+      "located_in",
+      "lung"
+    ],
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "strongly_suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "confirmed_by",
+      "chest radiograph"
+    ]
+  ],
+  "peripheral lung zones": [
+    [
+      "suggests",
+      "vascular congestion"
+    ],
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "located_in",
+      "lung periphery"
+    ],
+    [
+      "has_symptom",
+      "vascular congestion"
+    ],
+    [
+      "located_in",
+      "vascular congestion"
+    ],
+    [
+      "located_in",
+      "lung"
+    ],
+    [
+      "has_finding",
+      "vascular congestion"
+    ]
+  ],
+  "chronic infection": [
+    [
+      "suggests",
+      "bronchiectasis"
+    ],
+    [
+      "has_symptom",
+      "bronchiectasis"
+    ]
+  ],
+  "thoracic cavity": [
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "concave upper border"
+    ],
+    [
+      "has_symptom",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity with concave upper border"
+    ]
+  ],
+  "pleural space": [
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_symptom",
+      "effusion"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "effusion"
+    ],
+    [
+      "has_symptom",
+      "meniscus sign"
+    ],
+    [
+      "has_symptom",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_symptom",
+      "tram-track sign"
+    ],
+    [
+      "has_symptom",
+      "parallel linear opacities"
+    ],
+    [
+      "has_finding",
+      "lateral view"
+    ],
+    [
+      "has_finding",
+      "hemithorax opacification"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift away from affected side"
+    ],
+    [
+      "has_finding",
+      "fluid in pleural space or pericardial space"
+    ],
+    [
+      "located_in",
+      "dependent portion of pleural space"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_finding",
+      "thickened walls"
+    ],
+    [
+      "has_finding",
+      "parallel linear opacities"
+    ]
+  ],
+  "pericardial space": [
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift away from affected side"
+    ],
+    [
+      "has_symptom",
+      "effusion"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "effusion"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_symptom",
+      "sharp borders"
+    ],
+    [
+      "has_symptom",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_symptom",
+      "mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "globular configuration and sharp borders"
+    ],
+    [
+      "has_finding",
+      "fluid in pleural space or pericardial space"
+    ],
+    [
+      "located_in",
+      "dependent portion of pleural space"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "hemithorax opacification"
+    ]
+  ],
+  "dilated bronchi": [
+    [
+      "has_symptom",
+      "thickened walls"
+    ],
+    [
+      "has_symptom",
+      "parallel linear opacities"
+    ],
+    [
+      "has_symptom",
+      "tram-track sign"
+    ],
+    [
+      "has_finding",
+      "thickened walls"
+    ],
+    [
+      "has_finding",
+      "parallel linear opacities"
+    ],
+    [
+      "has_finding",
+      "tram-track sign"
+    ]
+  ],
+  "hemidiaphragms": [
+    [
+      "located_in",
+      "costophrenic angles"
+    ],
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ],
+    [
+      "has_finding",
+      "right ventricular enlargement"
+    ],
+    [
+      "has_symptom",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_symptom",
+      "homogeneous opacity"
+    ],
+    [
+      "has_symptom",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_symptom",
+      "meniscus sign"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_symptom",
+      "sharp borders"
+    ],
+    [
+      "has_symptom",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_symptom",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_symptom",
+      "mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ]
+  ],
+  "finding": [
+    [
+      "suggests",
+      "infectious pneumonia"
+    ]
+  ],
+  "costophrenic angles": [
+    [
+      "located_in",
+      "lateral chest wall"
+    ],
+    [
+      "has_finding",
+      "blunting"
+    ],
+    [
+      "located_in",
+      "lateral view"
+    ],
+    [
+      "has_finding",
+      "small effusions"
+    ],
+    [
+      "has_finding",
+      "lateral view"
+    ]
+  ],
+  "morgagni hernia": [
+    [
+      "located_in",
+      "right cardiophrenic angle"
+    ],
+    [
+      "has_finding",
+      "bowel or omental fat"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "strongly_suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "contradicts",
+      "severe pulmonary hypertension"
+    ],
+    [
+      "has_finding",
+      "right ventricular enlargement"
+    ],
+    [
+      "has_finding",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_finding",
+      "effusion"
+    ],
+    [
+      "has_finding",
+      "pleural space"
+    ],
+    [
+      "has_finding",
+      "pericardial space"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ]
+  ],
+  "bochdalek hernia": [
+    [
+      "located_in",
+      "posterior diaphragm"
+    ]
+  ],
+  "hiatal hernia": [
+    [
+      "located_in",
+      "retrocardiac region"
+    ]
+  ],
+  "abnormal cardiac silhouette": [
+    [
+      "requires",
+      "echocardiography"
+    ],
+    [
+      "has_symptom",
+      "tetralogy of Fallot"
+    ],
+    [
+      "has_symptom",
+      "pericardial effusion"
+    ],
+    [
+      "has_symptom",
+      "mitral valve disease"
+    ],
+    [
+      "located_in",
+      "chest radiograph"
+    ],
+    [
+      "has_finding",
+      "enlarged cardiac silhouette"
+    ],
+    [
+      "suggests",
+      "congestive heart failure"
+    ],
+    [
+      "strongly_suggests",
+      "tetralogy of Fallot"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "suggests",
+      "pericardial effusion"
+    ],
+    [
+      "located_in",
+      "pericardium"
+    ],
+    [
+      "strongly_suggests",
+      "pericardial effusion"
+    ]
+  ],
+  "pulmonary artery enlargement": [
+    [
+      "suggests",
+      "pulmonary hypertension"
+    ],
+    [
+      "strongly_suggests",
+      "chronic pulmonary embolism"
+    ],
+    [
+      "suggests",
+      "caliber discrepancy between hilar and peripheral vessels"
+    ],
+    [
+      "contradicts",
+      "absence of caliber discrepancy between hilar and peripheral vessels"
+    ],
+    [
+      "has_symptom",
+      "caliber discrepancy between hilar and peripheral vessels"
+    ],
+    [
+      "has_finding",
+      "dilated central pulmonary arteries"
+    ],
+    [
+      "confirmed_by",
+      "echocardiography"
+    ],
+    [
+      "has_finding",
+      "chronic pulmonary embolism"
+    ],
+    [
+      "located_in",
+      "hilar and peripheral vessels"
+    ]
+  ],
+  "chest radiograph": [
+    [
+      "confirmed_by",
+      "vascular congestion"
+    ],
+    [
+      "confirmed_by",
+      "peribronchial thickening"
+    ],
+    [
+      "has_finding",
+      "fluid collection in thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ]
+  ],
+  "cystic bronchiectasis": [
+    [
+      "has_symptom",
+      "ring shadows"
+    ],
+    [
+      "has_finding",
+      "clustered ring shadows"
+    ],
+    [
+      "has_finding",
+      "bronchial dilatation"
+    ],
+    [
+      "has_finding",
+      "ring shadows"
+    ]
+  ],
+  "osseous structures": [
+    [
+      "has_finding",
+      "no acute fracture"
+    ],
+    [
+      "has_finding",
+      "degenerative changes"
+    ],
+    [
+      "has_finding",
+      "lytic lesions"
+    ],
+    [
+      "has_symptom",
+      "no acute fracture"
+    ],
+    [
+      "has_symptom",
+      "degenerative changes"
+    ],
+    [
+      "has_symptom",
+      "lytic lesions"
+    ],
+    [
+      "has_finding",
+      "joint space narrowing"
+    ],
+    [
+      "has_finding",
+      "subchondral sclerosis"
+    ],
+    [
+      "has_symptom",
+      "arthropathy"
+    ],
+    [
+      "located_in",
+      "elderly patients"
+    ],
+    [
+      "suggests",
+      "age-related wear and tear"
+    ],
+    [
+      "has_finding",
+      "degenerative disease"
+    ],
+    [
+      "has_finding",
+      "foraminal stenosis"
+    ],
+    [
+      "has_finding",
+      "nerve root compression"
+    ],
+    [
+      "has_finding",
+      "calcification of costal cartilages"
+    ],
+    [
+      "has_finding",
+      "aortic atherosclerosis"
+    ],
+    [
+      "has_finding",
+      "degenerative processes"
+    ],
+    [
+      "contradicts",
+      "acute fractures"
+    ],
+    [
+      "contradicts",
+      "infectious spondylitis"
+    ],
+    [
+      "has_finding",
+      "bronchovascular markings"
+    ],
+    [
+      "has_finding",
+      "peribronchial thickening"
+    ],
+    [
+      "has_finding",
+      "airway inflammation"
+    ],
+    [
+      "has_finding",
+      "cardiomegaly"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "chest wall"
+    ],
+    [
+      "located_in",
+      "neck"
+    ],
+    [
+      "located_in",
+      "abdominal wall"
+    ],
+    [
+      "located_in",
+      "face"
+    ],
+    [
+      "has_symptom",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "has_symptom",
+      "pulmonary hypertension"
+    ],
+    [
+      "has_symptom",
+      "right ventricular enlargement"
+    ],
+    [
+      "has_symptom",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_symptom",
+      "fluid collection"
+    ],
+    [
+      "has_symptom",
+      "homogeneous opacity"
+    ],
+    [
+      "has_symptom",
+      "concave upper border"
+    ],
+    [
+      "has_symptom",
+      "effusion"
+    ],
+    [
+      "has_symptom",
+      "fluid in pleural space"
+    ],
+    [
+      "has_symptom",
+      "fluid in pericardial space"
+    ],
+    [
+      "has_symptom",
+      "pleural effusion"
+    ],
+    [
+      "has_symptom",
+      "meniscus sign"
+    ],
+    [
+      "has_symptom",
+      "pericardial effusion"
+    ]
+  ],
+  "mediastinal contours": [
+    [
+      "located_in",
+      "mediastinum"
+    ],
+    [
+      "has_finding",
+      "normal"
+    ],
+    [
+      "has_finding",
+      "widening"
+    ],
+    [
+      "has_finding",
+      "mass effect"
+    ]
+  ],
+  "hemidiaphragm": [
+    [
+      "located_in",
+      "thoracic spine"
+    ]
+  ],
+  "hemidiaphragm border": [
+    [
+      "suggests",
+      "chronic inflammation and fibrosis"
+    ],
+    [
+      "suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "suggests",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "suggests",
+      "post-infectious bronchiectasis"
+    ],
+    [
+      "suggests",
+      "pneumonia"
+    ],
+    [
+      "suggests",
+      "tuberculosis"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ],
+    [
+      "located_in",
+      "pericardial space"
+    ]
+  ],
+  "cardiogenic pulmonary edema": [
+    [
+      "has_finding",
+      "bilateral perihilar infiltrates"
+    ],
+    [
+      "has_finding",
+      "bat-wing pattern"
+    ],
+    [
+      "located_in",
+      "lung bases"
+    ],
+    [
+      "confirmed_by",
+      "cardiomegaly"
+    ],
+    [
+      "confirmed_by",
+      "pleural effusion"
+    ],
+    [
+      "has_symptom",
+      "bilateral perihilar infiltrates"
+    ],
+    [
+      "has_symptom",
+      "bat-wing pattern"
+    ],
+    [
+      "has_symptom",
+      "Kerley B lines"
+    ],
+    [
+      "has_symptom",
+      "vascular cephalization"
+    ],
+    [
+      "has_symptom",
+      "peribronchial cuffing"
+    ],
+    [
+      "requires",
+      "bronchodilator therapy"
+    ],
+    [
+      "located_in",
+      "bilateral perihilar infiltrates"
+    ],
+    [
+      "suggests",
+      "cardiomegaly"
+    ]
+  ],
+  "calcification": [
+    [
+      "has_finding",
+      "costal cartilages"
+    ],
+    [
+      "has_finding",
+      "aortic atherosclerosis"
+    ],
+    [
+      "located_in",
+      "body"
+    ],
+    [
+      "has_finding",
+      "generalized degenerative processes"
+    ],
+    [
+      "has_finding",
+      "lymph nodes"
+    ],
+    [
+      "has_finding",
+      "vascular calcifications"
+    ],
+    [
+      "has_finding",
+      "pleural plaques"
+    ],
+    [
+      "located_in",
+      "anterior chest wall"
+    ]
+  ],
+  "symmetric bilateral increased markings": [
+    [
+      "suggests",
+      "cardiac etiology"
+    ],
+    [
+      "has_symptom",
+      "cardiac etiology"
+    ]
+  ],
+  "pulmonary hypertension": [
+    [
+      "located_in",
+      "right lobe"
+    ],
+    [
+      "located_in",
+      "right ventricle"
+    ]
+  ],
+  "posterior costophrenic angles": [
+    [
+      "has_symptom",
+      "blunting"
+    ],
+    [
+      "has_finding",
+      "blunting"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ]
+  ],
+  "lateral view": [
+    [
+      "has_symptom",
+      "blunting"
+    ]
+  ],
+  "hemithorax": [
+    [
+      "has_finding",
+      "complete opacification"
+    ],
+    [
+      "has_symptom",
+      "mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "complete hemithorax opacification"
+    ]
+  ],
+  "right lower lobe": [
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_symptom",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_symptom",
+      "effusion"
+    ],
+    [
+      "has_finding",
+      "pleural space"
+    ],
+    [
+      "has_finding",
+      "pericardial space"
+    ],
+    [
+      "has_symptom",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "cardiac silhouette"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_symptom",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "posterior costophrenic angles"
+    ],
+    [
+      "has_finding",
+      "lateral view"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift"
+    ],
+    [
+      "has_symptom",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_symptom",
+      "affected side"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_symptom",
+      "thickened walls"
+    ],
+    [
+      "has_finding",
+      "parallel linear opacities"
+    ]
+  ],
+  "osteoporosis": [
+    [
+      "requires",
+      "mechanical support"
+    ],
+    [
+      "requires",
+      "bronchoscopy"
+    ],
+    [
+      "requires",
+      "abdominal imaging"
+    ],
+    [
+      "requires",
+      "echocardiography"
+    ],
+    [
+      "has_finding",
+      "joint space narrowing"
+    ],
+    [
+      "has_finding",
+      "subchondral sclerosis"
+    ],
+    [
+      "has_finding",
+      "calcification of costal cartilages"
+    ],
+    [
+      "has_finding",
+      "aortic atherosclerosis"
+    ],
+    [
+      "has_finding",
+      "multiple consecutive Rib Fracture s"
+    ],
+    [
+      "has_symptom",
+      "chest wall instability"
+    ],
+    [
+      "located_in",
+      "elderly patients"
+    ],
+    [
+      "absence_weakens",
+      "lung nodule"
+    ],
+    [
+      "confirmed_by",
+      "Rib Fracture s"
+    ],
+    [
+      "has_finding",
+      "lower Rib Fracture s"
+    ],
+    [
+      "has_symptom",
+      "hepatic or splenic injury"
+    ],
+    [
+      "absence_weakens",
+      "pneumothorax or hemothorax"
+    ],
+    [
+      "has_finding",
+      "healing Rib Fracture"
+    ],
+    [
+      "has_symptom",
+      "exuberant callus"
+    ],
+    [
+      "has_symptom",
+      "multiple consecutive Rib Fracture s"
+    ],
+    [
+      "has_symptom",
+      "pneumothorax"
+    ],
+    [
+      "has_symptom",
+      "hemothorax"
+    ],
+    [
+      "has_symptom",
+      "abdominal imaging"
+    ],
+    [
+      "has_symptom",
+      "respiratory compromise"
+    ],
+    [
+      "has_symptom",
+      "atelectasis"
+    ],
+    [
+      "has_symptom",
+      "restrictive lung disease"
+    ],
+    [
+      "has_symptom",
+      "decreased total lung capacity"
+    ],
+    [
+      "has_finding",
+      "chest wall instability"
+    ],
+    [
+      "strongly_suggests",
+      "vertebral compression fracture"
+    ],
+    [
+      "has_symptom",
+      "vertebral compression fracture"
+    ],
+    [
+      "has_finding",
+      "vertebral compression fracture"
+    ],
+    [
+      "has_symptom",
+      "rib crowding"
+    ],
+    [
+      "has_symptom",
+      "increased intercostal spaces"
+    ],
+    [
+      "has_symptom",
+      "decreased pulmonary function"
+    ],
+    [
+      "has_symptom",
+      "hunched-forward posture"
+    ],
+    [
+      "has_symptom",
+      "decreased anteroposterior thoracic diameter"
+    ],
+    [
+      "strongly_suggests",
+      "multiple consecutive Rib Fracture s"
+    ],
+    [
+      "has_finding",
+      "cortical discontinuity"
+    ],
+    [
+      "has_finding",
+      "step-off deformity"
+    ],
+    [
+      "has_finding",
+      "soft tissue swelling"
+    ],
+    [
+      "has_finding",
+      "local hematoma formation"
+    ],
+    [
+      "has_finding",
+      "cortical disruption"
+    ],
+    [
+      "has_finding",
+      "adjacent soft tissue swelling"
+    ],
+    [
+      "has_finding",
+      "fracture site"
+    ],
+    [
+      "has_finding",
+      "callus formation"
+    ],
+    [
+      "has_finding",
+      "bridging of the fracture gap"
+    ],
+    [
+      "has_finding",
+      "bone repair"
+    ],
+    [
+      "has_finding",
+      "lytic bone lesion"
+    ],
+    [
+      "has_finding",
+      "underlying malignancy"
+    ],
+    [
+      "has_finding",
+      "metastatic disease"
+    ]
+  ],
+  "pleural_effusion": [
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_symptom",
+      "meniscus sign"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ]
+  ],
+  "pericardial_effusion": [
+    [
+      "located_in",
+      "pericardial space"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_symptom",
+      "sharp borders"
+    ],
+    [
+      "has_symptom",
+      "cardiac silhouette"
+    ]
+  ],
+  "bullae": [
+    [
+      "has_symptom",
+      "avascular_lucent_areas"
+    ],
+    [
+      "has_symptom",
+      "imperceptible_walls"
+    ],
+    [
+      "has_symptom",
+      "significant_lung_volume"
+    ],
+    [
+      "has_finding",
+      "avascular lucent areas"
+    ],
+    [
+      "has_symptom",
+      "imperceptible walls"
+    ],
+    [
+      "located_in",
+      "lung volume"
+    ],
+    [
+      "located_in",
+      "upper lobes"
+    ],
+    [
+      "has_symptom",
+      "avascular lucent areas"
+    ],
+    [
+      "has_symptom",
+      "ventilation-perfusion mismatch"
+    ],
+    [
+      "has_symptom",
+      "significant lung volume"
+    ],
+    [
+      "has_finding",
+      "imperceptible walls"
+    ],
+    [
+      "has_finding",
+      "significant lung volume"
+    ],
+    [
+      "has_finding",
+      "adjacent normal lung parenchyma"
+    ],
+    [
+      "has_finding",
+      "ventilation-perfusion mismatch"
+    ]
+  ],
+  "subcutaneous_emphysema": [
+    [
+      "has_symptom",
+      "streaky_pattern"
+    ],
+    [
+      "has_symptom",
+      "muscle_bundles"
+    ],
+    [
+      "has_symptom",
+      "fascial_layers"
+    ]
+  ],
+  "prominent vascular markings": [
+    [
+      "suggests",
+      "vascular congestion"
+    ]
+  ],
+  "subcutaneous emphysema": [
+    [
+      "has_finding",
+      "streaky pattern"
+    ],
+    [
+      "has_symptom",
+      "muscle bundles"
+    ],
+    [
+      "has_symptom",
+      "fascial layers"
+    ],
+    [
+      "located_in",
+      "chest wall"
+    ],
+    [
+      "located_in",
+      "neck"
+    ],
+    [
+      "located_in",
+      "abdominal wall"
+    ],
+    [
+      "located_in",
+      "soft tissues of chest wall"
+    ],
+    [
+      "has_symptom",
+      "crepitus"
+    ],
+    [
+      "requires",
+      "air tracking"
+    ],
+    [
+      "absence_weakens",
+      "normal subcutaneous tissue"
+    ],
+    [
+      "has_symptom",
+      "streaky pattern"
+    ]
+  ],
+  "diaphragmatic hernia": [
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "suggests",
+      "Morgagni hernia"
+    ],
+    [
+      "suggests",
+      "Bochdalek hernia"
+    ],
+    [
+      "suggests",
+      "hiatal hernia"
+    ],
+    [
+      "has_symptom",
+      "respiratory compromise"
+    ],
+    [
+      "has_finding",
+      "atelectasis"
+    ],
+    [
+      "has_finding",
+      "bowel or omental fat"
+    ],
+    [
+      "has_symptom",
+      "atelectasis"
+    ],
+    [
+      "requires",
+      "mechanical support"
+    ],
+    [
+      "strongly_suggests",
+      "traumatic diaphragmatic rupture"
+    ],
+    [
+      "contradicts",
+      "normal diaphragm"
+    ],
+    [
+      "confirmed_by",
+      "chest radiograph"
+    ],
+    [
+      "has_finding",
+      "herniated abdominal contents"
+    ],
+    [
+      "suggests",
+      "diaphragmatic rupture"
+    ]
+  ],
+  "lower lung fields": [
+    [
+      "located_in",
+      "lower lobes"
+    ]
+  ],
+  "lower lobe predominance": [
+    [
+      "suggests",
+      "post-infectious bronchiectasis"
+    ]
+  ],
+  "post-infectious bronchiectasis": [
+    [
+      "has_symptom",
+      "chronic productive cough"
+    ],
+    [
+      "has_symptom",
+      "recurrent respiratory infections"
+    ],
+    [
+      "has_symptom",
+      "hemoptysis"
+    ]
+  ],
+  "decubitus view": [
+    [
+      "located_in",
+      "lateral chest wall"
+    ],
+    [
+      "strongly_suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ]
+  ],
+  "layering of fluid": [
+    [
+      "located_in",
+      "lateral chest wall"
+    ],
+    [
+      "confirmed_by",
+      "decubitus view"
+    ],
+    [
+      "has_symptom",
+      "along the lateral chest wall"
+    ]
+  ],
+  "joint space narrowing": [
+    [
+      "has_finding",
+      "subchondral sclerosis"
+    ],
+    [
+      "located_in",
+      "subchondral sclerosis"
+    ],
+    [
+      "has_symptom",
+      "elderly patients"
+    ],
+    [
+      "located_in",
+      "joint"
+    ],
+    [
+      "has_finding",
+      "elderly patients"
+    ]
+  ],
+  "degenerative disease": [
+    [
+      "has_finding",
+      "foraminal stenosis"
+    ],
+    [
+      "has_finding",
+      "nerve root compression"
+    ],
+    [
+      "has_symptom",
+      "foraminal stenosis"
+    ],
+    [
+      "has_symptom",
+      "nerve root compression"
+    ],
+    [
+      "strongly_suggests",
+      "foraminal stenosis"
+    ],
+    [
+      "strongly_suggests",
+      "nerve root compression"
+    ],
+    [
+      "located_in",
+      "spine"
+    ]
+  ],
+  "fluid": [
+    [
+      "located_in",
+      "lung periphery"
+    ],
+    [
+      "located_in",
+      "alveoli"
+    ],
+    [
+      "has_finding",
+      "consolidation"
+    ],
+    [
+      "has_finding",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "concave upper border"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ],
+    [
+      "located_in",
+      "pericardial space"
+    ]
+  ],
+  "air bronchograms": [
+    [
+      "has_finding",
+      "patent airways"
+    ],
+    [
+      "has_finding",
+      "consolidated lung parenchyma"
+    ],
+    [
+      "has_symptom",
+      "airspace disease"
+    ],
+    [
+      "located_in",
+      "consolidated region"
+    ],
+    [
+      "suggests",
+      "airspace disease"
+    ]
+  ],
+  "dataset cases": [
+    [
+      "strongly_suggests",
+      "cardiomegaly"
+    ]
+  ],
+  "cardiac etiology": [
+    [
+      "suggests",
+      "chronic infection"
+    ],
+    [
+      "suggests",
+      "bronchiectasis"
+    ],
+    [
+      "suggests",
+      "asymmetric distribution"
+    ],
+    [
+      "has_symptom",
+      "peribronchial thickening"
+    ]
+  ],
+  "volume loss": [
+    [
+      "located_in",
+      "lung"
+    ],
+    [
+      "located_in",
+      "hemidiaphragm"
+    ],
+    [
+      "located_in",
+      "mediastinal shift"
+    ],
+    [
+      "requires",
+      "bronchoscopy"
+    ],
+    [
+      "has_symptom",
+      "elevation of hemidiaphragm"
+    ],
+    [
+      "has_symptom",
+      "ipsilateral mediastinal shift"
+    ],
+    [
+      "has_symptom",
+      "compensatory hyperinflation"
+    ],
+    [
+      "has_symptom",
+      "linear atelectasis"
+    ],
+    [
+      "has_symptom",
+      "atelectasis"
+    ],
+    [
+      "located_in",
+      "affected region"
+    ],
+    [
+      "has_finding",
+      "decreased lung volume"
+    ],
+    [
+      "has_finding",
+      "elevation of hemidiaphragm"
+    ],
+    [
+      "has_finding",
+      "ipsilateral mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "compensatory hyperinflation"
+    ]
+  ],
+  "fibrosis": [
+    [
+      "located_in",
+      "volume loss"
+    ],
+    [
+      "located_in",
+      "lung"
+    ],
+    [
+      "located_in",
+      "thoracic volume"
+    ],
+    [
+      "has_finding",
+      "volume loss"
+    ],
+    [
+      "has_symptom",
+      "traction bronchiectasis"
+    ],
+    [
+      "has_symptom",
+      "irreversible lung damage"
+    ]
+  ],
+  "obstructive atelectasis": [
+    [
+      "requires",
+      "bronchoscopy"
+    ]
+  ],
+  "right heart border": [
+    [
+      "strongly_suggests",
+      "congestive heart failure"
+    ],
+    [
+      "located_in",
+      "right atrium"
+    ]
+  ],
+  "left ventricle": [
+    [
+      "located_in",
+      "chest"
+    ],
+    [
+      "located_in",
+      "heart"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "chest radiograph"
+    ],
+    [
+      "located_in",
+      "cardiothoracic ratio"
+    ],
+    [
+      "located_in",
+      "cardiac silhouette"
+    ],
+    [
+      "located_in",
+      "left mid-clavicular line"
+    ],
+    [
+      "located_in",
+      "left heart border"
+    ],
+    [
+      "located_in",
+      "cardiac apex"
+    ],
+    [
+      "located_in",
+      "left ventricular enlargement"
+    ],
+    [
+      "strongly_suggests",
+      "congestive heart failure"
+    ],
+    [
+      "strongly_suggests",
+      "pulmonary vascular redistribution"
+    ],
+    [
+      "strongly_suggests",
+      "pleural effusion"
+    ],
+    [
+      "strongly_suggests",
+      "pulmonary edema"
+    ],
+    [
+      "suggests",
+      "congestive heart failure"
+    ],
+    [
+      "suggests",
+      "pulmonary vascular redistribution"
+    ],
+    [
+      "suggests",
+      "pleural effusion"
+    ],
+    [
+      "suggests",
+      "pulmonary edema"
+    ],
+    [
+      "has_finding",
+      "arthropathy"
+    ]
+  ],
+  "foraminal stenosis": [
+    [
+      "requires",
+      "bronchoscopy"
+    ],
+    [
+      "has_symptom",
+      "nerve root compression"
+    ],
+    [
+      "located_in",
+      "spine"
+    ],
+    [
+      "has_finding",
+      "nerve root compression"
+    ],
+    [
+      "has_finding",
+      "calcification of costal cartilages"
+    ],
+    [
+      "has_finding",
+      "aortic atherosclerosis"
+    ]
+  ],
+  "aortic atherosclerosis": [
+    [
+      "located_in",
+      "generalized degenerative processes"
+    ],
+    [
+      "has_symptom",
+      "generalized degenerative processes"
+    ],
+    [
+      "has_finding",
+      "generalized degenerative processes"
+    ],
+    [
+      "located_in",
+      "aorta"
+    ],
+    [
+      "has_symptom",
+      "arthropathy"
+    ],
+    [
+      "suggests",
+      "generalized degenerative processes"
+    ]
+  ],
+  "right ventricle": [
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "enlargement"
+    ],
+    [
+      "has_symptom",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_finding",
+      "upward cardiac apex displacement"
+    ]
+  ],
+  "bronchi": [
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_symptom",
+      "thickened walls"
+    ],
+    [
+      "has_finding",
+      "parallel linear opacities"
+    ],
+    [
+      "has_symptom",
+      "tram-track sign"
+    ],
+    [
+      "has_finding",
+      "clustered ring shadows"
+    ],
+    [
+      "has_symptom",
+      "bronchial dilatation"
+    ],
+    [
+      "has_symptom",
+      "cross-section"
+    ],
+    [
+      "has_finding",
+      "crowding of bronchial markings"
+    ],
+    [
+      "has_finding",
+      "dilated"
+    ],
+    [
+      "has_finding",
+      "thickened walls"
+    ],
+    [
+      "has_finding",
+      "dilated walls"
+    ],
+    [
+      "has_finding",
+      "tram-track sign"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi with thickened walls"
+    ]
+  ],
+  "right atrium": [
+    [
+      "located_in",
+      "right lower lobe"
+    ],
+    [
+      "located_in",
+      "left lower lobe"
+    ],
+    [
+      "located_in",
+      "left upper lobe"
+    ],
+    [
+      "located_in",
+      "right upper lobe"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "has_symptom",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_symptom",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_symptom",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_symptom",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_symptom",
+      "parallel linear opacities"
+    ],
+    [
+      "has_finding",
+      "cystic bronchiectasis"
+    ],
+    [
+      "has_symptom",
+      "clustered ring shadows"
+    ],
+    [
+      "has_finding",
+      "crowding of bronchial markings"
+    ],
+    [
+      "has_symptom",
+      "chronic inflammation and fibrosis"
+    ],
+    [
+      "has_finding",
+      "bullae"
+    ],
+    [
+      "has_symptom",
+      "avascular lucent areas"
+    ]
+  ],
+  "pulmonary edema": [
+    [
+      "strongly_suggests",
+      "congestive heart failure"
+    ],
+    [
+      "located_in",
+      "bilateral perihilar infiltrates"
+    ],
+    [
+      "has_symptom",
+      "vascular cephalization"
+    ],
+    [
+      "has_symptom",
+      "peribronchial cuffing"
+    ],
+    [
+      "has_symptom",
+      "indistinct vascular margins"
+    ],
+    [
+      "has_finding",
+      "kerley b lines"
+    ],
+    [
+      "has_finding",
+      "air bronchograms"
+    ],
+    [
+      "contradicts",
+      "pneumothorax"
+    ],
+    [
+      "requires",
+      "investigation for parapneumonic process"
+    ],
+    [
+      "requires",
+      "investigation for malignancy"
+    ],
+    [
+      "requires",
+      "investigation for pulmonary embolism"
+    ],
+    [
+      "confirmed_by",
+      "pleural effusion"
+    ],
+    [
+      "absence_weakens",
+      "tension pneumothorax"
+    ],
+    [
+      "located_in",
+      "lung bases"
+    ],
+    [
+      "located_in",
+      "upper lobes"
+    ],
+    [
+      "located_in",
+      "lower lobes"
+    ],
+    [
+      "requires",
+      "bronchodilator therapy"
+    ]
+  ],
+  "indistinct vascular margins": [
+    [
+      "strongly_suggests",
+      "vascular congestion"
+    ],
+    [
+      "strongly_suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ]
+  ],
+  "vascular congestion": [
+    [
+      "has_symptom",
+      "airway inflammation"
+    ],
+    [
+      "suggests",
+      "vascular markings"
+    ]
+  ],
+  "airway inflammation": [
+    [
+      "has_symptom",
+      "increased bronchovascular markings"
+    ]
+  ],
+  "increased bronchovascular markings": [
+    [
+      "located_in",
+      "lung periphery"
+    ]
+  ],
+  "atelectasis": [
+    [
+      "located_in",
+      "lung"
+    ],
+    [
+      "requires",
+      "bronchoscopy"
+    ],
+    [
+      "suggests",
+      "obstructive atelectasis"
+    ]
+  ],
+  "dependent portion of pleural space": [
+    [
+      "has_finding",
+      "meniscus sign"
+    ]
+  ],
+  "mediastinum": [
+    [
+      "has_finding",
+      "shift away from affected side"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift away from affected side"
+    ]
+  ],
+  "interstitial fluid": [
+    [
+      "located_in",
+      "lung"
+    ],
+    [
+      "located_in",
+      "interlobular septal thickening"
+    ],
+    [
+      "located_in",
+      "fluid accumulation"
+    ],
+    [
+      "located_in",
+      "lung bases"
+    ],
+    [
+      "located_in",
+      "periphery"
+    ]
+  ],
+  "peribronchial cuffing": [
+    [
+      "located_in",
+      "lung"
+    ],
+    [
+      "located_in",
+      "both lung fields"
+    ]
+  ],
+  "crowding of bronchial markings": [
+    [
+      "suggests",
+      "chronic inflammation and fibrosis"
+    ],
+    [
+      "suggests",
+      "volume loss"
+    ]
+  ],
+  "absence of  increased lung markings": [
+    [
+      "located_in",
+      "lateral hemithorax"
+    ],
+    [
+      "suggests",
+      "pneumothorax"
+    ],
+    [
+      "strongly_suggests",
+      "age-related wear and tear"
+    ],
+    [
+      "suggests",
+      "chronic inflammation and fibrosis"
+    ],
+    [
+      "suggests",
+      "post-infectious bronchiectasis"
+    ],
+    [
+      "suggests",
+      "severe pneumonia"
+    ],
+    [
+      "suggests",
+      "tuberculosis"
+    ],
+    [
+      "contradicts",
+      "normal  Increased Lung Markings"
+    ],
+    [
+      "located_in",
+      "lower lobe"
+    ],
+    [
+      "located_in",
+      "upper lobes"
+    ]
+  ],
+  "nerve root compression": [
+    [
+      "has_symptom",
+      "pain"
+    ],
+    [
+      "located_in",
+      "spine"
+    ]
+  ],
+  "lateral hemithorax": [
+    [
+      "located_in",
+      "chest wall"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ],
+    [
+      "located_in",
+      "pericardial space"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_finding",
+      "effusion"
+    ],
+    [
+      "has_finding",
+      "opacity"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_finding",
+      "tram-track sign"
+    ],
+    [
+      "has_finding",
+      "bronchiectasis"
+    ],
+    [
+      "has_finding",
+      "cystic bronchiectasis"
+    ],
+    [
+      "has_finding",
+      "crowding of bronchial markings"
+    ],
+    [
+      "has_finding",
+      "bullae"
+    ],
+    [
+      "has_finding",
+      "subcutaneous air"
+    ],
+    [
+      "has_finding",
+      "subcutaneous emphysema"
+    ]
+  ],
+  "visceral pleural line": [
+    [
+      "located_in",
+      "lateral hemithorax"
+    ]
+  ],
+  "right-sided pneumothorax": [
+    [
+      "strongly_suggests",
+      "subcutaneous emphysema"
+    ],
+    [
+      "suggests",
+      "paraseptal bullae"
+    ],
+    [
+      "has_symptom",
+      "subcutaneous emphysema"
+    ],
+    [
+      "has_finding",
+      "paraseptal bullae"
+    ]
+  ],
+  "paraseptal bullae": [
+    [
+      "located_in",
+      "pleural surface"
+    ],
+    [
+      "located_in",
+      "interlobar fissures"
+    ],
+    [
+      "has_symptom",
+      "spontaneous pneumothorax"
+    ],
+    [
+      "has_finding",
+      "risk of spontaneous pneumothorax"
+    ]
+  ],
+  "severe pulmonary hypertension": [
+    [
+      "has_finding",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "located_in",
+      "right ventricle"
+    ]
+  ],
+  "fluid collection in thoracic cavity": [
+    [
+      "has_symptom",
+      "homogeneous opacity"
+    ],
+    [
+      "has_symptom",
+      "concave upper border"
+    ],
+    [
+      "has_symptom",
+      "homogeneous opacity with concave upper border"
+    ]
+  ],
+  "chronic smoking history": [
+    [
+      "strongly_suggests",
+      "emphysema"
+    ]
+  ],
+  "hyperinflation": [
+    [
+      "located_in",
+      "upper lobes"
+    ],
+    [
+      "has_finding",
+      "flattened hemidiaphragms"
+    ],
+    [
+      "has_finding",
+      "increased retrosternal airspace"
+    ],
+    [
+      "has_finding",
+      "hyperlucent lung fields"
+    ],
+    [
+      "has_finding",
+      "diminished peripheral vascular markings"
+    ],
+    [
+      "has_finding",
+      "decreased pulmonary perfusion"
+    ],
+    [
+      "has_finding",
+      "flattened diaphragmatic domes"
+    ],
+    [
+      "requires",
+      "bronchodilator therapy"
+    ]
+  ],
+  "usual interstitial pneumonia": [
+    [
+      "has_finding",
+      "subpleural reticulation"
+    ],
+    [
+      "has_finding",
+      "peripheral distribution"
+    ],
+    [
+      "has_finding",
+      "architectural distortion"
+    ],
+    [
+      "has_finding",
+      "volume loss"
+    ],
+    [
+      "has_symptom",
+      "progressive restrictive physiology"
+    ],
+    [
+      "has_symptom",
+      "declining forced vital capacity"
+    ]
+  ],
+  "homogeneous opacity": [
+    [
+      "has_finding",
+      "concave upper border"
+    ]
+  ],
+  "lung fields": [
+    [
+      "located_in",
+      "both lung fields"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ]
+  ],
+  "diffuse parenchymal destruction": [
+    [
+      "located_in",
+      "both lung fields"
+    ],
+    [
+      "has_finding",
+      "hyperlucency"
+    ],
+    [
+      "has_finding",
+      "paucity of vascular markings"
+    ]
+  ],
+  "large bullae": [
+    [
+      "located_in",
+      "upper lobes"
+    ],
+    [
+      "has_finding",
+      "avascular lucent areas"
+    ]
+  ],
+  "flattened hemidiaphragms": [
+    [
+      "located_in",
+      "at or below the seventh anterior rib"
+    ],
+    [
+      "has_finding",
+      "chronic air trapping"
+    ]
+  ],
+  "hyperlucent lung fields": [
+    [
+      "located_in",
+      "both lung fields"
+    ],
+    [
+      "has_finding",
+      "decreased pulmonary perfusion"
+    ],
+    [
+      "has_finding",
+      "diminished peripheral vascular markings"
+    ]
+  ],
+  "bilateral reticular opacities": [
+    [
+      "has_finding",
+      "honeycombing pattern"
+    ],
+    [
+      "has_finding",
+      "clustered cystic airspaces"
+    ],
+    [
+      "has_finding",
+      "thick walls"
+    ]
+  ],
+  "diffuse bilateral reticulonodular opacities": [
+    [
+      "has_finding",
+      "linear reticular opacities"
+    ],
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "suggests",
+      "active inflammation"
+    ],
+    [
+      "suggests",
+      "chronic interstitial changes"
+    ],
+    [
+      "suggests",
+      "interstitial involvement"
+    ],
+    [
+      "suggests",
+      "interstitial disease"
+    ],
+    [
+      "suggests",
+      "sarcoidosis"
+    ],
+    [
+      "suggests",
+      "hypersensitivity pneumonitis"
+    ],
+    [
+      "suggests",
+      "drug-induced pneumonitis"
+    ],
+    [
+      "suggests",
+      "interstitial lung disease"
+    ],
+    [
+      "suggests",
+      "fibrosis"
+    ],
+    [
+      "suggests",
+      "idiopathic pulmonary fibrosis"
+    ],
+    [
+      "suggests",
+      "connective tissue disease"
+    ]
+  ],
+  "alveolar filling process": [
+    [
+      "suggests",
+      "airspace disease"
+    ]
+  ],
+  "cardiac apex": [
+    [
+      "located_in",
+      "chest"
+    ],
+    [
+      "located_in",
+      "right ventricle"
+    ],
+    [
+      "has_symptom",
+      "upward cardiac apex displacement"
+    ]
+  ],
+  "both lung fields": [
+    [
+      "has_finding",
+      "clear lung fields bilaterally"
+    ],
+    [
+      "has_finding",
+      "well-defined pulmonary vasculature"
+    ],
+    [
+      "has_finding",
+      "normal cardiac size"
+    ],
+    [
+      "has_finding",
+      "sharp and well-defined hemidiaphragms"
+    ],
+    [
+      "has_finding",
+      "trachea maintains midline position"
+    ],
+    [
+      "has_finding",
+      "no acute fracture"
+    ],
+    [
+      "has_finding",
+      "no degenerative changes"
+    ],
+    [
+      "has_finding",
+      "no lytic lesions"
+    ],
+    [
+      "has_finding",
+      "normal mediastinal contours"
+    ],
+    [
+      "has_finding",
+      "absence of acute cardiopulmonary disease"
+    ],
+    [
+      "has_finding",
+      "absence of pneumonia"
+    ],
+    [
+      "has_finding",
+      "absence of congestive heart failure"
+    ],
+    [
+      "has_finding",
+      "absence of pneumothorax"
+    ]
+  ],
+  "mid-clavicular line": [
+    [
+      "located_in",
+      "right lower lobe"
+    ],
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "chest"
+    ]
+  ],
+  "bronchial dilatation": [
+    [
+      "has_finding",
+      "clustered ring shadows"
+    ]
+  ],
+  "bronchial markings": [
+    [
+      "has_finding",
+      "crowding"
+    ],
+    [
+      "has_finding",
+      "volume loss"
+    ]
+  ],
+  "retrosternal airspace": [
+    [
+      "located_in",
+      "lung fields"
+    ]
+  ],
+  "irregular septal lines": [
+    [
+      "has_finding",
+      "joint space narrowing"
+    ],
+    [
+      "has_finding",
+      "subchondral sclerosis"
+    ],
+    [
+      "has_symptom",
+      "age-related wear and tear"
+    ],
+    [
+      "suggests",
+      "severe degenerative disease"
+    ],
+    [
+      "has_finding",
+      "foraminal stenosis"
+    ],
+    [
+      "has_finding",
+      "nerve root compression"
+    ],
+    [
+      "has_finding",
+      "calcification of costal cartilages"
+    ],
+    [
+      "has_finding",
+      "aortic atherosclerosis"
+    ],
+    [
+      "has_finding",
+      "degenerative changes"
+    ],
+    [
+      "contradicts",
+      "acute fractures"
+    ],
+    [
+      "contradicts",
+      "infectious spondylitis"
+    ],
+    [
+      "located_in",
+      "chest radiograph"
+    ],
+    [
+      "has_finding",
+      "diffusely increased bronchovascular markings"
+    ],
+    [
+      "has_finding",
+      "accentuation of peripheral lung zones"
+    ],
+    [
+      "has_finding",
+      "vascular congestion"
+    ],
+    [
+      "has_finding",
+      "peribronchial thickening"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "has_finding",
+      "right ventricular enlargement"
+    ],
+    [
+      "has_finding",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_finding",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "pleural space"
+    ],
+    [
+      "has_finding",
+      "pericardial space"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "cardiac silhouette"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_finding",
+      "lateral view"
+    ]
+  ],
+  "reticulonodular opacities": [
+    [
+      "located_in",
+      "all lung zones"
+    ],
+    [
+      "has_finding",
+      "diffuse bilateral reticulonodular opacities"
+    ],
+    [
+      "suggests",
+      "active inflammation"
+    ],
+    [
+      "suggests",
+      "chronic interstitial changes"
+    ],
+    [
+      "has_finding",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "has_finding",
+      "left-to-right cardiac shunts"
+    ]
+  ],
+  "bilateral reticulonodular opacities": [
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "strongly_suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ]
+  ],
+  "linear reticular opacities": [
+    [
+      "has_finding",
+      "bilateral reticular opacities with honeycombing pattern"
+    ],
+    [
+      "has_finding",
+      "traction bronchiectasis"
+    ],
+    [
+      "has_finding",
+      "subpleural reticulation with peripheral distribution"
+    ],
+    [
+      "has_finding",
+      "ground-glass opacification"
+    ],
+    [
+      "has_finding",
+      "peribronchovascular thickening"
+    ],
+    [
+      "has_finding",
+      "irregular septal lines"
+    ],
+    [
+      "has_finding",
+      "preservation of lung volumes"
+    ],
+    [
+      "has_finding",
+      "early interstitial disease"
+    ],
+    [
+      "has_finding",
+      "advanced fibrosis"
+    ],
+    [
+      "has_finding",
+      "sarcoidosis"
+    ],
+    [
+      "has_finding",
+      "hypersensitivity pneumonitis"
+    ],
+    [
+      "has_finding",
+      "drug-induced pneumonitis"
+    ]
+  ],
+  "advanced_fibrosis": [
+    [
+      "strongly_suggests",
+      "interstitial_lung_disease"
+    ],
+    [
+      "suggests",
+      "idiopathic_pulmonary_fibrosis"
+    ],
+    [
+      "suggests",
+      "connective_tissue_disease"
+    ],
+    [
+      "suggests",
+      "chronic_hypersensitivity_pneumonitis"
+    ],
+    [
+      "contradicts",
+      "early_interstitial_disease"
+    ],
+    [
+      "located_in",
+      "lung_fields"
+    ],
+    [
+      "has_finding",
+      "diffuse_bilateral_reticulonodular_opacities"
+    ],
+    [
+      "has_finding",
+      "ground-glass_opacification"
+    ],
+    [
+      "has_finding",
+      "peribronchovascular_thickening"
+    ],
+    [
+      "has_finding",
+      "irregular_septal_lines"
+    ],
+    [
+      "absence_weakens",
+      "preservation_of_lung_volumes"
+    ],
+    [
+      "confirmed_by",
+      "interstitial_lung_disease_progression"
+    ]
+  ],
+  "advanced fibrosis": [
+    [
+      "strongly_suggests",
+      "chronic inflammation and fibrosis"
+    ],
+    [
+      "suggests",
+      "chronic inflammation and fibrosis"
+    ]
+  ],
+  "sarcoidosis": [
+    [
+      "suggests",
+      "granulomatous disease"
+    ],
+    [
+      "contradicts",
+      "idiopathic pulmonary fibrosis"
+    ]
+  ],
+  "bilateral perihilar infiltrates": [
+    [
+      "located_in",
+      "upper lobes"
+    ]
+  ],
+  "kerley b lines": [
+    [
+      "located_in",
+      "lung bases"
+    ]
+  ],
+  "hypersensitivity pneumonitis": [
+    [
+      "strongly_suggests",
+      "chronic inflammation and fibrosis"
+    ],
+    [
+      "suggests",
+      "chronic productive cough"
+    ],
+    [
+      "suggests",
+      "recurrent respiratory infections"
+    ],
+    [
+      "suggests",
+      "hemoptysis"
+    ],
+    [
+      "contradicts",
+      "severe emphysema"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_symptom",
+      "chronic productive cough"
+    ],
+    [
+      "has_symptom",
+      "recurrent respiratory infections"
+    ],
+    [
+      "has_symptom",
+      "hemoptysis"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ],
+    [
+      "located_in",
+      "pericardial space"
+    ],
+    [
+      "confirmed_by",
+      "chest radiograph"
+    ]
+  ],
+  "spiculated margins": [
+    [
+      "suggests",
+      "chronic inflammation and fibrosis"
+    ],
+    [
+      "suggests",
+      "post-infectious bronchiectasis"
+    ],
+    [
+      "suggests",
+      "severe pneumonia"
+    ],
+    [
+      "suggests",
+      "tuberculosis"
+    ],
+    [
+      "suggests",
+      "chronic productive cough"
+    ],
+    [
+      "suggests",
+      "recurrent respiratory infections"
+    ],
+    [
+      "suggests",
+      "hemoptysis"
+    ],
+    [
+      "contradicts",
+      "normal lung parenchyma"
+    ],
+    [
+      "has_finding",
+      "bullae"
+    ],
+    [
+      "has_finding",
+      "bronchiectasis"
+    ],
+    [
+      "has_symptom",
+      "chronic productive cough"
+    ],
+    [
+      "has_symptom",
+      "recurrent respiratory infections"
+    ],
+    [
+      "has_symptom",
+      "hemoptysis"
+    ],
+    [
+      "located_in",
+      "lung"
+    ]
+  ],
+  "irregular contours": [
+    [
+      "located_in",
+      "lower lobes"
+    ],
+    [
+      "strongly_suggests",
+      "malignancy"
+    ],
+    [
+      "suggests",
+      "malignancy"
+    ],
+    [
+      "contradicts",
+      "benign etiology"
+    ],
+    [
+      "requires",
+      "further characterization"
+    ],
+    [
+      "has_finding",
+      "malignancy"
+    ],
+    [
+      "has_symptom",
+      "spiculated margins"
+    ],
+    [
+      "has_symptom",
+      "pleural tethering"
+    ],
+    [
+      "has_symptom",
+      "hilar lymphadenopathy"
+    ],
+    [
+      "has_symptom",
+      "nodal metastasis"
+    ],
+    [
+      "has_symptom",
+      "pleural effusion"
+    ],
+    [
+      "has_symptom",
+      "lung abscess"
+    ],
+    [
+      "has_symptom",
+      "necrotic tumor"
+    ],
+    [
+      "has_symptom",
+      "cavitary lesion"
+    ],
+    [
+      "has_symptom",
+      "metastasis"
+    ],
+    [
+      "has_symptom",
+      "lymphoma"
+    ],
+    [
+      "has_symptom",
+      "organizing pneumonia"
+    ],
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "suggests",
+      "scoliosis"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_symptom",
+      "concave upper border"
+    ],
+    [
+      "suggests",
+      "fluid collection"
+    ],
+    [
+      "contradicts",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_symptom",
+      "complete hemithorax opacification"
+    ],
+    [
+      "suggests",
+      "mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_symptom",
+      "thickened walls"
+    ],
+    [
+      "has_finding",
+      "tram-track sign"
+    ],
+    [
+      "has_symptom",
+      "clustered ring shadows"
+    ],
+    [
+      "suggests",
+      "chronic inflammation"
+    ],
+    [
+      "suggests",
+      "fibrosis"
+    ],
+    [
+      "has_finding",
+      "lower lobe predominance"
+    ],
+    [
+      "has_symptom",
+      "chronic productive cough"
+    ],
+    [
+      "has_symptom",
+      "recurrent respiratory infections"
+    ],
+    [
+      "has_symptom",
+      "hemoptysis"
+    ]
+  ],
+  "scoliosis": [
+    [
+      "strongly_suggests",
+      "idiopathic scoliosis"
+    ],
+    [
+      "strongly_suggests",
+      "neuromuscular disease"
+    ],
+    [
+      "strongly_suggests",
+      "congenital vertebral anomalies"
+    ],
+    [
+      "contradicts",
+      "restrictive lung disease"
+    ]
+  ],
+  "kyphosis": [
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "suggests",
+      "osteoporotic compression fractures"
+    ],
+    [
+      "suggests",
+      "senile kyphosis"
+    ],
+    [
+      "suggests",
+      "Scheuermann disease"
+    ],
+    [
+      "contradicts",
+      "restrictive lung disease"
+    ]
+  ],
+  "osteophyte": [
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "suggests",
+      "degenerative spondylosis"
+    ],
+    [
+      "suggests",
+      "ankylosing spondylitis"
+    ],
+    [
+      "contradicts",
+      "restrictive lung disease"
+    ],
+    [
+      "located_in",
+      "anterior vertebral bodies"
+    ],
+    [
+      "has_finding",
+      "degenerative spondylosis"
+    ],
+    [
+      "has_finding",
+      "ankylosing spondylitis"
+    ],
+    [
+      "strongly_suggests",
+      "degenerative spondylosis"
+    ],
+    [
+      "suggests",
+      "chronic spinal stress"
+    ]
+  ],
+  "diffuse calcification": [
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "has_finding",
+      "hyperlucency"
+    ],
+    [
+      "has_finding",
+      "paucity of vascular markings"
+    ],
+    [
+      "has_finding",
+      "alveolar wall destruction"
+    ],
+    [
+      "has_finding",
+      "large bullae"
+    ],
+    [
+      "has_finding",
+      "flattened hemidiaphragms"
+    ],
+    [
+      "has_finding",
+      "hyperinflation"
+    ],
+    [
+      "has_finding",
+      "air trapping"
+    ],
+    [
+      "has_finding",
+      "increased retrosternal airspace"
+    ],
+    [
+      "has_finding",
+      "hyperlucent lung fields"
+    ],
+    [
+      "has_finding",
+      "diminished peripheral vascular markings"
+    ],
+    [
+      "has_finding",
+      "diaphragmatic domes"
+    ],
+    [
+      "has_finding",
+      "emphysema"
+    ],
+    [
+      "has_finding",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "has_finding",
+      "chronic smoking history"
+    ],
+    [
+      "has_finding",
+      "alpha-1 antitrypsin deficiency"
+    ],
+    [
+      "located_in",
+      "costal cartilages"
+    ],
+    [
+      "located_in",
+      "aortic atherosclerosis"
+    ],
+    [
+      "strongly_suggests",
+      "generalized degenerative processes"
+    ],
+    [
+      "has_finding",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "has_finding",
+      "pulmonary hypertension"
+    ],
+    [
+      "has_finding",
+      "right ventricular enlargement"
+    ],
+    [
+      "has_finding",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_finding",
+      "fluid collection in thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity with concave upper border"
+    ],
+    [
+      "has_finding",
+      "effusion"
+    ],
+    [
+      "has_finding",
+      "pleural space"
+    ],
+    [
+      "has_finding",
+      "pericardial space"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_finding",
+      "cardiac silhouette"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "small effusions"
+    ]
+  ],
+  "laminated calcification": [
+    [
+      "strongly_suggests",
+      "benign granuloma"
+    ],
+    [
+      "suggests",
+      "granuloma"
+    ]
+  ],
+  "granuloma": [
+    [
+      "has_finding",
+      "prior infection"
+    ],
+    [
+      "has_symptom",
+      "benign etiology"
+    ],
+    [
+      "located_in",
+      "both lung fields"
+    ],
+    [
+      "confirmed_by",
+      "popcorn pattern"
+    ],
+    [
+      "confirmed_by",
+      "target pattern"
+    ],
+    [
+      "contradicts",
+      "malignancy"
+    ],
+    [
+      "absence_weakens",
+      "calcified malignancies"
+    ],
+    [
+      "located_in",
+      "upper lobe"
+    ],
+    [
+      "located_in",
+      "hilar lymph node"
+    ],
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "located_in",
+      "facet joint"
+    ],
+    [
+      "located_in",
+      "vertebral endplates"
+    ]
+  ],
+  "central dense nidus": [
+    [
+      "has_finding",
+      "calcified nodules"
+    ],
+    [
+      "has_finding",
+      "popcorn pattern"
+    ],
+    [
+      "has_finding",
+      "target pattern"
+    ],
+    [
+      "has_finding",
+      "eggshell pattern"
+    ],
+    [
+      "has_finding",
+      "calcified granulomas"
+    ],
+    [
+      "has_finding",
+      "calcifications"
+    ],
+    [
+      "has_finding",
+      "granulomas"
+    ],
+    [
+      "has_finding",
+      "benign etiology"
+    ],
+    [
+      "has_finding",
+      "healed granulomas"
+    ],
+    [
+      "has_finding",
+      "prior infection"
+    ],
+    [
+      "has_finding",
+      "tuberculosis"
+    ],
+    [
+      "has_finding",
+      "histoplasmosis"
+    ],
+    [
+      "has_finding",
+      "granulomatous disease"
+    ],
+    [
+      "has_finding",
+      "calcified malignancies"
+    ],
+    [
+      "has_finding",
+      "lung abscess"
+    ],
+    [
+      "has_finding",
+      "necrotic tumor"
+    ],
+    [
+      "has_finding",
+      "metastasis"
+    ],
+    [
+      "has_finding",
+      "lymphoma"
+    ]
+  ],
+  "surrounding ring": [
+    [
+      "located_in",
+      "joint space narrowing"
+    ],
+    [
+      "has_finding",
+      "subchondral sclerosis"
+    ],
+    [
+      "has_finding",
+      "bronchial dilatation"
+    ],
+    [
+      "located_in",
+      "cross-section"
+    ]
+  ],
+  "benign etiology": [
+    [
+      "strongly_suggests",
+      "healed granulomas"
+    ],
+    [
+      "suggests",
+      "prior tuberculosis"
+    ],
+    [
+      "suggests",
+      "histoplasmosis exposure"
+    ],
+    [
+      "has_finding",
+      "calcified nodules"
+    ],
+    [
+      "located_in",
+      "upper lobe"
+    ],
+    [
+      "confirmed_by",
+      "popcorn pattern"
+    ],
+    [
+      "confirmed_by",
+      "target pattern"
+    ],
+    [
+      "confirmed_by",
+      "eggshell pattern"
+    ],
+    [
+      "absence_weakens",
+      "calcified malignancies"
+    ],
+    [
+      "contradicts",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "contradicts",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "contradicts",
+      "severe pulmonary hypertension"
+    ],
+    [
+      "contradicts",
+      "pulmonary hypertension"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_symptom",
+      "homogeneous opacity"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ],
+    [
+      "located_in",
+      "pericardial space"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_symptom",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_symptom",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_symptom",
+      "parallel linear opacities"
+    ],
+    [
+      "has_symptom",
+      "tram-track sign"
+    ]
+  ],
+  "upper lobe": [
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "located_in",
+      "both lung fields"
+    ],
+    [
+      "located_in",
+      "lung periphery"
+    ],
+    [
+      "located_in",
+      "upper lobes"
+    ],
+    [
+      "located_in",
+      "right lower lobe"
+    ],
+    [
+      "located_in",
+      "left lower lobe"
+    ],
+    [
+      "located_in",
+      "lower lobes"
+    ],
+    [
+      "located_in",
+      "lower lung fields"
+    ],
+    [
+      "located_in",
+      "lung bases"
+    ],
+    [
+      "located_in",
+      "lung zones"
+    ],
+    [
+      "located_in",
+      "all lung zones"
+    ],
+    [
+      "located_in",
+      "both lung zones"
+    ],
+    [
+      "located_in",
+      "hemithorax"
+    ],
+    [
+      "located_in",
+      "lateral hemithorax"
+    ],
+    [
+      "located_in",
+      "chest wall"
+    ],
+    [
+      "located_in",
+      "visceral pleural line"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ],
+    [
+      "located_in",
+      "pleural effusion"
+    ],
+    [
+      "located_in",
+      "costophrenic angle"
+    ],
+    [
+      "located_in",
+      "lateral chest wall"
+    ]
+  ],
+  "pleura": [
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "located_in",
+      "pericardial space"
+    ]
+  ],
+  "subcutaneous air": [
+    [
+      "located_in",
+      "soft tissues of chest wall"
+    ],
+    [
+      "located_in",
+      "neck"
+    ]
+  ],
+  "diffuse bilateral peribronchiolar nodular opacities": [
+    [
+      "has_symptom",
+      "bronchiolar inflammation"
+    ]
+  ],
+  "ct imaging": [
+    [
+      "has_finding",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "has_finding",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "has_finding",
+      "pulmonary hypertension"
+    ],
+    [
+      "has_finding",
+      "right ventricular enlargement"
+    ],
+    [
+      "has_finding",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_finding",
+      "fluid collection in thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_finding",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_finding",
+      "thickened walls"
+    ],
+    [
+      "has_finding",
+      "tram-track sign"
+    ],
+    [
+      "has_finding",
+      "clustered ring shadows"
+    ]
+  ],
+  "degenerative spondylosis": [
+    [
+      "has_finding",
+      "joint space narrowing"
+    ],
+    [
+      "has_finding",
+      "subchondral sclerosis"
+    ],
+    [
+      "has_finding",
+      "foraminal stenosis"
+    ],
+    [
+      "has_finding",
+      "calcification of costal cartilages"
+    ],
+    [
+      "has_finding",
+      "aortic atherosclerosis"
+    ],
+    [
+      "has_finding",
+      "dystrophic calcification"
+    ],
+    [
+      "has_symptom",
+      "airway inflammation"
+    ],
+    [
+      "has_symptom",
+      "vascular congestion"
+    ],
+    [
+      "has_symptom",
+      "cardiomegaly"
+    ],
+    [
+      "has_symptom",
+      "chronic congestive heart failure"
+    ],
+    [
+      "has_symptom",
+      "interstitial edema"
+    ],
+    [
+      "has_symptom",
+      "chronic infection"
+    ],
+    [
+      "strongly_suggests",
+      "post-infectious bronchiectasis"
+    ],
+    [
+      "strongly_suggests",
+      "severe pneumonia"
+    ],
+    [
+      "strongly_suggests",
+      "tuberculosis"
+    ],
+    [
+      "suggests",
+      "chronic inflammation and fibrosis"
+    ],
+    [
+      "has_symptom",
+      "chronic productive cough"
+    ],
+    [
+      "has_symptom",
+      "recurrent respiratory infections"
+    ],
+    [
+      "has_symptom",
+      "hemoptysis"
+    ],
+    [
+      "located_in",
+      "upper lobes"
+    ]
+  ],
+  "confluent areas of consolidation": [
+    [
+      "suggests",
+      "bronchopneumonia pattern"
+    ]
+  ],
+  "peripheral vascular congestion": [
+    [
+      "has_symptom",
+      "vascular congestion"
+    ]
+  ],
+  "osseous_structures": [
+    [
+      "has_finding",
+      "degenerative_changes"
+    ],
+    [
+      "has_finding",
+      "lytic_lesions"
+    ],
+    [
+      "has_finding",
+      "acute_fracture"
+    ]
+  ],
+  "mediastinal_contours": [
+    [
+      "has_finding",
+      "normal"
+    ],
+    [
+      "has_finding",
+      "widening"
+    ],
+    [
+      "has_finding",
+      "mass_effect"
+    ]
+  ],
+  "acute fractures": [
+    [
+      "strongly_suggests",
+      "degenerative disease"
+    ]
+  ],
+  "coronary artery calcification": [
+    [
+      "located_in",
+      "cardiac silhouette"
+    ]
+  ],
+  "costal cartilage calcification": [
+    [
+      "located_in",
+      "anterior chest wall"
+    ]
+  ],
+  "dystrophic calcification": [
+    [
+      "located_in",
+      "areas of prior tissue injury"
+    ],
+    [
+      "located_in",
+      "chronic inflammation"
+    ],
+    [
+      "located_in",
+      "necrosis"
+    ]
+  ],
+  "irregular pleural thickening": [
+    [
+      "located_in",
+      "lateral chest wall"
+    ],
+    [
+      "located_in",
+      "multiple rib spaces"
+    ]
+  ],
+  "chronic bronchitis": [
+    [
+      "has_symptom",
+      "bronchial wall thickening"
+    ],
+    [
+      "has_symptom",
+      "mucoid impaction"
+    ],
+    [
+      "has_symptom",
+      "airway inflammation"
+    ]
+  ],
+  "asthma": [
+    [
+      "has_symptom",
+      "bronchial wall thickening"
+    ],
+    [
+      "has_symptom",
+      "mucoid impaction"
+    ],
+    [
+      "has_symptom",
+      "airway inflammation"
+    ]
+  ],
+  "cardiac apex displacement": [
+    [
+      "located_in",
+      "right ventricle"
+    ],
+    [
+      "suggests",
+      "pulmonary hypertension"
+    ]
+  ],
+  "bilateral increased markings": [
+    [
+      "has_finding",
+      "clear lung fields"
+    ],
+    [
+      "has_finding",
+      "well-defined pulmonary vasculature"
+    ],
+    [
+      "has_finding",
+      "sharp and well-defined hemidiaphragms"
+    ],
+    [
+      "has_finding",
+      "trachea maintains midline position"
+    ],
+    [
+      "has_finding",
+      "normal osseous structures"
+    ],
+    [
+      "has_finding",
+      "normal mediastinal contours"
+    ],
+    [
+      "has_finding",
+      "absence of acute cardiopulmonary disease"
+    ],
+    [
+      "has_finding",
+      "absence of pneumonia"
+    ],
+    [
+      "has_finding",
+      "absence of congestive heart failure"
+    ],
+    [
+      "has_finding",
+      "absence of pneumothorax"
+    ],
+    [
+      "has_finding",
+      "focal consolidation"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacification"
+    ],
+    [
+      "has_finding",
+      "increased radiodensity"
+    ],
+    [
+      "has_finding",
+      "air bronchograms"
+    ],
+    [
+      "has_finding",
+      "patent airways"
+    ],
+    [
+      "has_finding",
+      "fluid-filled alveoli"
+    ],
+    [
+      "has_finding",
+      "airspace disease"
+    ],
+    [
+      "has_symptom",
+      "airway inflammation"
+    ],
+    [
+      "suggests",
+      "cardiac etiology"
+    ],
+    [
+      "weakly_suggests",
+      "chronic infection or bronchiectasis"
+    ]
+  ],
+  "linear atelectasis": [
+    [
+      "has_finding",
+      "subsegmental collapse"
+    ],
+    [
+      "located_in",
+      "lung bases"
+    ]
+  ],
+  "loss of normal anatomical borders": [
+    [
+      "strongly_suggests",
+      "focal consolidation"
+    ],
+    [
+      "located_in",
+      "increased opacity"
+    ],
+    [
+      "has_finding",
+      "atelectasis"
+    ],
+    [
+      "strongly_suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "suggests",
+      "right ventricular enlargement"
+    ],
+    [
+      "suggests",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "effusion"
+    ],
+    [
+      "has_finding",
+      "pleural space"
+    ],
+    [
+      "has_finding",
+      "pericardial space"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_finding",
+      "cardiac silhouette"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ]
+  ],
+  "infectious pneumonia": [
+    [
+      "has_symptom",
+      "fever"
+    ],
+    [
+      "has_symptom",
+      "productive cough"
+    ]
+  ],
+  "congestive heart failure": [
+    [
+      "has_symptom",
+      "pulmonary vascular redistribution"
+    ]
+  ],
+  "pulmonary fibrosis": [
+    [
+      "located_in",
+      "bilateral lower lobe"
+    ],
+    [
+      "has_finding",
+      "reticular opacities"
+    ],
+    [
+      "has_finding",
+      "honeycombing"
+    ],
+    [
+      "has_finding",
+      "architectural distortion"
+    ],
+    [
+      "has_symptom",
+      "traction bronchiectasis"
+    ]
+  ],
+  "compensatory hyperinflation": [
+    [
+      "strongly_suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "has_finding",
+      "air trapping"
+    ],
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "requires",
+      "bronchodilator therapy"
+    ],
+    [
+      "strongly_suggests",
+      "severe asthma exacerbation"
+    ],
+    [
+      "strongly_suggests",
+      "acute bronchiolitis"
+    ],
+    [
+      "has_symptom",
+      "decreased pulmonary perfusion"
+    ],
+    [
+      "has_symptom",
+      "flattened diaphragmatic domes"
+    ],
+    [
+      "has_symptom",
+      "hyperlucent lung fields"
+    ],
+    [
+      "has_finding",
+      "emphysema"
+    ],
+    [
+      "has_finding",
+      "hyperinflation"
+    ],
+    [
+      "has_symptom",
+      "increased retrosternal airspace"
+    ],
+    [
+      "has_symptom",
+      "increased anteroposterior diameter"
+    ],
+    [
+      "has_symptom",
+      "barrel-chest appearance"
+    ],
+    [
+      "located_in",
+      "adjacent lung segments"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ]
+  ],
+  "bilateral lower lobe": [
+    [
+      "located_in",
+      "lower lobe"
+    ],
+    [
+      "has_finding",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "has_finding",
+      "left-to-right cardiac shunts"
+    ]
+  ],
+  "bilateral": [
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "has_finding",
+      "joint space narrowing"
+    ],
+    [
+      "has_finding",
+      "subchondral sclerosis"
+    ],
+    [
+      "has_finding",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "has_finding",
+      "left-to-right cardiac shunts"
+    ]
+  ],
+  "well-defined pulmonary vasculature": [
+    [
+      "located_in",
+      "lung periphery"
+    ]
+  ],
+  "calcified lymph nodes": [
+    [
+      "located_in",
+      "both lung fields"
+    ],
+    [
+      "has_finding",
+      "healed granulomas"
+    ],
+    [
+      "has_finding",
+      "popcorn pattern"
+    ],
+    [
+      "has_finding",
+      "target pattern"
+    ],
+    [
+      "has_symptom",
+      "prior infection"
+    ],
+    [
+      "has_symptom",
+      "upper lobe predominance"
+    ],
+    [
+      "has_symptom",
+      "histoplasmosis exposure"
+    ],
+    [
+      "has_symptom",
+      "tuberculosis exposure"
+    ],
+    [
+      "absence_weakens",
+      "calcified malignancies"
+    ],
+    [
+      "located_in",
+      "costal cartilages"
+    ],
+    [
+      "located_in",
+      "aortic atherosclerosis"
+    ],
+    [
+      "located_in",
+      "pleural plaques"
+    ],
+    [
+      "has_finding",
+      "eggshell pattern"
+    ],
+    [
+      "suggests",
+      "silicosis"
+    ],
+    [
+      "suggests",
+      "sarcoidosis"
+    ],
+    [
+      "has_finding",
+      "vascular calcifications"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_finding",
+      "effusion"
+    ],
+    [
+      "has_finding",
+      "pleural space"
+    ],
+    [
+      "has_finding",
+      "pericardial space"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_finding",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_finding",
+      "thickened walls"
+    ],
+    [
+      "has_finding",
+      "tram-track sign"
+    ],
+    [
+      "has_finding",
+      "clustered ring shadows"
+    ],
+    [
+      "has_finding",
+      "bronchial dilatation"
+    ]
+  ],
+  "vascular calcifications": [
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "located_in",
+      "both lung fields"
+    ],
+    [
+      "located_in",
+      "upper lobes"
+    ],
+    [
+      "located_in",
+      "lower lobes"
+    ],
+    [
+      "located_in",
+      "right lower lobe"
+    ],
+    [
+      "located_in",
+      "left lower lobe"
+    ],
+    [
+      "has_finding",
+      "emphysema"
+    ],
+    [
+      "has_finding",
+      "bullous disease"
+    ],
+    [
+      "has_finding",
+      "fibrosis"
+    ],
+    [
+      "has_finding",
+      "interstitial lung disease"
+    ],
+    [
+      "has_finding",
+      "interstitial lung disease progression"
+    ],
+    [
+      "has_finding",
+      "sarcoidosis"
+    ],
+    [
+      "has_finding",
+      "hypersensitivity pneumonitis"
+    ],
+    [
+      "has_finding",
+      "drug-induced pneumonitis"
+    ],
+    [
+      "has_finding",
+      "solitary pulmonary nodule"
+    ],
+    [
+      "has_finding",
+      "pulmonary mass"
+    ],
+    [
+      "has_finding",
+      "bronchogenic carcinoma"
+    ],
+    [
+      "has_finding",
+      "hilar lymphadenopathy"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "located_in",
+      "costal cartilages"
+    ],
+    [
+      "located_in",
+      "aortic atherosclerosis"
+    ],
+    [
+      "strongly_suggests",
+      "generalized degenerative processes"
+    ]
+  ],
+  "apical pleural thickening": [
+    [
+      "located_in",
+      "lung periphery"
+    ],
+    [
+      "suggests",
+      "infectious pneumonia"
+    ],
+    [
+      "suggests",
+      "aspiration"
+    ],
+    [
+      "suggests",
+      "pulmonary hemorrhage"
+    ],
+    [
+      "suggests",
+      "organizing pneumonia"
+    ],
+    [
+      "strongly_suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ]
+  ],
+  "diffuse bilateral pleural thickening": [
+    [
+      "has_finding",
+      "clear lung fields"
+    ],
+    [
+      "has_finding",
+      "well-defined pulmonary vasculature"
+    ],
+    [
+      "has_finding",
+      "sharp and well-defined hemidiaphragms"
+    ],
+    [
+      "has_finding",
+      "normal cardiac size"
+    ],
+    [
+      "has_finding",
+      "normal mediastinal contours"
+    ],
+    [
+      "has_finding",
+      "no acute fracture"
+    ],
+    [
+      "has_finding",
+      "no degenerative changes"
+    ],
+    [
+      "has_finding",
+      "no lytic lesions"
+    ],
+    [
+      "has_finding",
+      "focal consolidation"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacification"
+    ],
+    [
+      "has_finding",
+      "increased radiodensity"
+    ],
+    [
+      "has_finding",
+      "air bronchograms"
+    ],
+    [
+      "has_finding",
+      "patent airways"
+    ],
+    [
+      "has_finding",
+      "fluid-filled alveoli"
+    ],
+    [
+      "strongly_suggests",
+      "asbestos exposure"
+    ],
+    [
+      "requires",
+      "occupational history"
+    ],
+    [
+      "suggests",
+      "asbestos exposure"
+    ],
+    [
+      "contradicts",
+      "pleural plaque"
+    ],
+    [
+      "contradicts",
+      "loculated effusion"
+    ],
+    [
+      "contradicts",
+      "pleural-based tumor"
+    ],
+    [
+      "contradicts",
+      "malignant mesothelioma"
+    ],
+    [
+      "contradicts",
+      "chronic pleuritis"
+    ],
+    [
+      "contradicts",
+      "prior tuberculosis"
+    ],
+    [
+      "contradicts",
+      "pleural thickening"
+    ],
+    [
+      "has_finding",
+      "fluid collection in thoracic cavity"
+    ],
+    [
+      "has_symptom",
+      "pleural effusion"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ],
+    [
+      "located_in",
+      "pericardial space"
+    ],
+    [
+      "has_symptom",
+      "meniscus sign"
+    ],
+    [
+      "has_symptom",
+      "globular configuration"
+    ],
+    [
+      "has_symptom",
+      "sharp borders"
+    ],
+    [
+      "has_symptom",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_symptom",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_symptom",
+      "mediastinal shift away from affected side"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_finding",
+      "thickened walls"
+    ],
+    [
+      "has_finding",
+      "tram-track sign"
+    ],
+    [
+      "has_finding",
+      "clustered ring shadows"
+    ]
+  ],
+  "focal pleural thickening": [
+    [
+      "located_in",
+      "right lower lobe"
+    ],
+    [
+      "suggests",
+      "infectious pneumonia"
+    ],
+    [
+      "suggests",
+      "aspiration"
+    ],
+    [
+      "suggests",
+      "pulmonary hemorrhage"
+    ],
+    [
+      "suggests",
+      "organizing pneumonia"
+    ],
+    [
+      "strongly_suggests",
+      "congestive heart failure"
+    ],
+    [
+      "contradicts",
+      "acute cardiopulmonary disease"
+    ],
+    [
+      "contradicts",
+      "pneumonia"
+    ],
+    [
+      "contradicts",
+      "congestive heart failure"
+    ],
+    [
+      "contradicts",
+      "pneumothorax"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_symptom",
+      "fever"
+    ],
+    [
+      "has_symptom",
+      "productive cough"
+    ],
+    [
+      "located_in",
+      "lower lobes"
+    ],
+    [
+      "located_in",
+      "pleural space"
+    ],
+    [
+      "located_in",
+      "chest wall"
+    ],
+    [
+      "located_in",
+      "lateral chest wall"
+    ]
+  ],
+  "wedge-shaped deformity": [
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "has_finding",
+      "anterior height loss"
+    ],
+    [
+      "has_finding",
+      "vertebral compression fracture"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_finding",
+      "effusion"
+    ],
+    [
+      "has_finding",
+      "pleural space"
+    ],
+    [
+      "has_finding",
+      "pericardial space"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "blunting of posterior costophrenic angles"
+    ],
+    [
+      "has_finding",
+      "complete hemithorax opacification"
+    ],
+    [
+      "has_finding",
+      "mediastinal shift"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_finding",
+      "thickened walls"
+    ],
+    [
+      "has_finding",
+      "tram-track sign"
+    ],
+    [
+      "has_finding",
+      "clustered ring shadows"
+    ]
+  ],
+  "sternal fracture": [
+    [
+      "has_symptom",
+      "cardiac or great vessel injury"
+    ],
+    [
+      "has_finding",
+      "blunt chest trauma"
+    ],
+    [
+      "strongly_suggests",
+      "cardiac or great vessel injury"
+    ],
+    [
+      "has_symptom",
+      "chest wall instability"
+    ],
+    [
+      "located_in",
+      "chest"
+    ],
+    [
+      "requires",
+      "bronchoscopy"
+    ],
+    [
+      "contradicts",
+      "idiopathic scoliosis"
+    ],
+    [
+      "contradicts",
+      "neuromuscular disease"
+    ],
+    [
+      "contradicts",
+      "congenital vertebral anomalies"
+    ],
+    [
+      "contradicts",
+      "osteoporotic compression fractures"
+    ],
+    [
+      "contradicts",
+      "Scheuermann disease"
+    ],
+    [
+      "contradicts",
+      "ankylosing spondylitis"
+    ],
+    [
+      "contradicts",
+      "diaphragmatic hernia"
+    ],
+    [
+      "contradicts",
+      "traumatic diaphragmatic rupture"
+    ],
+    [
+      "contradicts",
+      "bronchial wall thickening"
+    ],
+    [
+      "contradicts",
+      "abnormal cardiac silhouette"
+    ],
+    [
+      "contradicts",
+      "tetralogy of Fallot"
+    ],
+    [
+      "contradicts",
+      "pericardial effusion"
+    ],
+    [
+      "contradicts",
+      "left atrial enlargement"
+    ],
+    [
+      "contradicts",
+      "enlarged left atrium"
+    ],
+    [
+      "contradicts",
+      "pulmonary artery enlargement"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "contradicts",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "contradicts",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "has_finding",
+      "right ventricular enlargement"
+    ],
+    [
+      "has_finding",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_finding",
+      "fluid collection in thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity with concave upper border"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_finding",
+      "thickened walls"
+    ],
+    [
+      "has_finding",
+      "tram-track sign"
+    ],
+    [
+      "has_finding",
+      "cystic bronchiectasis"
+    ],
+    [
+      "has_finding",
+      "clustered ring shadows"
+    ],
+    [
+      "has_finding",
+      "crowding of bronchial markings"
+    ],
+    [
+      "has_finding",
+      "volume loss"
+    ],
+    [
+      "has_finding",
+      "bullae"
+    ]
+  ],
+  "diffuse bronchial wall thickening": [
+    [
+      "has_symptom",
+      "chronic bronchitis"
+    ],
+    [
+      "has_symptom",
+      "asthma"
+    ],
+    [
+      "has_symptom",
+      "bronchiectasis"
+    ],
+    [
+      "located_in",
+      "both lung fields"
+    ],
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "suggests",
+      "chronic bronchitis"
+    ],
+    [
+      "suggests",
+      "asthma"
+    ],
+    [
+      "suggests",
+      "bronchiectasis"
+    ]
+  ],
+  "vertebral compression fracture": [
+    [
+      "has_finding",
+      "anterior height loss"
+    ],
+    [
+      "located_in",
+      "anterior height loss"
+    ],
+    [
+      "suggests",
+      "Scheuermann disease"
+    ],
+    [
+      "located_in",
+      "thoracic spine"
+    ]
+  ],
+  "blunt chest trauma": [
+    [
+      "has_finding",
+      "clear lung fields"
+    ],
+    [
+      "has_finding",
+      "well-defined pulmonary vasculature"
+    ],
+    [
+      "has_finding",
+      "normal cardiac size"
+    ],
+    [
+      "has_finding",
+      "sharp and well-defined hemidiaphragms"
+    ],
+    [
+      "has_finding",
+      "trachea maintains midline position"
+    ],
+    [
+      "has_finding",
+      "no acute fracture"
+    ],
+    [
+      "has_finding",
+      "no degenerative changes"
+    ],
+    [
+      "has_finding",
+      "no lytic lesions"
+    ],
+    [
+      "has_finding",
+      "normal mediastinal contours"
+    ],
+    [
+      "has_finding",
+      "absence of acute cardiopulmonary disease"
+    ],
+    [
+      "has_finding",
+      "absence of pneumonia"
+    ],
+    [
+      "has_finding",
+      "absence of congestive heart failure"
+    ],
+    [
+      "has_finding",
+      "absence of pneumothorax"
+    ],
+    [
+      "has_finding",
+      "focal consolidation"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacification"
+    ],
+    [
+      "has_finding",
+      "increased radiodensity"
+    ],
+    [
+      "has_finding",
+      "air bronchograms"
+    ]
+  ],
+  "exuberant callus": [
+    [
+      "strongly_suggests",
+      "lung nodule"
+    ],
+    [
+      "has_finding",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "has_finding",
+      "left-to-right cardiac shunts"
+    ]
+  ],
+  "osteoporotic compression fractures": [
+    [
+      "has_symptom",
+      "progressive anterior collapse of multiple vertebrae"
+    ],
+    [
+      "strongly_suggests",
+      "osteoporosis"
+    ],
+    [
+      "has_finding",
+      "vertebral compression fracture"
+    ],
+    [
+      "has_finding",
+      "wedge-shaped deformity"
+    ],
+    [
+      "has_finding",
+      "anterior height loss"
+    ],
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "contradicts",
+      "acute fracture"
+    ],
+    [
+      "contradicts",
+      "pathologic fracture"
+    ],
+    [
+      "contradicts",
+      "lytic bone lesion"
+    ],
+    [
+      "contradicts",
+      "malignancy"
+    ],
+    [
+      "contradicts",
+      "metastatic disease"
+    ],
+    [
+      "contradicts",
+      "cardiac or great vessel injury"
+    ],
+    [
+      "contradicts",
+      "blunt chest trauma"
+    ],
+    [
+      "contradicts",
+      "fall"
+    ],
+    [
+      "contradicts",
+      "severe coughing"
+    ],
+    [
+      "contradicts",
+      "direct trauma"
+    ],
+    [
+      "contradicts",
+      "pneumothorax"
+    ],
+    [
+      "strongly_suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "strongly_suggests",
+      "pulmonary hypertension"
+    ],
+    [
+      "has_finding",
+      "right ventricular enlargement"
+    ],
+    [
+      "has_finding",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_finding",
+      "fluid collection in thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity with concave upper border"
+    ],
+    [
+      "has_finding",
+      "effusion"
+    ],
+    [
+      "has_finding",
+      "fluid in pleural space"
+    ],
+    [
+      "has_finding",
+      "fluid in pericardial space"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ]
+  ],
+  "lung nodule": [
+    [
+      "located_in",
+      "thoracic cavity"
+    ]
+  ],
+  "effusions": [
+    [
+      "has_symptom",
+      "blunting of posterior costophrenic angles on lateral view"
+    ],
+    [
+      "has_symptom",
+      "complete hemithorax opacification with mediastinal shift away from affected side"
+    ]
+  ],
+  "rib fracture": [
+    [
+      "has_finding",
+      "cortical discontinuity"
+    ],
+    [
+      "has_finding",
+      "step-off deformity"
+    ],
+    [
+      "has_finding",
+      "soft tissue swelling"
+    ],
+    [
+      "has_finding",
+      "local hematoma formation"
+    ],
+    [
+      "located_in",
+      "rib"
+    ],
+    [
+      "strongly_suggests",
+      "direct trauma"
+    ],
+    [
+      "strongly_suggests",
+      "fall"
+    ],
+    [
+      "strongly_suggests",
+      "severe coughing"
+    ],
+    [
+      "strongly_suggests",
+      "osteoporosis"
+    ],
+    [
+      "requires",
+      "bronchoscopy"
+    ],
+    [
+      "weakly_suggests",
+      "hepatic injury"
+    ],
+    [
+      "weakly_suggests",
+      "splenic injury"
+    ],
+    [
+      "contradicts",
+      "healing fracture"
+    ],
+    [
+      "contradicts",
+      "callus formation"
+    ],
+    [
+      "contradicts",
+      "bridging of the fracture gap"
+    ],
+    [
+      "absence_weakens",
+      "lung function"
+    ],
+    [
+      "confirmed_by",
+      "chest radiograph"
+    ],
+    [
+      "strongly_suggests",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "strongly_suggests",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "suggests",
+      "pulmonary hypertension"
+    ],
+    [
+      "suggests",
+      "right ventricular enlargement"
+    ],
+    [
+      "suggests",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "pleural space"
+    ],
+    [
+      "has_finding",
+      "pericardial space"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "dependent portion of pleural space"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_finding",
+      "cardiac silhouette"
+    ],
+    [
+      "has_finding",
+      "globular configuration"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ],
+    [
+      "has_finding",
+      "posterior costophrenic angles"
+    ],
+    [
+      "has_finding",
+      "lateral view"
+    ]
+  ],
+  "moderate to large effusions": [
+    [
+      "has_symptom",
+      "obscure the hemidiaphragm"
+    ],
+    [
+      "has_symptom",
+      "lower lung fields"
+    ]
+  ],
+  "scheuermann disease": [
+    [
+      "has_finding",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "has_finding",
+      "left-to-right cardiac shunts"
+    ],
+    [
+      "has_finding",
+      "pulmonary hypertension"
+    ],
+    [
+      "has_finding",
+      "right ventricular enlargement"
+    ],
+    [
+      "has_finding",
+      "upward cardiac apex displacement"
+    ],
+    [
+      "has_finding",
+      "fluid collection in thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "concave upper border"
+    ],
+    [
+      "has_finding",
+      "effusion"
+    ],
+    [
+      "has_finding",
+      "fluid in pleural space"
+    ],
+    [
+      "has_finding",
+      "fluid in pericardial space"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_finding",
+      "meniscus sign"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_finding",
+      "globular cardiac silhouette"
+    ],
+    [
+      "has_finding",
+      "sharp borders"
+    ]
+  ],
+  "traumatic diaphragmatic rupture": [
+    [
+      "has_symptom",
+      "respiratory compromise"
+    ],
+    [
+      "requires",
+      "abdominal imaging"
+    ],
+    [
+      "strongly_suggests",
+      "liver or spleen herniation"
+    ],
+    [
+      "contradicts",
+      "intact diaphragm"
+    ],
+    [
+      "confirmed_by",
+      "chest radiograph"
+    ],
+    [
+      "has_finding",
+      "liver or spleen herniation"
+    ]
+  ],
+  "right cardiophrenic angle mass": [
+    [
+      "located_in",
+      "costophrenic angle"
+    ],
+    [
+      "has_finding",
+      "hemidiaphragms"
+    ],
+    [
+      "has_symptom",
+      "sharp and well-defined"
+    ],
+    [
+      "contradicts",
+      "acute cardiopulmonary disease"
+    ],
+    [
+      "contradicts",
+      "pneumonia"
+    ],
+    [
+      "contradicts",
+      "congestive heart failure"
+    ],
+    [
+      "contradicts",
+      "pneumothorax"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacity"
+    ],
+    [
+      "has_finding",
+      "fluid collection"
+    ],
+    [
+      "has_finding",
+      "effusion"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "has_finding",
+      "pericardial effusion"
+    ],
+    [
+      "has_finding",
+      "dilated bronchi"
+    ],
+    [
+      "has_finding",
+      "cystic bronchiectasis"
+    ],
+    [
+      "has_finding",
+      "bullae"
+    ],
+    [
+      "has_finding",
+      "subcutaneous emphysema"
+    ],
+    [
+      "has_finding",
+      "diffuse bilateral peribronchiolar nodular opacities"
+    ],
+    [
+      "has_finding",
+      "centrilobular nodules"
+    ],
+    [
+      "has_finding",
+      "hyperinflation"
+    ],
+    [
+      "has_symptom",
+      "chronic productive cough"
+    ]
+  ],
+  "upper lobe vessels": [
+    [
+      "located_in",
+      "upper lobes"
+    ],
+    [
+      "located_in",
+      "lower lobe vessels"
+    ]
+  ],
+  "bowel": [
+    [
+      "located_in",
+      "thoracic spine"
+    ]
+  ],
+  "diaphragm": [
+    [
+      "has_finding",
+      "elevation"
+    ],
+    [
+      "has_symptom",
+      "atelectasis"
+    ],
+    [
+      "has_symptom",
+      "respiratory compromise"
+    ],
+    [
+      "has_finding",
+      "herniation"
+    ],
+    [
+      "has_finding",
+      "liver"
+    ],
+    [
+      "has_finding",
+      "spleen"
+    ],
+    [
+      "has_symptom",
+      "traumatic rupture"
+    ],
+    [
+      "has_symptom",
+      "hernia"
+    ],
+    [
+      "has_finding",
+      "Morgagni hernia"
+    ],
+    [
+      "has_finding",
+      "Bochdalek hernia"
+    ],
+    [
+      "has_finding",
+      "hiatal hernia"
+    ],
+    [
+      "has_symptom",
+      "compression"
+    ],
+    [
+      "has_finding",
+      "rupture"
+    ]
+  ],
+  "hypersensitivity reactions": [
+    [
+      "strongly_suggests",
+      "thickening of bronchial walls"
+    ],
+    [
+      "suggests",
+      "abnormal cardiac silhouette"
+    ],
+    [
+      "contradicts",
+      "absence of abnormal cardiac silhouette"
+    ],
+    [
+      "has_symptom",
+      "abnormal cardiac silhouette"
+    ],
+    [
+      "has_finding",
+      "thickening of bronchial walls"
+    ],
+    [
+      "has_symptom",
+      "chronic productive cough"
+    ],
+    [
+      "has_symptom",
+      "recurrent respiratory infections"
+    ],
+    [
+      "has_symptom",
+      "hemoptysis"
+    ],
+    [
+      "located_in",
+      "upper lobes"
+    ],
+    [
+      "contradicts",
+      "severe emphysema"
+    ]
+  ],
+  "thickening of bronchial walls": [
+    [
+      "located_in",
+      "both lung fields"
+    ]
+  ],
+  "dilated central pulmonary arteries": [
+    [
+      "located_in",
+      "hilar and peripheral vessels"
+    ]
+  ],
+  "chronic pulmonary embolism": [
+    [
+      "requires",
+      "echocardiography"
+    ]
+  ],
+  "bronchial walls": [
+    [
+      "has_finding",
+      "chronic bronchitis"
+    ],
+    [
+      "has_finding",
+      "asthma"
+    ],
+    [
+      "has_finding",
+      "bronchiectasis"
+    ],
+    [
+      "has_symptom",
+      "chronic bronchitis"
+    ],
+    [
+      "has_symptom",
+      "asthma"
+    ],
+    [
+      "has_symptom",
+      "bronchiectasis"
+    ]
+  ],
+  "osteophyte formation": [
+    [
+      "has_finding",
+      "degenerative spondylosis"
+    ],
+    [
+      "suggests",
+      "ankylosing spondylitis"
+    ],
+    [
+      "located_in",
+      "anterior vertebral bodies"
+    ],
+    [
+      "requires",
+      "echocardiography"
+    ]
+  ],
+  "unusual configuration": [
+    [
+      "located_in",
+      "lung fields"
+    ],
+    [
+      "has_finding",
+      "clear lung fields"
+    ],
+    [
+      "has_finding",
+      "well-defined pulmonary vasculature"
+    ],
+    [
+      "has_finding",
+      "cardiothoracic ratio"
+    ],
+    [
+      "has_finding",
+      "hemidiaphragms"
+    ],
+    [
+      "has_finding",
+      "trachea"
+    ],
+    [
+      "has_finding",
+      "osseous structures"
+    ],
+    [
+      "has_finding",
+      "mediastinal contours"
+    ],
+    [
+      "has_finding",
+      "focal consolidation"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacification"
+    ],
+    [
+      "has_finding",
+      "air bronchograms"
+    ],
+    [
+      "has_finding",
+      "silhouette sign"
+    ],
+    [
+      "has_finding",
+      "consolidation"
+    ],
+    [
+      "has_finding",
+      "pleural effusion"
+    ],
+    [
+      "suggests",
+      "infectious pneumonia"
+    ],
+    [
+      "suggests",
+      "aspiration"
+    ],
+    [
+      "suggests",
+      "pulmonary hemorrhage"
+    ],
+    [
+      "suggests",
+      "organizing pneumonia"
+    ],
+    [
+      "located_in",
+      "lower lobes"
+    ],
+    [
+      "located_in",
+      "right lower lobe"
+    ],
+    [
+      "located_in",
+      "pleural effusion"
+    ],
+    [
+      "requires",
+      "investigation"
+    ]
+  ],
+  "peripheral vessels": [
+    [
+      "has_finding",
+      "chronic obstructive pulmonary disease"
+    ],
+    [
+      "has_finding",
+      "left-to-right cardiac shunts"
+    ]
+  ],
+  "hilar vessels": [
+    [
+      "located_in",
+      "lung periphery"
+    ],
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "located_in",
+      "thoracic cavity"
+    ]
+  ],
+  "bronchovascular markings": [
+    [
+      "located_in",
+      "lung fields"
+    ]
+  ],
+  "left heart border": [
+    [
+      "located_in",
+      "chest radiograph"
+    ],
+    [
+      "strongly_suggests",
+      "left atrial enlargement"
+    ],
+    [
+      "suggests",
+      "mitral valve disease"
+    ],
+    [
+      "located_in",
+      "left heart"
+    ],
+    [
+      "located_in",
+      "cardiac silhouette"
+    ],
+    [
+      "located_in",
+      "heart"
+    ],
+    [
+      "located_in",
+      "chest"
+    ],
+    [
+      "located_in",
+      "thorax"
+    ],
+    [
+      "contradicts",
+      "normal cardiac silhouette"
+    ],
+    [
+      "contradicts",
+      "normal cardiac contour"
+    ],
+    [
+      "contradicts",
+      "normal cardiac configuration"
+    ],
+    [
+      "contradicts",
+      "normal cardiac enlargement"
+    ],
+    [
+      "contradicts",
+      "normal left heart border"
+    ],
+    [
+      "contradicts",
+      "normal left atrial size"
+    ],
+    [
+      "contradicts",
+      "normal left atrium"
+    ],
+    [
+      "contradicts",
+      "normal right heart border"
+    ],
+    [
+      "contradicts",
+      "normal right atrium"
+    ],
+    [
+      "contradicts",
+      "normal right ventricle"
+    ],
+    [
+      "contradicts",
+      "normal right ventricular hypertrophy"
+    ],
+    [
+      "contradicts",
+      "normal tetralogy of Fallot"
+    ],
+    [
+      "contradicts",
+      "normal pericardial effusion"
+    ],
+    [
+      "contradicts",
+      "normal pericardium"
+    ],
+    [
+      "strongly_suggests",
+      "right ventricular enlargement"
+    ]
+  ],
+  "pulmonary artery segment": [
+    [
+      "located_in",
+      "lung periphery"
+    ],
+    [
+      "has_finding",
+      "clear lung fields"
+    ],
+    [
+      "has_finding",
+      "well-defined pulmonary vasculature"
+    ],
+    [
+      "has_finding",
+      "normal cardiac size"
+    ],
+    [
+      "has_finding",
+      "sharp and well-defined hemidiaphragms"
+    ],
+    [
+      "has_finding",
+      "midline trachea"
+    ],
+    [
+      "has_finding",
+      "no acute fracture"
+    ],
+    [
+      "has_finding",
+      "no degenerative changes"
+    ],
+    [
+      "has_finding",
+      "no lytic lesions"
+    ],
+    [
+      "has_finding",
+      "normal mediastinal contours"
+    ],
+    [
+      "has_finding",
+      "no widening or mass effect"
+    ],
+    [
+      "has_finding",
+      "focal consolidation"
+    ],
+    [
+      "has_finding",
+      "homogeneous opacification"
+    ],
+    [
+      "has_finding",
+      "increased radiodensity"
+    ],
+    [
+      "has_finding",
+      "obscured vascular markings"
+    ],
+    [
+      "has_finding",
+      "air bronchograms"
+    ],
+    [
+      "has_finding",
+      "patent airways"
+    ],
+    [
+      "located_in",
+      "thoracic spine"
+    ],
+    [
+      "strongly_suggests",
+      "pulmonary hypertension"
+    ],
+    [
+      "suggests",
+      "chronic pulmonary embolism"
+    ]
+  ],
+  "prominent main pulmonary artery segment": [
+    [
+      "located_in",
+      "left heart border"
+    ],
+    [
+      "suggests",
+      "pulmonary artery enlargement"
+    ],
+    [
+      "suggests",
+      "pulmonary hypertension"
+    ]
+  ],
+  "cardiac shadow enlargement": [
+    [
+      "suggests",
+      "cardiomegaly"
+    ],
+    [
+      "requires",
+      "echocardiography"
+    ]
+  ],
+  "normal cardiac shadow": [
+    [
+      "contradicts",
+      "cardiomegaly"
+    ],
+    [
+      "weakly_suggests",
+      "normal cardiac size"
+    ]
+  ],
+  "cardiac shadow": [
+    [
+      "confirmed_by",
+      "chest radiograph"
+    ]
+  ],
+  "increased cardiothoracic ratio": [
+    [
+      "strongly_suggests",
+      "cardiomegaly"
+    ],
+    [
+      "requires",
+      "echocardiography"
+    ]
+  ],
+  "normal cardiothoracic ratio": [
+    [
+      "contradicts",
+      "cardiomegaly"
+    ]
+  ],
+  "calcinosis": [
+    [
+      "has_finding",
+      "soft tissue calcification"
+    ],
+    [
+      "confirmed_by",
+      "radiographic imaging"
+    ],
+    [
+      "located_in",
+      "soft tissues"
+    ]
+  ],
+  "soft tissue calcification": [
+    [
+      "suggests",
+      "calcinosis"
+    ]
+  ],
+  "absence of soft tissue calcification": [
+    [
+      "contradicts",
+      "calcinosis"
+    ]
+  ],
+  "calcinosis cutis": [
+    [
+      "has_finding",
+      "cutaneous calcification"
+    ],
+    [
+      "confirmed_by",
+      "radiographic imaging"
+    ],
+    [
+      "located_in",
+      "skin"
+    ],
+    [
+      "confirmed_by",
+      "skin biopsy"
+    ]
+  ],
+  "cutaneous calcification": [
+    [
+      "located_in",
+      "skin"
+    ]
+  ],
+  "absence of skin calcification": [
+    [
+      "contradicts",
+      "calcinosis cutis"
+    ]
+  ],
+  "normal examination": [
+    [
+      "absence_weakens",
+      "pathological condition"
+    ],
+    [
+      "absence_weakens",
+      "structural abnormality"
+    ]
+  ],
+  "normal chest radiograph": [
+    [
+      "contradicts",
+      "cardiomegaly"
+    ],
+    [
+      "contradicts",
+      "calcinosis"
+    ],
+    [
+      "contradicts",
+      "pulmonary edema"
+    ],
+    [
+      "contradicts",
+      "pleural effusion"
+    ],
+    [
+      "contradicts",
+      "pneumothorax"
+    ],
+    [
+      "contradicts",
+      "lobar consolidation"
+    ],
+    [
+      "absence_weakens",
+      "acute cardiopulmonary disease"
+    ],
+    [
+      "weakly_suggests",
+      "normal cardiopulmonary status"
+    ],
+    [
+      "confirmed_by",
+      "radiographic interpretation"
+    ],
+    [
+      "requires",
+      "adequate inspiratory effort"
+    ]
+  ],
+  "normal cardiac silhouette": [
+    [
+      "weakly_suggests",
+      "normal cardiac size"
+    ]
+  ],
+  "no soft tissue calcification": [
+    [
+      "contradicts",
+      "calcinosis"
+    ]
+  ],
+  "autoimmune connective tissue disease": [
+    [
+      "weakly_suggests",
+      "calcinosis cutis"
+    ]
+  ],
+  "absence of dermal calcification": [
+    [
+      "contradicts",
+      "calcinosis cutis"
+    ]
+  ],
+  "cutaneous calcified nodules": [
+    [
+      "strongly_suggests",
+      "calcinosis cutis"
+    ]
+  ],
+  "pulmonary nodule": [
+    [
+      "suggests",
+      "malignancy"
+    ],
+    [
+      "suggests",
+      "granuloma"
+    ],
+    [
+      "requires",
+      "follow-up CT"
+    ]
+  ],
+  "pulmonary mass": [
+    [
+      "strongly_suggests",
+      "primary lung cancer"
+    ],
+    [
+      "requires",
+      "biopsy"
+    ]
+  ],
+  "parenchymal lesion": [
+    [
+      "suggests",
+      "infectious etiology"
+    ],
+    [
+      "suggests",
+      "neoplastic process"
+    ]
+  ],
+  "focal opacity": [
+    [
+      "suggests",
+      "consolidation"
+    ],
+    [
+      "suggests",
+      "atelectasis"
+    ]
+  ],
+  "solitary pulmonary nodule": [
+    [
+      "requires",
+      "size assessment"
+    ],
+    [
+      "suggests",
+      "malignancy"
+    ]
+  ]
+}
